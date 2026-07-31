@@ -7,11 +7,14 @@ const globalForPrisma = globalThis as unknown as {
 
 // Turso (hosted libSQL) in production/whenever TURSO_DATABASE_URL is set —
 // falls back to a local SQLite file (DATABASE_URL) for local dev if unset.
+// .trim() guards against trailing newlines/whitespace that hosting-provider
+// env var UIs (Render, etc.) tend to append when pasting into their fields.
 function createPrismaClient() {
-  if (process.env.TURSO_DATABASE_URL) {
+  const tursoUrl = process.env.TURSO_DATABASE_URL?.trim()
+  if (tursoUrl) {
     const adapter = new PrismaLibSQL({
-      url: process.env.TURSO_DATABASE_URL,
-      authToken: process.env.TURSO_AUTH_TOKEN,
+      url: tursoUrl,
+      authToken: process.env.TURSO_AUTH_TOKEN?.trim(),
     })
     return new PrismaClient({ adapter, log: ['query'] })
   }
