@@ -7,7 +7,7 @@
     "postinstall": "prisma generate",
     "build": "next build",
     "build:standalone": "next build && node -e \"require('fs').cpSync('.next/static', '.next/standalone/.next/static', {recursive:true}); require('fs').cpSync('public', '.next/standalone/public', {recursive:true})\"",
-    "start": "prisma db push --skip-generate --accept-data-loss 2>/dev/null; next start",
+    "start": "node scripts/start.js",
     "start:standalone": "node .next/standalone/server.js",
     "lint": "eslint .",
     "db:push": "prisma db push",
