@@ -4,6 +4,26 @@ A concrete inventory of the UI conventions actually implemented in this codebase
 
 ---
 
+## 0. Recently Added — Homepage Motion Pass
+
+A round of "wow factor" additions to the homepage, layered on top of the existing animation system rather than introducing a new one — everything below reuses CSS primitives that already existed in `globals.css` (mostly unused until now) or extends the existing mouse-parallax state in the hero.
+
+- **Hero border-beam** (`HeroSlideshow.tsx`) — the product-mockup bezel now uses a new `.conic-border-blue` class instead of the shared `.conic-border`: a rotating conic-gradient ring (`var(--primary) → #00d4ff → var(--primary)`, 4s linear spin) around the monitor frame. Split out as its own class specifically so it never picks up the theme's amber `--accent` color the shared `.conic-border` uses (that one's still used as-is on the `FinalCTA` button).
+- **Hero cursor-reactive glow** (`HeroSection.tsx`) — replaced the old static dot-grid background with a soft radial color wash that follows the pointer: a `spotlight` state (`{x, y, active}`) is updated in the existing `handleMouseMove` handler (the same one that already drove the floating-orb parallax) and rendered as `radial-gradient(560px circle at ${spotlight.x}px ${spotlight.y}px, rgba(0,212,255,0.35), rgba(2,109,222,0.18) 45%, transparent 70%)` with `mix-blend-screen`. Fades in/out via `opacity` + `transition-opacity duration-500`, skipped entirely under `useReducedMotion()`.
+- **Cursor-tracked spotlight cards** — `FeatureHighlights.tsx` (the 14 module cards) and `OurApps.tsx` (the 3 app cards) both gained a `handleSpotlightMove` mouse handler that writes `--mx`/`--my` CSS custom properties onto the card element, driving the pre-existing (previously unused outside `motion.tsx`) `.spotlight` class — a radial glow that follows the cursor while hovering, Magic-Card style.
+- **Testimonials shine-sweep** — `TestimonialsSection.tsx` cards gained the `.card-shine` class (already used on `FeatureHighlights` cards) for a diagonal light sweep on hover.
+- **Testimonials converted to a marquee** — was a static 3-column grid, now an auto-scrolling row (`.animate-marquee-slow`, a 70s-duration variant of the schools-marquee keyframe, `reverse` direction so it visibly moves the opposite way from the schools marquee above it). List is duplicated once for a seamless loop, pauses on hover, respects reduced-motion. Cards are clamped to `line-clamp-5` on the review text and the row uses `items-stretch` so every card renders the same height regardless of quote length (a plain flex stretch was tried first but let one long quote blow out the whole row's height — line-clamp fixed that).
+- **ProblemsSection hover strike-through** — pain-point titles get a `.problem-strike` line that draws across the text on hover only (`transform: scaleX(0→1)`, stays invisible at rest so it never hurts readability of the "problem" copy).
+- **DemoVideo pulse** — the placeholder play button gets a pulsing ring behind it (`motion.span`, `scale: [1, 1.6, 1]`, `opacity: [0.5, 0, 0.5]`, 2.2s loop).
+- **FinalCTA ambient glow** — a soft blurred amber circle (`motion.span`, `scale: [1, 1.18, 1]`, 2.4s loop) now sits behind the primary "Request a Demo" button, underneath its existing conic-border + shimmer-sweep treatment.
+- **FeatureHighlights stagger** — card entrance delay bumped from `i * 0.03` to `i * 0.05` so the 14-card grid visibly cascades in rather than popping in almost simultaneously.
+
+New CSS added to `globals.css` as part of this pass: `.conic-border-blue` / `.conic-border-blue::before` (~line 1202), `.animate-marquee-slow` (~line 993), `.problem-strike` / `.problem-strike::after` (~line 1294) — all included in the existing `prefers-reduced-motion` media query alongside their siblings.
+
+**Turned out to already exist** (checked before implementing, so as not to duplicate): the stat counters in `TrustStats.tsx` already count up from 0 on scroll via a hand-rolled `StatValue` component, and the schools marquee in `SocialProofBar.tsx` already paused on hover. Neither needed changes.
+
+---
+
 ## 1. Animations (framer-motion)
 
 **Note:** `src/lib/motion.tsx` defines a set of reusable animation primitives (`FadeIn`, `Stagger`, `StaggerItem`, `GlassCard`, `TiltCard`, `AnimatedCounter`, `Marquee`) with shared timing presets, but **none of them are actually imported anywhere else in the project** — every section hand-rolls its own equivalent motion props inline instead. Worth cleaning up or actually adopting.
