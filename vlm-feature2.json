@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "This is a professional feature detail page for **Admissions Management** within a school ERP (ChaloSchools).  \n\n### Key Elements:  \n- **Hero Section**: Yes, it has a prominent hero with a dark blue gradient background, featuring the headline *\"Streamline Your Entire Admissions Pipeline\"* and a subheading explaining the value (effortless admissions, reduced paperwork, smooth parent experience).  \n- **Benefits Grid**: Not visible in the provided snippet, but the page focuses on the admissions pipeline’s benefits.  \n- **CTA Buttons**: Yes, a *\"Book Free Demo\"* button (orange) is in the top-right corner.  \n\n### Colors:  \n- Primary background: Dark blue gradient (navy to lighter blue).  \n- Text: White (headline/subheading) and light gray (subtext).  \n- CTA button: Orange (with white text).  \n- Navigation: White background with dark gray text.  \n\nThe page is clean, professional, and tailored to highlight the admissions feature’s value for schools.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1782022381,
+  "id": "20260621141249084fee0fc6c44f94",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "20260621141249084fee0fc6c44f94",
+  "usage": {
+    "completion_tokens": 212,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1021,
+    "prompt_tokens_details": {
+      "cached_tokens": 6
+    },
+    "total_tokens": 1233
+  }
+}

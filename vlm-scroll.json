@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Below the hero, the visible sections are:  \n\n1. **Problem Cards** (3 cards: \"Admission Season Overload\", \"Parent Communication Gap\", \"No Data, No Decisions\")  \n2. **Feature Section Header** (\"11 Powerful Features, One Platform\" with a tagline and \"Everything You Need\" button)  \n\n\n### Confirmations:  \n- **Footer color**: Not visible in the provided screenshot (cannot confirm if navy dark #010b2a).  \n- **Social proof logos**: Not visible.  \n- **Problem cards**: Yes (3 cards describing school pain points).  \n- **Feature cards**: Not visible (only a section header, no individual feature cards shown).  \n- **Board tabs**: Not visible.  \n- **Testimonials**: Not visible.  \n- **CTAs**: Yes (\"Book Free Demo\" button in the header; \"Everything You Need\" button below the problem cards).",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1782022762,
+  "id": "202606211419163a0c7bf3fdf24cf7",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "202606211419163a0c7bf3fdf24cf7",
+  "usage": {
+    "completion_tokens": 191,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1039,
+    "prompt_tokens_details": {
+      "cached_tokens": 7
+    },
+    "total_tokens": 1230
+  }
+}

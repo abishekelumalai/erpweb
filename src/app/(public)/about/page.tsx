@@ -1,0 +1,283 @@
+import { Metadata } from 'next';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import {
+  Target, Eye, Heart, Shield, Zap, Users, Award, TrendingUp,
+  ArrowRight, GraduationCap, BookOpen,
+} from 'lucide-react';
+import { db } from '@/lib/db';
+import { getSiteContent, getContent } from '@/lib/get-site-content';
+
+export const metadata: Metadata = {
+  title: 'About Us | ChaloSchools',
+  description:
+    'Learn about ChaloSchools – CHALO Schools Automated, built by Inspace Edu Solutions Private Limited. We serve 200+ schools and 1.5M+ students across India with a complete school management ERP.',
+  alternates: { canonical: '/about' },
+};
+
+const FALLBACK_MISSION = 'Giving every Indian school access to the same efficient, data-driven administration tools — currently serving 200+ schools and 1.5M+ students across India, with more joining every month.';
+const FALLBACK_VISION = 'To be the most trusted school management platform, making quality education management accessible to every school and empowering excellence in academic performance.';
+const FALLBACK_STORY_1 = 'ChaloSchools – Schools Automated — is a product of Inspace Edu Solutions Private Limited. It was built from a simple observation: Indian schools spend more time managing paperwork than educating students.';
+const FALLBACK_STORY_2 = 'What started as an effort to digitize school operations has grown into a comprehensive platform. Today, ChaloSchools handles all the activities for the operation of a school — from admissions and attendance to fees, transport, library, payroll, and more.';
+const FALLBACK_STORY_3 = "We've built ChaloSchools specifically for Indian schools — supporting Pre School, State & CBSE, IB, Cambridge, Montessori, and Matriculation/Higher Education curricula. Every feature is designed with input from real school leaders, teachers, and parents.";
+const FALLBACK_STORY_4 = 'Our passionate team of educators and engineers works tirelessly to ensure that every school, regardless of size or budget, has access to world-class management technology.';
+
+const whyChooseData = [
+  {
+    icon: Shield,
+    title: 'ISO 27001:2022 Certified',
+    description: 'Your school data is protected by internationally recognized information security standards.',
+  },
+  {
+    icon: Zap,
+    title: 'Lightning Fast',
+    description: 'Cloud-native architecture ensures instant performance even on slow connections.',
+  },
+  {
+    icon: Users,
+    title: 'Built for Indian Schools',
+    description: 'Supporting Pre School, State & CBSE, IB, Cambridge, Montessori, and Matriculation/Higher Education curricula.',
+  },
+  {
+    icon: Heart,
+    title: 'Dedicated Support',
+    description: 'On-ground training, multilingual support, and a dedicated success manager for every school.',
+  },
+  {
+    icon: Award,
+    title: 'Industry Trusted',
+    description: 'Trusted by schools across India for reliable school management solutions.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Continuous Innovation',
+    description: 'Monthly feature releases driven by real feedback from school leaders, teachers, and parents.',
+  },
+];
+
+const leadershipItems = [
+  { title: 'Founder & CEO', description: 'Leading the vision to transform school administration with technology, ensuring every school has access to world-class management tools.' },
+  { title: 'Technology & Engineering', description: 'Building robust, scalable, and secure school management solutions that serve schools across India.' },
+  { title: 'Product & Design', description: 'Designing intuitive features that solve real challenges faced by school leaders, teachers, and parents every day.' },
+  { title: 'Customer Success', description: 'Ensuring every school gets maximum value from ChaloSchools with dedicated onboarding, training, and ongoing support.' },
+];
+
+export default async function AboutPage() {
+  const sc = await getSiteContent();
+
+  const missionDescription = getContent(sc, 'about_mission', FALLBACK_MISSION);
+  const visionDescription = getContent(sc, 'about_vision', FALLBACK_VISION);
+  const story1 = getContent(sc, 'about_story_1', FALLBACK_STORY_1);
+  const story2 = getContent(sc, 'about_story_2', FALLBACK_STORY_2);
+  const story3 = getContent(sc, 'about_story_3', FALLBACK_STORY_3);
+  const story4 = getContent(sc, 'about_story_4', FALLBACK_STORY_4);
+
+  const missionVisionData = [
+    {
+      icon: Target,
+      title: 'Our Mission',
+      description: missionDescription,
+      color: '#026dde',
+    },
+    {
+      icon: Eye,
+      title: 'Our Vision',
+      description: visionDescription,
+      color: '#f59e0b',
+    },
+  ];
+
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="relative bg-brand-gradient py-20 md:py-28 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-1/4 w-72 h-72 bg-[#f59e0b] rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-card/20 rounded-full blur-3xl" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            Built in India, for Indian Schools
+          </h1>
+          <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+            {missionDescription}
+          </p>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="py-16 md:py-24 bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {missionVisionData.map((item) => {
+              const IconComp = item.icon;
+              return (
+                <Card
+                  key={item.title}
+                  className="border-border hover:shadow-lg transition-all duration-300"
+                >
+                  <CardContent className="pt-6">
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+                      style={{ backgroundColor: `${item.color}12` }}
+                    >
+                      <IconComp className="w-6 h-6" style={{ color: item.color }} />
+                    </div>
+                    <h2 className="text-xl md:text-2xl font-bold text-heading mb-4">
+                      {item.title}
+                    </h2>
+                    <p className="text-subtle leading-relaxed text-base">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story */}
+      <section className="py-16 md:py-24 bg-surface-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-6">
+                Our Story
+              </h2>
+              <div className="space-y-4 text-subtle leading-relaxed">
+                <p>{story1}</p>
+                <p>{story2}</p>
+                <p>{story3}</p>
+                <p>{story4}</p>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="w-full aspect-square max-w-md mx-auto rounded-2xl bg-gradient-to-br from-[#026dde]/5 to-[#f59e0b]/10 flex items-center justify-center">
+                <div className="text-center space-y-6">
+                  <GraduationCap className="w-24 h-24 text-primary mx-auto" />
+                  <div className="space-y-2">
+                    <div className="text-4xl md:text-5xl font-bold text-primary">ISO</div>
+                    <div className="text-subtle font-medium">27001:2022 Certified</div>
+                  </div>
+                  <div className="flex items-center justify-center gap-8">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-[#f59e0b]">19+</div>
+                      <div className="text-xs text-subtle">Modules</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-[#f59e0b]">5</div>
+                      <div className="text-xs text-subtle">Board Types</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-[#f59e0b]">∞</div>
+                      <div className="text-xs text-subtle">Possibilities</div>
+                    </div>
+                  </div>
+                  <div className="pt-2">
+                    <Badge className="px-4 py-1.5 text-sm font-medium bg-[#026dde]/10 text-primary border-[#026dde]/20 rounded-full">
+                      <Shield className="w-3.5 h-3.5 mr-1.5" />
+                      An ISO 27001:2022 Certified Company
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 md:py-24 bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
+              Why Schools Choose ChaloSchools
+            </h2>
+            <p className="text-subtle text-lg max-w-2xl mx-auto">
+              Here&apos;s what makes us different from every other school management software.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyChooseData.map((item) => {
+              const IconComp = item.icon;
+              return (
+                <Card
+                  key={item.title}
+                  className="group border border-border hover:border-[#026dde]/30 hover:shadow-lg transition-all duration-300"
+                >
+                  <CardContent className="pt-6">
+                    <div className="w-10 h-10 rounded-lg bg-[#026dde]/10 flex items-center justify-center mb-4">
+                      <IconComp className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-heading mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-subtle text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Section */}
+      <section className="py-16 md:py-24 bg-surface-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
+              Our Leadership
+            </h2>
+            <p className="text-subtle text-lg max-w-2xl mx-auto">
+              Meet the team behind ChaloSchools — a passionate group committed to transforming school operations across India.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {leadershipItems.map((item) => (
+              <Card
+                key={item.title}
+                className="border border-border hover:shadow-lg transition-all duration-300 text-center"
+              >
+                <CardContent className="pt-6">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#026dde] to-[#026dde]/60 flex items-center justify-center mx-auto mb-4">
+                    <BookOpen className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-heading">{item.title}</h3>
+                  <p className="text-primary text-sm font-medium mb-3">ChaloSchools</p>
+                  <p className="text-subtle text-sm leading-relaxed">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 md:py-24 bg-card">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
+            Ready to Transform Your School?
+          </h2>
+          <p className="text-subtle text-lg mb-8 max-w-2xl mx-auto">
+            Experience how ChaloSchools can transform your school administration.
+          </p>
+          <Button
+            size="lg"
+            className="bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
+            asChild
+          >
+            <Link href="/contact">
+              Get in Touch
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+    </>
+  );
+}

@@ -1,0 +1,27 @@
+{
+  "Hero": {
+    "badge": "Trusted by 500+ Indian Schools",
+    "titleLine1Pre": "India's",
+    "titleHighlight": "#1",
+    "titleLine2": "School Management",
+    "titleLine3": "Software",
+    "subtitle": "Automate Admissions, Fees, Attendance & Communication — all in one elegant platform.",
+    "ctaPrimary": "Book Free Demo",
+    "ctaSecondary": "Talk to Sales: +91 9962228160",
+    "trustNoCard": "No credit card required",
+    "trustFreeSetup": "Free setup & training"
+  },
+  "Nav": {
+    "home": "Home",
+    "product": "Product",
+    "features": "Features",
+    "solutions": "Solutions",
+    "resources": "Resources",
+    "company": "Company",
+    "talkToSales": "Talk to Sales",
+    "bookDemo": "Book Free Demo"
+  },
+  "Common": {
+    "language": "Language"
+  }
+}

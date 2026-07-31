@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "This is a screenshot of the ChaloSchools website, a school ERP (Enterprise Resource Planning) platform.  \n\n### Headline:  \n\"The Complete School ERP That Just Works\" (with \"ERP\" in black and \"That Just Works\" in blue).  \n\n\n### Button Colors:  \n- **\"Book Free Demo\"** (top-right and bottom-left): Orange (with white text and an arrow icon).  \n- **\"Watch Demo\"** (bottom-center): White (with blue text and a play icon).  \n\n\n### Visible Sections:  \n1. **Header**: Contains the ChaloSchools logo (left), navigation menu (Features, Solutions, Resources, Company), and the \"Book Free Demo\" button (right).  \n2. **Trust Badge**: A blue badge stating \"Trusted by 500+ Schools Across India\" (with a star icon).  \n3. **Hero Section**:  \n   - Headline and subheadline: \"From admissions to results, ChaloSchools replaces 10+ disconnected tools with one powerful platform — built for Indian schools.\"  \n   - Two buttons: \"Book Free Demo\" (orange) and \"Watch Demo\" (white with blue text).  \n4. **Visual Section**: An image of a laptop displaying a green dashboard (likely the ERP interface) on a desk with books, alongside two stats:  \n   - \"Students 2.5M+\" (with a graduation cap icon).  \n   - \"Attendance 98.5%\" (with a checkmark icon).  \n\n\nThe design is clean and professional, emphasizing the platform’s utility for Indian schools with bold typography, contrasting colors, and trust-building elements.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1782022298,
+  "id": "202606211411321f1a90ba025e4336",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "202606211411321f1a90ba025e4336",
+  "usage": {
+    "completion_tokens": 341,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1001,
+    "prompt_tokens_details": {
+      "cached_tokens": 8
+    },
+    "total_tokens": 1342
+  }
+}
