@@ -125,6 +125,47 @@ export default function HeroSlideshow() {
         <div className="flex justify-center -mt-0.5">
           <div className="w-32 h-2 bg-[#2a2a2a] rounded-full shadow-md" />
         </div>
+
+        {/* Phone mockup — illustrative placeholder (generic UI blocks, not a real
+            screenshot) showing the product also works on mobile, overlapping the
+            monitor's bottom-right corner. Swap for a real app screenshot when
+            available. */}
+        <motion.div
+          initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8, rotate: 20 }}
+          animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1, rotate: 8 }}
+          transition={{ delay: 0.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="hidden sm:block absolute -bottom-6 -right-4 md:-right-8 w-[92px] z-10"
+        >
+          <div className="bg-[#1a1a1a] rounded-[1.1rem] p-1.5 shadow-2xl border border-black/20">
+            <div className="bg-card rounded-[0.85rem] overflow-hidden aspect-[9/19]">
+              {/* Notch */}
+              <div className="h-3 flex items-center justify-center">
+                <div className="w-8 h-1.5 bg-[#1a1a1a] rounded-full" />
+              </div>
+              {/* Generic app UI blocks */}
+              <div className="px-2 pt-1 space-y-1.5">
+                <div className="flex items-center gap-1 mb-1.5">
+                  <div className="w-4 h-4 rounded-full bg-primary shrink-0" />
+                  <div className="h-1.5 w-10 bg-heading/20 rounded-full" />
+                </div>
+                <div className="rounded-md bg-primary/10 p-1.5">
+                  <div className="h-1.5 w-full bg-primary/30 rounded-full mb-1" />
+                  <div className="h-1.5 w-2/3 bg-primary/20 rounded-full" />
+                </div>
+                <div className="rounded-md bg-emerald-500/10 p-1.5">
+                  <div className="h-1.5 w-3/4 bg-emerald-500/30 rounded-full" />
+                </div>
+                <div className="rounded-md bg-amber-500/10 p-1.5">
+                  <div className="h-1.5 w-1/2 bg-amber-500/30 rounded-full" />
+                </div>
+              </div>
+              {/* Home indicator */}
+              <div className="flex justify-center pb-1.5 pt-2">
+                <div className="w-6 h-0.5 bg-heading/20 rounded-full" />
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Controls: dot indicators + pause/play */}
