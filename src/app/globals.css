@@ -1287,21 +1287,6 @@ html { background-color: var(--footer-bg); }
   transform: scaleX(0); transform-origin: left; animation: underline-draw .8s .2s cubic-bezier(.22,1,.36,1) forwards;
 }
 
-/* Hover-only strike-through accent for "old broken way" pain-point titles.
-   Line stays hidden at rest (never harms readability) and draws across the
-   title on hover, reinforcing "this problem goes away" before the solution
-   section. */
-.problem-strike { position: relative; display: inline-block; }
-.problem-strike::after {
-  content: ''; position: absolute; left: 0; top: 50%; height: 2px; width: 100%;
-  background: currentColor; opacity: 0.55; border-radius: 2px;
-  transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.22,1,.36,1);
-}
-.group:hover .problem-strike::after { transform: scaleX(1); }
-@media (prefers-reduced-motion: reduce) {
-  .problem-strike::after { transition: none; }
-}
-
 /* Tilt-glow lift for interactive cards (stronger than card-lift) */
 .wow-card { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease; will-change: transform; }
 .wow-card:hover {

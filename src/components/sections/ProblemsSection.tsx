@@ -65,7 +65,7 @@ export default function ProblemsSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#026dde]/0 to-transparent group-hover:from-[#026dde]/3 transition-all duration-300 rounded-xl" />
               <div className="relative">
                 <div className={`w-12 h-12 rounded-xl ${p.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm`}>{p.icon}</div>
-                <h3 className="text-lg font-bold text-heading mb-2"><span className="problem-strike">{p.title}</span></h3>
+                <h3 className="text-lg font-bold text-heading mb-2">{p.title}</h3>
                 <p className="text-sm text-subtle leading-relaxed">{p.description}</p>
               </div>
             </motion.div>
