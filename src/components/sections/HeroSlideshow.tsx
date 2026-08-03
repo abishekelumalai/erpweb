@@ -76,7 +76,7 @@ export default function HeroSlideshow() {
       {/* Monitor frame */}
       <div className="relative">
         {/* Screen bezel */}
-        <div className="conic-border-blue bg-[#1a1a1a] rounded-xl p-2 shadow-2xl">
+        <div className="bg-[#1a1a1a] rounded-xl p-2 shadow-2xl">
           {/* Screen */}
           <div
             className="relative bg-card rounded-lg overflow-hidden aspect-[16/10]"
