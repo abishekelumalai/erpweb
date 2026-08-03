@@ -14,13 +14,22 @@ const PROBLEM_ICON_DATA = [
   { icon: ShieldAlert, className: 'w-6 h-6' },
 ];
 
-const PROBLEM_COLORS = [
-  'bg-amber-100 text-amber-600',
-  'bg-blue-100 text-blue-600',
-  'bg-red-100 text-red-500',
-  'bg-emerald-100 text-emerald-600',
-  'bg-[#8b5cf6]/10 text-[#8b5cf6]',
-  'bg-amber-100 text-amber-600',
+const PROBLEM_GRADIENTS = [
+  'from-[#f59e0b] to-[#fbbf24]',
+  'from-[#026dde] to-[#00d4ff]',
+  'from-[#e11d48] to-[#f87171]',
+  'from-[#10b981] to-[#34d399]',
+  'from-[#8b5cf6] to-[#a78bfa]',
+  'from-[#0891b2] to-[#22d3ee]',
+];
+
+const PROBLEM_SHADOWS = [
+  'shadow-[#f59e0b]/20',
+  'shadow-[#026dde]/20',
+  'shadow-[#e11d48]/20',
+  'shadow-[#10b981]/20',
+  'shadow-[#8b5cf6]/20',
+  'shadow-[#0891b2]/20',
 ];
 
 const FALLBACK_PROBLEMS = [
@@ -45,7 +54,8 @@ export default function ProblemsSection() {
       icon: <IconComp className={PROBLEM_ICON_DATA[i].className} />,
       title: getContentValue(content, `problem_${i + 1}_title`, p.title),
       description: getContentValue(content, `problem_${i + 1}_desc`, p.description),
-      color: PROBLEM_COLORS[i],
+      gradient: PROBLEM_GRADIENTS[i],
+      shadow: PROBLEM_SHADOWS[i],
     };
   });
 
@@ -64,7 +74,10 @@ export default function ProblemsSection() {
               {/* Subtle gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#026dde]/0 to-transparent group-hover:from-[#026dde]/3 transition-all duration-300 rounded-xl" />
               <div className="relative">
-                <div className={`w-12 h-12 rounded-xl ${p.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm`}>{p.icon}</div>
+                <div className="relative inline-block mb-4">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${p.gradient} flex items-center justify-center shadow-lg ${p.shadow} text-white group-hover:scale-110 transition-transform duration-300`}>{p.icon}</div>
+                  <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${p.gradient} opacity-0 group-hover:opacity-20 scale-125 blur-md transition-all duration-300`} />
+                </div>
                 <h3 className="text-lg font-bold text-heading mb-2">{p.title}</h3>
                 <p className="text-sm text-subtle leading-relaxed">{p.description}</p>
               </div>

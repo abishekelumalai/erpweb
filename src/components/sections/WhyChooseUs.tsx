@@ -22,31 +22,43 @@ const MANAGED_SERVICES = [
     icon: Server,
     title: 'Managed IT Infrastructure',
     description: 'Design, deploy & manage servers, storage, smart classrooms, CCTV & compute — school-grade reliability with zero in-house IT overhead and a dedicated virtual IT manager.',
+    gradient: 'from-[#026dde] to-[#00d4ff]',
+    shadow: 'shadow-[#026dde]/20',
   },
   {
     icon: ShieldCheck,
     title: 'Cybersecurity Audit',
     description: 'Penetration testing, vulnerability scans & risk remediation. Your student data stays yours.',
+    gradient: 'from-[#e11d48] to-[#f87171]',
+    shadow: 'shadow-[#e11d48]/20',
   },
   {
     icon: Network,
     title: 'Network Design & Deployment',
     description: 'Campus-wide wired & wireless networks, built for 200 to 20,000+ seat schools without compromise.',
+    gradient: 'from-[#0891b2] to-[#22d3ee]',
+    shadow: 'shadow-[#0891b2]/20',
   },
   {
     icon: ClipboardCheck,
     title: 'Compliance Audit & Advisory',
     description: 'DPDP Act, GoI IT Act 2000, ISO 27001 — audit-ready always, not just before inspections.',
+    gradient: 'from-[#10b981] to-[#34d399]',
+    shadow: 'shadow-[#10b981]/20',
   },
   {
     icon: Lightbulb,
     title: 'IT Strategy Consulting',
     description: 'Vendor-neutral roadmap and digital transformation guidance. Strategy first, tools second.',
+    gradient: 'from-[#f59e0b] to-[#fbbf24]',
+    shadow: 'shadow-[#f59e0b]/20',
   },
   {
     icon: Headset,
     title: '24/7 Helpdesk & AMC',
     description: 'SLA-backed support with a named account manager — on-site and remote, so school never stops for an IT issue.',
+    gradient: 'from-[#8b5cf6] to-[#a78bfa]',
+    shadow: 'shadow-[#8b5cf6]/20',
   },
 ];
 
@@ -124,10 +136,13 @@ export default function WhyChooseUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="card-shine bg-card rounded-xl border border-border p-5 hover:border-[#f59e0b]/30 hover:shadow-md transition-all"
+                className="card-shine group bg-card rounded-xl border border-border p-5 hover:border-[#f59e0b]/30 hover:shadow-md transition-all"
               >
-                <div className="w-10 h-10 rounded-lg bg-[#f59e0b]/10 flex items-center justify-center mb-3">
-                  <s.icon className="w-5 h-5 text-[#d97706]" />
+                <div className="relative inline-block mb-3">
+                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${s.gradient} flex items-center justify-center shadow-lg ${s.shadow} text-white group-hover:scale-110 transition-transform duration-300`}>
+                    <s.icon className="w-5 h-5" />
+                  </div>
+                  <div className={`absolute inset-0 rounded-lg bg-gradient-to-br ${s.gradient} opacity-0 group-hover:opacity-20 scale-125 blur-md transition-all duration-300`} />
                 </div>
                 <h4 className="font-bold text-sm text-heading mb-1.5">{s.title}</h4>
                 <p className="text-xs text-subtle leading-relaxed">{s.description}</p>
