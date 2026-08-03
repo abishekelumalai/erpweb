@@ -2,7 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
-import { LayoutDashboard, Building2, Layers } from 'lucide-react';
+import {
+  LayoutDashboard, Building2, Layers,
+  Server, ShieldCheck, Network, ClipboardCheck, Lightbulb, Headset,
+} from 'lucide-react';
 import { useSiteContent, getContentValue } from './SiteContentProvider';
 
 const ICONS = [LayoutDashboard, Building2, Layers];
@@ -10,6 +13,41 @@ const COLORS = [
   'from-[#026dde] to-[#024fb3]',
   'from-[#f59e0b] to-[#d97706]',
   'from-[#026dde] to-[#024fb3]',
+];
+
+// From the Inspace Technologies "Beyond Software — Managed Services &
+// Infrastructure" brochure page — real service lines, condensed.
+const MANAGED_SERVICES = [
+  {
+    icon: Server,
+    title: 'Managed IT Infrastructure',
+    description: 'Design, deploy & manage servers, storage, smart classrooms, CCTV & compute — school-grade reliability with zero in-house IT overhead and a dedicated virtual IT manager.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Cybersecurity Audit',
+    description: 'Penetration testing, vulnerability scans & risk remediation. Your student data stays yours.',
+  },
+  {
+    icon: Network,
+    title: 'Network Design & Deployment',
+    description: 'Campus-wide wired & wireless networks, built for 200 to 20,000+ seat schools without compromise.',
+  },
+  {
+    icon: ClipboardCheck,
+    title: 'Compliance Audit & Advisory',
+    description: 'DPDP Act, GoI IT Act 2000, ISO 27001 — audit-ready always, not just before inspections.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'IT Strategy Consulting',
+    description: 'Vendor-neutral roadmap and digital transformation guidance. Strategy first, tools second.',
+  },
+  {
+    icon: Headset,
+    title: '24/7 Helpdesk & AMC',
+    description: 'SLA-backed support with a named account manager — on-site and remote, so school never stops for an IT issue.',
+  },
 ];
 
 const FALLBACK_BENEFITS = [
@@ -62,6 +100,43 @@ export default function WhyChooseUs() {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Beyond Software — Managed Services & Infrastructure (Inspace Technologies) */}
+        <div className="mt-16 max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <Badge className="mb-4 bg-[#f59e0b]/10 text-[#d97706] border-[#f59e0b]/20 rounded-full">Beyond Software</Badge>
+            <h3 className="text-2xl lg:text-3xl font-bold text-heading mb-2">Managed Services &amp; Infrastructure</h3>
+            <p className="text-body">
+              Powered by Inspace Technologies — India&apos;s only full-stack school technology company. From school ERP to data centre, we own it all.
+            </p>
+          </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {MANAGED_SERVICES.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="card-shine bg-card rounded-xl border border-border p-5 hover:border-[#f59e0b]/30 hover:shadow-md transition-all"
+              >
+                <div className="w-10 h-10 rounded-lg bg-[#f59e0b]/10 flex items-center justify-center mb-3">
+                  <s.icon className="w-5 h-5 text-[#d97706]" />
+                </div>
+                <h4 className="font-bold text-sm text-heading mb-1.5">{s.title}</h4>
+                <p className="text-xs text-subtle leading-relaxed">{s.description}</p>
+              </motion.div>
+            ))}
+          </div>
+          <p className="text-center text-xs text-subtle mt-6">
+            One partner · Zero gaps · Full accountability — ERP, AI Analytics, Managed IT, Cybersecurity, Networking, Compliance, Consulting &amp; 24/7 Support.
+          </p>
         </div>
       </div>
     </section>
