@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 flex flex-col md:flex-row md:items-start md:justify-between gap-10">
           <div className="space-y-5 max-w-sm">
-            <Link href="/"><Image src="/images/logo.png" alt="ChaloSchools" width={900} height={349} className="h-9 w-auto" /></Link>
+            <Link href="/"><Image src="/images/logo.png" alt="ChaloSchools" width={345} height={150} className="h-9 w-auto" /></Link>
             <p className="text-sm footer-muted leading-relaxed">CHALO – Schools Automated. Complete School Management Software which handles all the activities for operation of a school. An ISO 27001:2022 Certified Company.</p>
             <Link href="/security" className="inline-flex items-center gap-1.5 text-xs footer-muted hover:text-accent transition-colors">
               <ShieldCheck className="w-3.5 h-3.5" />

@@ -509,7 +509,7 @@ export default function Header() {
 
           <Link href="/" className="flex items-center gap-2 shrink-0">
 
-            <Image src="/images/logo.png" alt="ChaloSchools" width={900} height={349} className="theme-logo h-11 w-auto drop-shadow-sm" priority />
+            <Image src="/images/logo.png" alt="ChaloSchools" width={345} height={150} className="theme-logo h-11 w-auto drop-shadow-sm" priority />
 
           </Link>
 
@@ -566,7 +566,7 @@ export default function Header() {
 
                 <div className="p-6 border-b border-border">
 
-                  <Link href="/"><Image src="/images/logo.png" alt="ChaloSchools" width={900} height={349} className="theme-logo h-8 w-auto" /></Link>
+                  <Link href="/"><Image src="/images/logo.png" alt="ChaloSchools" width={345} height={150} className="theme-logo h-8 w-auto" /></Link>
 
                 </div>
 
