@@ -14,7 +14,7 @@ import {
 
   ArrowRight, CheckCircle2, Sparkles, Shield, Zap,
   FileText, GraduationCap, Users, Wallet, Package,
-  Fingerprint, Navigation, Calculator, CreditCard,
+  Fingerprint, Navigation, Calculator, CreditCard, TrendingUp, Bot,
 
 } from 'lucide-react';
 
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
   description:
 
-    'Take a tour of ChaloSchools — explore our 6 core modules: Admissions, Fee Management, Attendance, Timetable, Parent App, and Reports & Analytics.',
+    'Take a tour of ChaloSchools — explore all 14 modules, from Admissions and Fee Management to Payroll, Inventory, and our AI Secretary.',
 
   alternates: { canonical: '/product' },
 
@@ -380,6 +380,60 @@ const modules = [
       'Barcode/QR-based inventory scanning',
     ],
     stat: { value: '0', label: 'Stockouts this term' },
+  },
+  {
+    id: 'communication',
+    icon: MessageCircle,
+    accent: '#10b981',
+    title: 'Communication Management',
+    tagline: 'Reach every parent, every time — WhatsApp, SMS & voice.',
+    description:
+      'Send announcements, fee reminders, and emergency alerts instantly across WhatsApp, SMS, and voice broadcast — with delivery and read receipts so nothing gets missed.',
+    features: [
+      'WhatsApp Business API integration',
+      'Bulk SMS and voice broadcast',
+      'Delivery and read-receipt tracking',
+      'Class-wise or school-wide announcements',
+      'Automated fee and event reminders',
+      'Two-way parent-teacher messaging',
+    ],
+    stat: { value: '1,842', label: 'Parents reached instantly' },
+  },
+  {
+    id: 'performance-insights',
+    icon: TrendingUp,
+    accent: '#0891b2',
+    title: 'Inspace Performance Insights',
+    tagline: 'Deep, school-wide analytics — beyond basic reports.',
+    description:
+      'Go past standard report cards with cross-module analytics — track academic trends, attendance patterns, fee collection health, and staff performance from a single insights dashboard.',
+    features: [
+      'Cross-module performance dashboards',
+      'Academic trend analysis by class and subject',
+      'Attendance and fee collection health scores',
+      'Staff performance benchmarking',
+      'Custom KPI tracking',
+      'Exportable insights for management reviews',
+    ],
+    stat: { value: '360°', label: 'School-wide visibility' },
+  },
+  {
+    id: 'ai-secretary',
+    icon: Bot,
+    accent: '#e11d48',
+    title: 'AI Secretary',
+    tagline: 'An AI assistant built exclusively for school management.',
+    description:
+      "Ask questions in plain language and get instant answers pulled from your school's own data — attendance, fees, admissions, and more — without digging through reports.",
+    features: [
+      'Natural-language queries across school data',
+      'Instant answers on attendance, fees & admissions',
+      'Automated daily/weekly summary briefings',
+      'Smart alerts for anomalies (e.g. attendance drops)',
+      'Available inside the management app',
+      "Continuously learns from your school's data",
+    ],
+    stat: { value: '24/7', label: 'Always-on assistant' },
   },
 ];
 

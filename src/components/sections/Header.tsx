@@ -38,39 +38,46 @@ interface NavDropdownData {
 
   sections: NavSection[];
 
+  panelClass?: string;
+
+  gridClass?: string;
+
 }
 
 const navDropdowns: Record<string, NavDropdownData> = {
 
   Features: {
 
-    sections: [{ items: [
+    panelClass: 'w-[640px]',
 
-      { label: 'AI Feature Suite (20+)', href: '/platform-capabilities' },
+    gridClass: 'grid-cols-3',
 
-      { label: 'Admissions Management', href: '/features/admissions' },
-
-      { label: 'Fees & Finance', href: '/features/fees' },
-
-      { label: 'Attendance Tracking', href: '/features/attendance' },
-
-      { label: 'Exam & Marks Portal', href: '/features/exams' },
-
-      { label: 'Timetable Scheduler', href: '/features/timetable' },
-
-      { label: 'Parent & Student App', href: '/features/parent-app' },
-
-      { label: 'Staff & HR Module', href: '/features/staff-hr' },
-
-      { label: 'Library Management', href: '/features/library' },
-
-      { label: 'Transport Tracking', href: '/features/transport' },
-
-      { label: 'WhatsApp Notifications', href: '/features/whatsapp' },
-
-      { label: 'Reports & Analytics', href: '/features/reports' },
-
-    ] }],
+    sections: [
+      { title: 'Core Modules', items: [
+        { label: 'AI Feature Suite (20+)', href: '/platform-capabilities' },
+        { label: 'Admission Management', href: '/features/admissions' },
+        { label: 'Student Management', href: '/product#student' },
+        { label: 'Staff Management', href: '/features/staff-hr' },
+        { label: 'Fee Management', href: '/features/fees' },
+        { label: 'Timetable Scheduler', href: '/features/timetable' },
+        { label: 'Attendance Management', href: '/features/attendance' },
+        { label: 'Exam & Marks Portal', href: '/features/exams' },
+        { label: 'Communication Management', href: '/product#communication' },
+      ]},
+      { title: 'Add-on Modules', items: [
+        { label: 'Academic Inventory Tracking', href: '/product#inventory' },
+        { label: 'Payroll Management', href: '/product#payroll' },
+        { label: 'Library Management', href: '/features/library' },
+        { label: 'Transport Management', href: '/features/transport' },
+        { label: 'Performance Insights', href: '/product#performance-insights' },
+        { label: 'AI Secretary', href: '/product#ai-secretary' },
+      ]},
+      { title: 'More', items: [
+        { label: 'Parent & Student App', href: '/features/parent-app' },
+        { label: 'WhatsApp Notifications', href: '/features/whatsapp' },
+        { label: 'Reports & Analytics', href: '/features/reports' },
+      ]},
+    ],
 
   },
 
@@ -260,7 +267,7 @@ function MegaDropdown({
 
           transition={{ duration: 0.15 }}
 
-          className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[500px] bg-card rounded-xl shadow-xl border border-border p-6 z-50"
+          className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 ${data.panelClass ?? 'w-[500px]'} bg-card rounded-xl shadow-xl border border-border p-6 z-50`}
 
         >
 
@@ -276,7 +283,7 @@ function MegaDropdown({
 
                 <motion.div
 
-                  className="grid grid-cols-2 gap-1"
+                  className={`grid ${data.gridClass ?? 'grid-cols-2'} gap-1`}
 
                   initial={reduce ? undefined : 'hidden'}
 
