@@ -10,7 +10,12 @@ import { Button } from '@/components/ui/button';
 
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 
-import { Menu, ChevronDown, ArrowRight } from 'lucide-react';
+import {
+  Menu, ChevronDown, ArrowRight, Sparkles, UserPlus, GraduationCap, Users,
+  IndianRupee, CalendarDays, ClipboardCheck, FileText, MessageCircle, Package,
+  Wallet, BookOpen, Bus, TrendingUp, Bot, Smartphone, Send, BarChart3,
+  type LucideIcon,
+} from 'lucide-react';
 
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
@@ -23,6 +28,8 @@ interface NavItem {
   label: string;
 
   href?: string;
+
+  icon?: LucideIcon;
 
 }
 
@@ -42,6 +49,8 @@ interface NavDropdownData {
 
   gridClass?: string;
 
+  footer?: { label: string; href: string };
+
 }
 
 const navDropdowns: Record<string, NavDropdownData> = {
@@ -52,30 +61,32 @@ const navDropdowns: Record<string, NavDropdownData> = {
 
     gridClass: 'grid-cols-3',
 
+    footer: { label: 'View All 14 Modules', href: '/product' },
+
     sections: [
       { title: 'Core Modules', items: [
-        { label: 'AI Feature Suite (20+)', href: '/platform-capabilities' },
-        { label: 'Admission Management', href: '/features/admissions' },
-        { label: 'Student Management', href: '/product#student' },
-        { label: 'Staff Management', href: '/features/staff-hr' },
-        { label: 'Fee Management', href: '/features/fees' },
-        { label: 'Timetable Scheduler', href: '/features/timetable' },
-        { label: 'Attendance Management', href: '/features/attendance' },
-        { label: 'Exam & Marks Portal', href: '/features/exams' },
-        { label: 'Communication Management', href: '/product#communication' },
+        { label: 'AI Feature Suite', href: '/platform-capabilities', icon: Sparkles },
+        { label: 'Admissions', href: '/features/admissions', icon: UserPlus },
+        { label: 'Students', href: '/product#student', icon: GraduationCap },
+        { label: 'Staff & HR', href: '/features/staff-hr', icon: Users },
+        { label: 'Fees & Finance', href: '/features/fees', icon: IndianRupee },
+        { label: 'Timetable', href: '/features/timetable', icon: CalendarDays },
+        { label: 'Attendance', href: '/features/attendance', icon: ClipboardCheck },
+        { label: 'Exams & Marks', href: '/features/exams', icon: FileText },
+        { label: 'Communication', href: '/product#communication', icon: MessageCircle },
       ]},
       { title: 'Add-on Modules', items: [
-        { label: 'Academic Inventory Tracking', href: '/product#inventory' },
-        { label: 'Payroll Management', href: '/product#payroll' },
-        { label: 'Library Management', href: '/features/library' },
-        { label: 'Transport Management', href: '/features/transport' },
-        { label: 'Performance Insights', href: '/product#performance-insights' },
-        { label: 'AI Secretary', href: '/product#ai-secretary' },
+        { label: 'Inventory Tracking', href: '/product#inventory', icon: Package },
+        { label: 'Payroll', href: '/product#payroll', icon: Wallet },
+        { label: 'Library', href: '/features/library', icon: BookOpen },
+        { label: 'Transport', href: '/features/transport', icon: Bus },
+        { label: 'Performance Insights', href: '/product#performance-insights', icon: TrendingUp },
+        { label: 'AI Secretary', href: '/product#ai-secretary', icon: Bot },
       ]},
       { title: 'More', items: [
-        { label: 'Parent & Student App', href: '/features/parent-app' },
-        { label: 'WhatsApp Notifications', href: '/features/whatsapp' },
-        { label: 'Reports & Analytics', href: '/features/reports' },
+        { label: 'Parent App', href: '/features/parent-app', icon: Smartphone },
+        { label: 'WhatsApp', href: '/features/whatsapp', icon: Send },
+        { label: 'Reports', href: '/features/reports', icon: BarChart3 },
       ]},
     ],
 
@@ -309,13 +320,17 @@ function MegaDropdown({
 
                         role="menuitem"
 
-                        className="group/item flex items-center justify-between gap-2 px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-muted rounded-lg transition-all hover:translate-x-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+                        className="group/item flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-muted rounded-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
 
                       >
 
-                        <span>{item.label}</span>
+                        {item.icon && (
+                          <span className="grid place-items-center w-7 h-7 rounded-md bg-primary/10 text-primary shrink-0 group-hover/item:bg-primary group-hover/item:text-white transition-colors">
+                            <item.icon className="w-3.5 h-3.5" aria-hidden="true" />
+                          </span>
+                        )}
 
-                        <ArrowRight className="w-3.5 h-3.5 shrink-0 text-primary opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all" aria-hidden="true" />
+                        <span className="truncate">{item.label}</span>
 
                       </Link>
 
@@ -330,6 +345,17 @@ function MegaDropdown({
             ))}
 
           </div>
+
+          {data.footer && (
+            <Link
+              href={data.footer.href}
+              role="menuitem"
+              className="mt-4 pt-3 border-t border-border flex items-center justify-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+            >
+              {data.footer.label}
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </Link>
+          )}
 
         </motion.div>
 
@@ -402,6 +428,10 @@ function MobileAccordion({ label, data }: { label: string; data: NavDropdownData
               </div>
 
             ))}
+
+            {data.footer && (
+              <Link href={data.footer.href} className="block px-5 py-2.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors">{data.footer.label} →</Link>
+            )}
 
           </motion.div>
 
