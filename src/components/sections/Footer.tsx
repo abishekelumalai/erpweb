@@ -3,7 +3,7 @@
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Facebook, Linkedin, Youtube, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Linkedin, Youtube, Instagram, ShieldCheck } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -13,6 +13,10 @@ export default function Footer() {
           <div className="space-y-5 max-w-sm">
             <Link href="/"><Image src="/images/logo.png" alt="ChaloSchools" width={345} height={150} className="h-9 w-auto" /></Link>
             <p className="text-sm footer-muted leading-relaxed">CHALO – Schools Automated. Complete School Management Software which handles all the activities for operation of a school. An ISO 27001:2022 Certified Company.</p>
+            <Link href="/security" className="inline-flex items-center gap-1.5 text-xs footer-muted hover:text-accent transition-colors">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              DPDP Act 2023 &amp; ISO 27001:2022 Compliant
+            </Link>
           </div>
           <div className="space-y-2.5 shrink-0">
             <a href="tel:+919962228160" className="flex items-center gap-2 text-sm footer-muted hover:text-accent transition-colors"><Phone className="w-4 h-4" />+91 99622 28160</a>
