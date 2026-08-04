@@ -24,6 +24,10 @@ const SLIDES: SlideInfo[] = [
   { key: 'reports', title: 'Reports', icon: BarChart3, image: '/images/slides/reports.png' },
 ];
 
+// Accent color per slide, reused by the phone/tablet mini-mockups so they
+// visually stay in sync with whichever module the monitor is showing.
+const SLIDE_ACCENTS = ['#026dde', '#f59e0b', '#10b981', '#8b5cf6', '#026dde', '#f59e0b'];
+
 const INTERVAL_MS = 5000;
 
 export default function HeroSlideshow() {
@@ -135,29 +139,38 @@ export default function HeroSlideshow() {
           className="hidden md:block absolute -bottom-8 -left-10 w-[130px] z-10"
         >
           <div className="bg-[#1a1a1a] rounded-[1rem] p-1.5 shadow-2xl border border-black/20">
-            <div className="bg-card rounded-[0.7rem] overflow-hidden aspect-[3/4]">
+            <div className="relative bg-card rounded-[0.7rem] overflow-hidden aspect-[3/4]">
               {/* Camera dot */}
               <div className="h-3 flex items-center justify-center">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#1a1a1a]" />
               </div>
-              {/* Generic dashboard UI blocks */}
-              <div className="px-2.5 pt-1 space-y-1.5">
-                <div className="h-2 w-14 bg-heading/20 rounded-full mb-2" />
-                <div className="grid grid-cols-2 gap-1.5">
-                  <div className="rounded-md bg-primary/10 p-1.5 aspect-square flex flex-col justify-center items-center">
-                    <div className="h-2 w-6 bg-primary/40 rounded-full" />
+              {/* Generic dashboard UI blocks — crossfades in sync with the monitor's active slide */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={slide.key}
+                  initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="px-2.5 pt-1 space-y-1.5"
+                >
+                  <div className="flex items-center gap-1 mb-1">
+                    <slide.icon className="w-3 h-3" style={{ color: SLIDE_ACCENTS[index] }} />
+                    <div className="h-1.5 w-12 bg-heading/20 rounded-full" />
                   </div>
-                  <div className="rounded-md bg-amber-500/10 p-1.5 aspect-square flex flex-col justify-center items-center">
-                    <div className="h-2 w-6 bg-amber-500/40 rounded-full" />
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {[0, 1, 2, 3].map((i) => (
+                      <div
+                        key={i}
+                        className="rounded-md p-1.5 aspect-square flex flex-col justify-center items-center"
+                        style={{ backgroundColor: `${SLIDE_ACCENTS[index]}1a` }}
+                      >
+                        <div className="h-2 w-6 rounded-full" style={{ backgroundColor: `${SLIDE_ACCENTS[index]}66` }} />
+                      </div>
+                    ))}
                   </div>
-                  <div className="rounded-md bg-emerald-500/10 p-1.5 aspect-square flex flex-col justify-center items-center">
-                    <div className="h-2 w-6 bg-emerald-500/40 rounded-full" />
-                  </div>
-                  <div className="rounded-md bg-primary/10 p-1.5 aspect-square flex flex-col justify-center items-center">
-                    <div className="h-2 w-6 bg-primary/40 rounded-full" />
-                  </div>
-                </div>
-              </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </motion.div>
@@ -173,30 +186,41 @@ export default function HeroSlideshow() {
           className="hidden sm:block absolute -bottom-6 -right-4 md:-right-8 w-[92px] z-10"
         >
           <div className="bg-[#1a1a1a] rounded-[1.1rem] p-1.5 shadow-2xl border border-black/20">
-            <div className="bg-card rounded-[0.85rem] overflow-hidden aspect-[9/19]">
+            <div className="relative bg-card rounded-[0.85rem] overflow-hidden aspect-[9/19]">
               {/* Notch */}
               <div className="h-3 flex items-center justify-center">
                 <div className="w-8 h-1.5 bg-[#1a1a1a] rounded-full" />
               </div>
-              {/* Generic app UI blocks */}
-              <div className="px-2 pt-1 space-y-1.5">
-                <div className="flex items-center gap-1 mb-1.5">
-                  <div className="w-4 h-4 rounded-full bg-primary shrink-0" />
-                  <div className="h-1.5 w-10 bg-heading/20 rounded-full" />
-                </div>
-                <div className="rounded-md bg-primary/10 p-1.5">
-                  <div className="h-1.5 w-full bg-primary/30 rounded-full mb-1" />
-                  <div className="h-1.5 w-2/3 bg-primary/20 rounded-full" />
-                </div>
-                <div className="rounded-md bg-emerald-500/10 p-1.5">
-                  <div className="h-1.5 w-3/4 bg-emerald-500/30 rounded-full" />
-                </div>
-                <div className="rounded-md bg-amber-500/10 p-1.5">
-                  <div className="h-1.5 w-1/2 bg-amber-500/30 rounded-full" />
-                </div>
-              </div>
+              {/* Generic app UI blocks — crossfades in sync with the monitor's active slide */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={slide.key}
+                  initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="px-2 pt-1 space-y-1.5"
+                >
+                  <div className="flex items-center gap-1 mb-1.5">
+                    <div className="w-4 h-4 rounded-full shrink-0 flex items-center justify-center" style={{ backgroundColor: SLIDE_ACCENTS[index] }}>
+                      <slide.icon className="w-2.5 h-2.5 text-white" />
+                    </div>
+                    <div className="h-1.5 w-10 bg-heading/20 rounded-full" />
+                  </div>
+                  <div className="rounded-md p-1.5" style={{ backgroundColor: `${SLIDE_ACCENTS[index]}1a` }}>
+                    <div className="h-1.5 w-full rounded-full mb-1" style={{ backgroundColor: `${SLIDE_ACCENTS[index]}4d` }} />
+                    <div className="h-1.5 w-2/3 rounded-full" style={{ backgroundColor: `${SLIDE_ACCENTS[index]}33` }} />
+                  </div>
+                  <div className="rounded-md bg-emerald-500/10 p-1.5">
+                    <div className="h-1.5 w-3/4 bg-emerald-500/30 rounded-full" />
+                  </div>
+                  <div className="rounded-md bg-amber-500/10 p-1.5">
+                    <div className="h-1.5 w-1/2 bg-amber-500/30 rounded-full" />
+                  </div>
+                </motion.div>
+              </AnimatePresence>
               {/* Home indicator */}
-              <div className="flex justify-center pb-1.5 pt-2">
+              <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-1.5 pt-2">
                 <div className="w-6 h-0.5 bg-heading/20 rounded-full" />
               </div>
             </div>
