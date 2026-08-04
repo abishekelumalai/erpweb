@@ -571,6 +571,26 @@ const SEED_DATA: SeedItem[] = [
   { key: 'process_step_2_desc', value: 'Our team handles complete data migration and customization for your school.', section: 'Homepage - Process Steps', label: 'Step 2 Description', type: 'textarea', order: 6 },
   { key: 'process_step_3_title', value: 'Go Live', section: 'Homepage - Process Steps', label: 'Step 3 Title', type: 'text', order: 7 },
   { key: 'process_step_3_desc', value: 'Start using Chalo Schools with full training and 24/7 support for your team.', section: 'Homepage - Process Steps', label: 'Step 3 Description', type: 'textarea', order: 8 },
+
+  // Homepage section on/off toggles — managed from Admin > Section Visibility,
+  // not the generic Site Content editor. 'true' = shown (the default).
+  { key: 'visibility_trust_stats', value: 'true', section: 'Homepage - Section Visibility', label: 'Trust Stats', type: 'boolean', order: 0 },
+  { key: 'visibility_social_proof', value: 'true', section: 'Homepage - Section Visibility', label: 'Social Proof Bar', type: 'boolean', order: 1 },
+  { key: 'visibility_problems', value: 'true', section: 'Homepage - Section Visibility', label: 'Problems / Challenges', type: 'boolean', order: 2 },
+  { key: 'visibility_features', value: 'true', section: 'Homepage - Section Visibility', label: 'Feature Highlights', type: 'boolean', order: 3 },
+  { key: 'visibility_our_apps', value: 'true', section: 'Homepage - Section Visibility', label: 'Our Apps', type: 'boolean', order: 4 },
+  { key: 'visibility_integrations', value: 'true', section: 'Homepage - Section Visibility', label: 'Integrations Strip', type: 'boolean', order: 5 },
+  { key: 'visibility_demo_video', value: 'true', section: 'Homepage - Section Visibility', label: 'Demo Video', type: 'boolean', order: 6 },
+  { key: 'visibility_why_choose_us', value: 'true', section: 'Homepage - Section Visibility', label: 'Why Choose Us', type: 'boolean', order: 7 },
+  { key: 'visibility_security_compliance', value: 'true', section: 'Homepage - Section Visibility', label: 'Security & Compliance', type: 'boolean', order: 8 },
+  { key: 'visibility_board_tabs', value: 'true', section: 'Homepage - Section Visibility', label: 'Board-Specific Tabs', type: 'boolean', order: 9 },
+  { key: 'visibility_process_steps', value: 'true', section: 'Homepage - Section Visibility', label: 'Process Steps', type: 'boolean', order: 10 },
+  { key: 'visibility_testimonials', value: 'true', section: 'Homepage - Section Visibility', label: 'Testimonials', type: 'boolean', order: 11 },
+  { key: 'visibility_case_study', value: 'true', section: 'Homepage - Section Visibility', label: 'Case Study Snapshot', type: 'boolean', order: 12 },
+  { key: 'visibility_pricing_teaser', value: 'true', section: 'Homepage - Section Visibility', label: 'Pricing Teaser', type: 'boolean', order: 13 },
+  { key: 'visibility_faq', value: 'true', section: 'Homepage - Section Visibility', label: 'Homepage FAQ', type: 'boolean', order: 14 },
+  { key: 'visibility_blog_strip', value: 'true', section: 'Homepage - Section Visibility', label: 'Blog / Latest News', type: 'boolean', order: 15 },
+  { key: 'visibility_final_cta', value: 'true', section: 'Homepage - Section Visibility', label: 'Final CTA', type: 'boolean', order: 16 },
 ];
 
 export async function seedSiteContent(prisma: PrismaClient): Promise<void> {

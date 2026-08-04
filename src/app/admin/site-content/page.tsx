@@ -51,7 +51,10 @@ export default function SiteContentPage() {
     try {
       const res = await fetch('/api/admin/site-content');
       if (!res.ok) throw new Error('Failed to fetch');
-      const data: SiteContentRecord[] = await res.json();
+      const raw: SiteContentRecord[] = await res.json();
+      // Section on/off toggles are managed on the dedicated Section Visibility
+      // page (with proper switches), not as raw text here.
+      const data = raw.filter((r) => !r.key.startsWith('visibility_'));
       setRecords(data);
 
       // Auto-select the first section

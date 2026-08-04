@@ -62,9 +62,10 @@ export async function PUT(request: NextRequest) {
 
     const results = await Promise.all(
       updates.map(({ key, value }) =>
-        db.siteContent.update({
+        db.siteContent.upsert({
           where: { key },
-          data: { value },
+          update: { value },
+          create: { key, value, section: 'Uncategorized', label: key },
         })
       )
     );

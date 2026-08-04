@@ -82,7 +82,7 @@ function parseCaseStudyStats(raw: string | null): { label: string; value: string
 
 export default async function Home() {
 
-  const [testimonials, faqs, latestPosts, featuredCaseStudy] = await Promise.all([
+  const [testimonials, faqs, latestPosts, featuredCaseStudy, visibilityRows] = await Promise.all([
 
     db.testimonial.findMany({
 
@@ -126,6 +126,14 @@ export default async function Home() {
 
     }),
 
+    db.siteContent.findMany({
+
+      where: { key: { startsWith: 'visibility_' } },
+
+      select: { key: true, value: true },
+
+    }),
+
   ]);
 
   const caseStudy = featuredCaseStudy
@@ -133,6 +141,10 @@ export default async function Home() {
     ? { ...featuredCaseStudy, stats: parseCaseStudyStats(featuredCaseStudy.stats) }
 
     : null;
+
+  // Missing row = never toggled off = visible by default.
+
+  const isVisible = (key: string) => visibilityRows.find((r) => r.key === `visibility_${key}`)?.value !== 'false';
 
   return (
 
@@ -154,71 +166,71 @@ export default async function Home() {
 
           {/* 2. Trust Stats */}
 
-          <TrustStats />
+          {isVisible('trust_stats') && <TrustStats />}
 
           {/* 3. Social Proof Bar */}
 
-          <SocialProofBar />
+          {isVisible('social_proof') && <SocialProofBar />}
 
           {/* 4. Key Problems / Challenges */}
 
-          <ProblemsSection />
+          {isVisible('problems') && <ProblemsSection />}
 
           {/* 5. Feature Highlights */}
 
-          <FeatureHighlights />
+          {isVisible('features') && <FeatureHighlights />}
 
           {/* 5b. Our Apps */}
 
-          <OurApps />
+          {isVisible('our_apps') && <OurApps />}
 
           {/* 5c. Integrations */}
 
-          <IntegrationsStrip />
+          {isVisible('integrations') && <IntegrationsStrip />}
 
           {/* 6. Product Demo Video */}
 
-          <DemoVideo />
+          {isVisible('demo_video') && <DemoVideo />}
 
           {/* 7. Why Choose Us */}
 
-          <WhyChooseUs />
+          {isVisible('why_choose_us') && <WhyChooseUs />}
 
           {/* Security & Compliance (DPDP Act) */}
 
-          <SecurityCompliance />
+          {isVisible('security_compliance') && <SecurityCompliance />}
 
           {/* 8. Board-Specific Tabs */}
 
-          <BoardTabs />
+          {isVisible('board_tabs') && <BoardTabs />}
 
           {/* 9. Process Steps */}
 
-          <ProcessSteps />
+          {isVisible('process_steps') && <ProcessSteps />}
 
           {/* 10. Testimonials */}
 
-          <TestimonialsSection testimonials={testimonials} />
+          {isVisible('testimonials') && <TestimonialsSection testimonials={testimonials} />}
 
           {/* 11. Case Study Snapshot (hidden if none published) */}
 
-          <CaseStudySnapshot caseStudy={caseStudy} />
+          {isVisible('case_study') && <CaseStudySnapshot caseStudy={caseStudy} />}
 
           {/* 12. Pricing Teaser */}
 
-          <PricingTeaser />
+          {isVisible('pricing_teaser') && <PricingTeaser />}
 
           {/* 13. FAQ */}
 
-          <HomepageFAQ faqs={faqs} />
+          {isVisible('faq') && <HomepageFAQ faqs={faqs} />}
 
           {/* 14. Blog / Latest News (hidden if no posts) */}
 
-          <BlogStrip posts={latestPosts} />
+          {isVisible('blog_strip') && <BlogStrip posts={latestPosts} />}
 
           {/* 15. Final CTA */}
 
-          <FinalCTA />
+          {isVisible('final_cta') && <FinalCTA />}
 
         </main>
 

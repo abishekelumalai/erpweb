@@ -20,6 +20,7 @@ import {
   Inbox,
   History,
   Users,
+  Eye,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -34,6 +35,7 @@ const navItems = [
   { href: '/admin/audit-log', label: 'Audit Log', icon: History, adminOnly: true },
   { href: '/admin/users', label: 'Users', icon: Users, adminOnly: true },
   { href: '/admin/site-content', label: 'Site Content', icon: Settings2, adminOnly: false },
+  { href: '/admin/section-visibility', label: 'Section Visibility', icon: Eye, adminOnly: false },
   { href: '/admin/blogs', label: 'Blogs', icon: FileText, adminOnly: false },
   { href: '/admin/webinars', label: 'Webinars', icon: Video, adminOnly: false },
   { href: '/admin/case-studies', label: 'Case Studies', icon: BookOpen, adminOnly: false },
