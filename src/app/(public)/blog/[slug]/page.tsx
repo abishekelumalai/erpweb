@@ -166,7 +166,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             See how ChaloSchools can streamline your operations.
           </p>
           <Button className="bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold rounded-full px-8 shadow-lg">
-            Book a Free Demo
+            Book an Introductory Demo
           </Button>
         </div>
       </article>

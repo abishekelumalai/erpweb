@@ -112,7 +112,7 @@ export default async function RoleSolutionPage({ params }: PageProps) {
               asChild
             >
               <Link href="/contact#contact-form">
-                Book Free Demo
+                Book an Introductory Demo
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>

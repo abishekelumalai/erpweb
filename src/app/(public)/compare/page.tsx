@@ -286,7 +286,7 @@ export default function ComparePage() {
               asChild
             >
               <Link href="/contact">
-                Book Free Demo
+                Book an Introductory Demo
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>

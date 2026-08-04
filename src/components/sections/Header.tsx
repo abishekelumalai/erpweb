@@ -468,7 +468,7 @@ export default function Header() {
 
           <Link href="/" className="flex items-center gap-2 shrink-0">
 
-            <Image src="/images/logo.png" alt="ChaloSchools" width={345} height={150} className="theme-logo h-9 w-auto" priority />
+            <Image src="/images/logo.png" alt="ChaloSchools" width={345} height={150} className="theme-logo h-11 w-auto drop-shadow-sm" priority />
 
           </Link>
 
@@ -476,7 +476,7 @@ export default function Header() {
 
             <Link href="/" className="relative px-3 py-2 text-sm font-medium text-heading/80 hover:text-primary transition-colors hover-underline">Home</Link>
 
-            <Link href="/product" className="relative px-3 py-2 text-sm font-medium text-heading/80 hover:text-primary transition-colors hover-underline">Product</Link>
+            <Link href="/product" className="relative px-3 py-2 text-sm font-medium text-heading/80 hover:text-primary transition-colors hover-underline">Modules</Link>
 
             <Link href="/pricing" className="relative px-3 py-2 text-sm font-medium text-heading/80 hover:text-primary transition-colors hover-underline">Pricing</Link>
 
@@ -509,7 +509,7 @@ export default function Header() {
 
             <Button asChild size="sm" className="text-xs bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-4 h-8 shadow-sm shadow-primary/20">
 
-              <Link href="/contact#contact-form">Book Free Demo <ArrowRight className="w-3 h-3 ml-1" /></Link>
+              <Link href="/contact#contact-form">Book an Introductory Demo <ArrowRight className="w-3 h-3 ml-1" /></Link>
 
             </Button>
 
@@ -533,7 +533,7 @@ export default function Header() {
 
                   <Link href="/" className="block px-3 py-2.5 text-sm font-semibold text-foreground hover:text-primary rounded-lg transition-colors">Home</Link>
 
-                  <Link href="/product" className="block px-3 py-2.5 text-sm font-semibold text-foreground hover:text-primary rounded-lg transition-colors">Product Tour</Link>
+                  <Link href="/product" className="block px-3 py-2.5 text-sm font-semibold text-foreground hover:text-primary rounded-lg transition-colors">Modules</Link>
 
                   <Link href="/pricing" className="block px-3 py-2.5 text-sm font-semibold text-foreground hover:text-primary rounded-lg transition-colors">Pricing</Link>
 
@@ -549,7 +549,7 @@ export default function Header() {
 
                   <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">
 
-                    <Link href="/contact#contact-form">Book Free Demo <ArrowRight className="w-4 h-4 ml-2" /></Link>
+                    <Link href="/contact#contact-form">Book an Introductory Demo <ArrowRight className="w-4 h-4 ml-2" /></Link>
 
                   </Button>
 

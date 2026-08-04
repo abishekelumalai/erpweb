@@ -208,7 +208,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   Join hundreds of schools using ChaloSchools.
                 </p>
                 <Button className="w-full bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold rounded-full shadow-lg">
-                  Book a Free Demo
+                  Book an Introductory Demo
                 </Button>
               </CardContent>
             </Card>

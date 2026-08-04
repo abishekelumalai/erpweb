@@ -62,7 +62,7 @@ export default function PlatformCapabilitiesPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all" asChild>
               <Link href="/contact#contact-form">
-                Book a Free Demo
+                Book an Introductory Demo
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
@@ -110,7 +110,7 @@ export default function PlatformCapabilitiesPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all" asChild>
               <Link href="/contact">
-                Book Free Demo
+                Book an Introductory Demo
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>

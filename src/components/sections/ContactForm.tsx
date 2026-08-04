@@ -290,7 +290,7 @@ export default function ContactForm() {
             ) : (
               <span className="flex items-center gap-2">
                 <Send className="w-4 h-4" />
-                Book Free Demo
+                Book an Introductory Demo
               </span>
             )}
           </Button>

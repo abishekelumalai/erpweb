@@ -565,7 +565,7 @@ const SEED_DATA: SeedItem[] = [
   { key: 'process_badge', value: 'How It Works', section: 'Homepage - Process Steps', label: 'Section Badge', type: 'text', order: 0 },
   { key: 'process_headline', value: 'Get Started in 3 Easy Steps', section: 'Homepage - Process Steps', label: 'Section Headline', type: 'text', order: 1 },
   { key: 'process_subtitle', value: 'From first call to fully operational — we make the transition seamless.', section: 'Homepage - Process Steps', label: 'Section Subtitle', type: 'textarea', order: 2 },
-  { key: 'process_step_1_title', value: 'Book Free Demo', section: 'Homepage - Process Steps', label: 'Step 1 Title', type: 'text', order: 3 },
+  { key: 'process_step_1_title', value: 'Book an Introductory Demo', section: 'Homepage - Process Steps', label: 'Step 1 Title', type: 'text', order: 3 },
   { key: 'process_step_1_desc', value: 'Fill out the form and our team will schedule a personalized demo for your school.', section: 'Homepage - Process Steps', label: 'Step 1 Description', type: 'textarea', order: 4 },
   { key: 'process_step_2_title', value: 'Quick Setup', section: 'Homepage - Process Steps', label: 'Step 2 Title', type: 'text', order: 5 },
   { key: 'process_step_2_desc', value: 'Our team handles complete data migration and customization for your school.', section: 'Homepage - Process Steps', label: 'Step 2 Description', type: 'textarea', order: 6 },
