@@ -28,6 +28,106 @@ const SLIDES: SlideInfo[] = [
 // visually stay in sync with whichever module the monitor is showing.
 const SLIDE_ACCENTS = ['#026dde', '#f59e0b', '#10b981', '#8b5cf6', '#026dde', '#f59e0b'];
 
+interface MiniTile { value: string; label: string; }
+interface MiniRow { text: string; tone: 'accent' | 'success' | 'warning'; }
+interface MiniContent { headerLabel: string; tiles: MiniTile[]; rows: MiniRow[]; }
+
+// Small representative data per slide, mirroring the same numbers used in
+// FallbackScreen below, so the phone/tablet mockups show data that matches
+// what the monitor is actually displaying rather than generic abstract bars.
+const MINI_CONTENT: Record<string, MiniContent> = {
+  admissions: {
+    headerLabel: '342 New',
+    tiles: [
+      { value: '342', label: 'Total' },
+      { value: '289', label: 'Verified' },
+      { value: '38', label: 'Pending' },
+      { value: '15', label: 'New' },
+    ],
+    rows: [
+      { text: 'Aarav Sharma · Gr 4', tone: 'success' },
+      { text: 'Diya Patel · Gr 1', tone: 'warning' },
+      { text: 'Kabir Nair · Gr 7', tone: 'accent' },
+    ],
+  },
+  fees: {
+    headerLabel: '₹18.4L',
+    tiles: [
+      { value: '92%', label: 'Tuition' },
+      { value: '78%', label: 'Transport' },
+      { value: '64%', label: 'Lab' },
+      { value: '85%', label: 'Activity' },
+    ],
+    rows: [
+      { text: 'Tuition Fee — 92%', tone: 'accent' },
+      { text: 'Transport Fee — 78%', tone: 'accent' },
+      { text: 'Activity Fee — 85%', tone: 'accent' },
+    ],
+  },
+  attendance: {
+    headerLabel: '96.8%',
+    tiles: [
+      { value: '38/40', label: 'Gr 3-A' },
+      { value: '33/36', label: 'Gr 5-B' },
+      { value: '29/32', label: 'Gr 8-C' },
+      { value: '41/42', label: 'Gr 10-A' },
+    ],
+    rows: [
+      { text: 'Grade 3-A · 95%', tone: 'success' },
+      { text: 'Grade 8-C · 91%', tone: 'success' },
+      { text: 'Grade 10-A · 98%', tone: 'success' },
+    ],
+  },
+  timetable: {
+    headerLabel: 'AI Generated',
+    tiles: [
+      { value: 'Math', label: 'Mon' },
+      { value: 'Sci', label: 'Tue' },
+      { value: 'Eng', label: 'Wed' },
+      { value: 'PE', label: 'Thu' },
+    ],
+    rows: [
+      { text: 'P1 — Mathematics', tone: 'accent' },
+      { text: 'P2 — Science', tone: 'accent' },
+      { text: 'P3 — English', tone: 'accent' },
+    ],
+  },
+  parent: {
+    headerLabel: '1,842 Active',
+    tiles: [
+      { value: '1.8K', label: 'Parents' },
+      { value: '96%', label: 'Read Rate' },
+      { value: '24/7', label: 'Support' },
+      { value: '3', label: 'Unread' },
+    ],
+    rows: [
+      { text: 'Homework: Ch.5 due', tone: 'accent' },
+      { text: 'Aarav scored 92%', tone: 'success' },
+      { text: 'PTM Sat, 10 AM', tone: 'warning' },
+    ],
+  },
+  reports: {
+    headerLabel: 'Real-Time',
+    tiles: [
+      { value: '₹18.4L', label: 'Collection' },
+      { value: '2,450', label: 'Students' },
+      { value: '96.8%', label: 'Attend.' },
+      { value: '342', label: 'Admissions' },
+    ],
+    rows: [
+      { text: 'Collection — ₹18.4L', tone: 'accent' },
+      { text: 'Attendance — 96.8%', tone: 'success' },
+      { text: 'Students — 2,450', tone: 'accent' },
+    ],
+  },
+};
+
+function toneColor(tone: MiniRow['tone'], slideIndex: number): string {
+  if (tone === 'success') return '#10b981';
+  if (tone === 'warning') return '#f59e0b';
+  return SLIDE_ACCENTS[slideIndex];
+}
+
 const INTERVAL_MS = 5000;
 
 export default function HeroSlideshow() {
@@ -155,17 +255,18 @@ export default function HeroSlideshow() {
                   className="px-2.5 pt-1 space-y-1.5"
                 >
                   <div className="flex items-center gap-1 mb-1">
-                    <slide.icon className="w-3 h-3" style={{ color: SLIDE_ACCENTS[index] }} />
-                    <div className="h-1.5 w-12 bg-heading/20 rounded-full" />
+                    <slide.icon className="w-3 h-3 shrink-0" style={{ color: SLIDE_ACCENTS[index] }} />
+                    <span className="text-[6px] font-bold leading-none truncate" style={{ color: SLIDE_ACCENTS[index] }}>{MINI_CONTENT[slide.key].headerLabel}</span>
                   </div>
                   <div className="grid grid-cols-2 gap-1.5">
-                    {[0, 1, 2, 3].map((i) => (
+                    {MINI_CONTENT[slide.key].tiles.map((t, i) => (
                       <div
                         key={i}
-                        className="rounded-md p-1.5 aspect-square flex flex-col justify-center items-center"
+                        className="rounded-md p-1 aspect-square flex flex-col justify-center items-center text-center"
                         style={{ backgroundColor: `${SLIDE_ACCENTS[index]}1a` }}
                       >
-                        <div className="h-2 w-6 rounded-full" style={{ backgroundColor: `${SLIDE_ACCENTS[index]}66` }} />
+                        <div className="text-[7px] font-bold leading-none" style={{ color: SLIDE_ACCENTS[index] }}>{t.value}</div>
+                        <div className="text-[5px] text-heading/50 leading-none mt-0.5 truncate max-w-full">{t.label}</div>
                       </div>
                     ))}
                   </div>
@@ -205,18 +306,17 @@ export default function HeroSlideshow() {
                     <div className="w-4 h-4 rounded-full shrink-0 flex items-center justify-center" style={{ backgroundColor: SLIDE_ACCENTS[index] }}>
                       <slide.icon className="w-2.5 h-2.5 text-white" />
                     </div>
-                    <div className="h-1.5 w-10 bg-heading/20 rounded-full" />
+                    <span className="text-[6px] font-bold leading-none truncate" style={{ color: SLIDE_ACCENTS[index] }}>{MINI_CONTENT[slide.key].headerLabel}</span>
                   </div>
-                  <div className="rounded-md p-1.5" style={{ backgroundColor: `${SLIDE_ACCENTS[index]}1a` }}>
-                    <div className="h-1.5 w-full rounded-full mb-1" style={{ backgroundColor: `${SLIDE_ACCENTS[index]}4d` }} />
-                    <div className="h-1.5 w-2/3 rounded-full" style={{ backgroundColor: `${SLIDE_ACCENTS[index]}33` }} />
-                  </div>
-                  <div className="rounded-md bg-emerald-500/10 p-1.5">
-                    <div className="h-1.5 w-3/4 bg-emerald-500/30 rounded-full" />
-                  </div>
-                  <div className="rounded-md bg-amber-500/10 p-1.5">
-                    <div className="h-1.5 w-1/2 bg-amber-500/30 rounded-full" />
-                  </div>
+                  {MINI_CONTENT[slide.key].rows.map((r, i) => {
+                    const c = toneColor(r.tone, index);
+                    return (
+                      <div key={i} className="flex items-center gap-1 rounded-md px-1.5 py-1" style={{ backgroundColor: `${c}1a` }}>
+                        <div className="w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: c }} />
+                        <span className="text-[5.5px] leading-tight truncate" style={{ color: c }}>{r.text}</span>
+                      </div>
+                    );
+                  })}
                 </motion.div>
               </AnimatePresence>
               {/* Home indicator */}
