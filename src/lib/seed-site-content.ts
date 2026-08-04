@@ -256,7 +256,7 @@ const SEED_DATA: SeedItem[] = [
   },
   {
     key: 'features_headline',
-    value: '11 Powerful Modules, One Dashboard',
+    value: '14 Powerful Modules, One Dashboard',
     section: 'Homepage - Features',
     label: 'Section Headline',
     type: 'text',
@@ -271,29 +271,11 @@ const SEED_DATA: SeedItem[] = [
     order: 2,
   },
 
-  // Homepage - Features (individual feature items)
-  { key: 'feature_1_name', value: 'Admissions Management', section: 'Homepage - Features', label: 'Feature 1 Name', type: 'text', order: 10 },
-  { key: 'feature_1_desc', value: 'End-to-end digital admission workflow — from enquiry to enrollment. Online applications, document upload, merit list generation, and automated communication with parents.', section: 'Homepage - Features', label: 'Feature 1 Description', type: 'textarea', order: 11 },
-  { key: 'feature_2_name', value: 'Fees & Finance', section: 'Homepage - Features', label: 'Feature 2 Name', type: 'text', order: 12 },
-  { key: 'feature_2_desc', value: 'Automate fee collection, generate receipts instantly, track pending payments, manage partial payments, and send payment reminders via WhatsApp and SMS.', section: 'Homepage - Features', label: 'Feature 2 Description', type: 'textarea', order: 13 },
-  { key: 'feature_3_name', value: 'Attendance Tracking', section: 'Homepage - Features', label: 'Feature 3 Name', type: 'text', order: 14 },
-  { key: 'feature_3_desc', value: 'Biometric and RFID-based attendance for students and staff. Real-time notifications to parents when their child enters or exits the campus.', section: 'Homepage - Features', label: 'Feature 3 Description', type: 'textarea', order: 15 },
-  { key: 'feature_4_name', value: 'Exam & Marks Portal', section: 'Homepage - Features', label: 'Feature 4 Name', type: 'text', order: 16 },
-  { key: 'feature_4_desc', value: 'Create exam schedules, enter marks, auto-calculate grades and percentages, generate report cards with one click, and share results with parents digitally.', section: 'Homepage - Features', label: 'Feature 4 Description', type: 'textarea', order: 17 },
-  { key: 'feature_5_name', value: 'Timetable Scheduler', section: 'Homepage - Features', label: 'Feature 5 Name', type: 'text', order: 18 },
-  { key: 'feature_5_desc', value: 'AI-powered timetable generation that avoids teacher conflicts and room clashes. Drag-and-drop interface for manual adjustments.', section: 'Homepage - Features', label: 'Feature 5 Description', type: 'textarea', order: 19 },
-  { key: 'feature_6_name', value: 'Parent & Student App', section: 'Homepage - Features', label: 'Feature 6 Name', type: 'text', order: 20 },
-  { key: 'feature_6_desc', value: 'Dedicated mobile app for parents to track attendance, fees, exam results, school announcements, and communicate with teachers in real-time.', section: 'Homepage - Features', label: 'Feature 6 Description', type: 'textarea', order: 21 },
-  { key: 'feature_7_name', value: 'Staff & HR Module', section: 'Homepage - Features', label: 'Feature 7 Name', type: 'text', order: 22 },
-  { key: 'feature_7_desc', value: 'Manage payroll, leave, attendance, and performance for all staff. Automate salary calculations and generate payslips.', section: 'Homepage - Features', label: 'Feature 7 Description', type: 'textarea', order: 23 },
-  { key: 'feature_8_name', value: 'Library Management', section: 'Homepage - Features', label: 'Feature 8 Name', type: 'text', order: 24 },
-  { key: 'feature_8_desc', value: 'Complete library automation — book cataloging, issue/return tracking, overdue alerts, and QR code-based scanning.', section: 'Homepage - Features', label: 'Feature 8 Description', type: 'textarea', order: 25 },
-  { key: 'feature_9_name', value: 'Transport Tracking', section: 'Homepage - Features', label: 'Feature 9 Name', type: 'text', order: 26 },
-  { key: 'feature_9_desc', value: 'GPS-enabled bus tracking for parents. Route optimization, driver management, and real-time ETA notifications.', section: 'Homepage - Features', label: 'Feature 9 Description', type: 'textarea', order: 27 },
-  { key: 'feature_10_name', value: 'WhatsApp Notifications', section: 'Homepage - Features', label: 'Feature 10 Name', type: 'text', order: 28 },
-  { key: 'feature_10_desc', value: 'Automated WhatsApp messages for attendance alerts, fee reminders, exam schedules, and emergency announcements. No manual effort required.', section: 'Homepage - Features', label: 'Feature 10 Description', type: 'textarea', order: 29 },
-  { key: 'feature_11_name', value: 'Reports & Analytics', section: 'Homepage - Features', label: 'Feature 11 Name', type: 'text', order: 30 },
-  { key: 'feature_11_desc', value: '50+ pre-built reports covering academics, finance, attendance, and operations. Custom report builder with export to PDF and Excel.', section: 'Homepage - Features', label: 'Feature 11 Description', type: 'textarea', order: 31 },
+  // Note: individual feature_N_name/feature_N_desc overrides were removed —
+  // they were positional (by card index) and went stale/mismatched when the
+  // module grid was reordered and expanded from 11 to 14 cards. The card
+  // titles/descriptions now come directly from the `features` array in
+  // FeatureHighlights.tsx, which is already correct and complete.
 
   // Homepage - Solutions
   { key: 'solutions_badge', value: 'Built For Your Board', section: 'Homepage - Solutions', label: 'Section Badge', type: 'text', order: 0 },
