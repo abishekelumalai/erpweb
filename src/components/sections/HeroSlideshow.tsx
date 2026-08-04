@@ -126,13 +126,49 @@ export default function HeroSlideshow() {
           <div className="w-32 h-2 bg-[#2a2a2a] rounded-full shadow-md" />
         </div>
 
-        {/* Phone mockup — illustrative placeholder (generic UI blocks, not a real
-            screenshot) showing the product also works on mobile, overlapping the
-            monitor's bottom-right corner. Swap for a real app screenshot when
-            available. */}
+        {/* Tablet mockup — illustrative placeholder, straight (no tilt),
+            peeking out from the monitor's bottom-left corner. */}
         <motion.div
-          initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8, rotate: 20 }}
-          animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1, rotate: 8 }}
+          initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8 }}
+          animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="hidden md:block absolute -bottom-8 -left-10 w-[130px] z-10"
+        >
+          <div className="bg-[#1a1a1a] rounded-[1rem] p-1.5 shadow-2xl border border-black/20">
+            <div className="bg-card rounded-[0.7rem] overflow-hidden aspect-[3/4]">
+              {/* Camera dot */}
+              <div className="h-3 flex items-center justify-center">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#1a1a1a]" />
+              </div>
+              {/* Generic dashboard UI blocks */}
+              <div className="px-2.5 pt-1 space-y-1.5">
+                <div className="h-2 w-14 bg-heading/20 rounded-full mb-2" />
+                <div className="grid grid-cols-2 gap-1.5">
+                  <div className="rounded-md bg-primary/10 p-1.5 aspect-square flex flex-col justify-center items-center">
+                    <div className="h-2 w-6 bg-primary/40 rounded-full" />
+                  </div>
+                  <div className="rounded-md bg-amber-500/10 p-1.5 aspect-square flex flex-col justify-center items-center">
+                    <div className="h-2 w-6 bg-amber-500/40 rounded-full" />
+                  </div>
+                  <div className="rounded-md bg-emerald-500/10 p-1.5 aspect-square flex flex-col justify-center items-center">
+                    <div className="h-2 w-6 bg-emerald-500/40 rounded-full" />
+                  </div>
+                  <div className="rounded-md bg-primary/10 p-1.5 aspect-square flex flex-col justify-center items-center">
+                    <div className="h-2 w-6 bg-primary/40 rounded-full" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Phone mockup — illustrative placeholder (generic UI blocks, not a real
+            screenshot) showing the product also works on mobile, straight (no
+            tilt), overlapping the monitor's bottom-right corner. Swap for a
+            real app screenshot when available. */}
+        <motion.div
+          initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8 }}
+          animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="hidden sm:block absolute -bottom-6 -right-4 md:-right-8 w-[92px] z-10"
         >
