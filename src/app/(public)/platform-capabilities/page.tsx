@@ -16,26 +16,46 @@ export const metadata: Metadata = {
 };
 
 const FEATURES = [
-  { icon: UserPlus, accent: '#026dde', title: 'Digital Admissions', desc: '100% paperless. Mobile-first. Enrolments close faster — errors close to zero.' },
-  { icon: LineChart, accent: '#f59e0b', title: 'AI Result Analytics', desc: '360° insights across students, teachers & exams. Spot gaps before they widen.' },
-  { icon: Wand2, accent: '#026dde', title: 'AI Rephrase', desc: 'Every message to parents — GPT-polished, consistent, professional. Always.' },
-  { icon: Mic, accent: '#f59e0b', title: 'Voice Broadcast', desc: 'One voice. Thousands of parents. Record or upload a message and broadcast instantly to all parents and staff — in your language, at the right moment.' },
-  { icon: CalendarClock, accent: '#026dde', title: 'Smart Timetable', desc: 'Conflict-free schedules. Auto-substitutions. No more spreadsheet marathons.' },
-  { icon: Landmark, accent: '#f59e0b', title: 'Fee Reconciliation', desc: 'Student ID-mapped. Bank-synced. Zero revenue leakage. 100% receipt rate.' },
-  { icon: Lock, accent: '#026dde', title: 'Secure Data Vault', desc: 'OTP-verified changes. Role-based access. GoI IT Act 2000 compliant.' },
-  { icon: EyeOff, accent: '#f59e0b', title: 'Data Privacy & Masking', desc: 'Personal data of students and staff is masked by default. Only authorised roles see what they need to — built in line with DPDP Act 2023 data protection principles.' },
-  { icon: IdCard, accent: '#026dde', title: 'Profile Management', desc: 'Every student & staff — searchable, lifelong, always a click away.' },
-  { icon: Palette, accent: '#f59e0b', title: 'Multiple Predefined Themes', desc: 'Choose from multiple predefined themes across web, app and admin panels.' },
-  { icon: ClipboardList, accent: '#026dde', title: 'Parent Feedback', desc: 'Structured. Actionable. Capture parent sentiment. Close the loop before it becomes a complaint.' },
-  { icon: BadgeCheck, accent: '#f59e0b', title: 'Student & Staff ID Card Generation', desc: 'Instant, print-ready ID cards for every student and staff member. Accurate data, consistent format — generated in seconds, not days.' },
-  { icon: LayoutDashboard, accent: '#026dde', title: 'Actionable Dashboard for Every User', desc: 'No more data overload. Every role — from management to admin to teachers — sees exactly what matters to them, with clear next steps built in.' },
-  { icon: Bot, accent: '#f59e0b', title: 'Chatbot for Parents', desc: 'Answers at midnight. No calls, no waiting. Parents get instant responses related to school information — 24/7.' },
-  { icon: Fingerprint, accent: '#026dde', title: 'Know Your Parent (KYP)', desc: 'OTP-based profile verification. Verified identities, trusted community — KYP ensures every student profile is authenticated, keeping your school safe and records clean.' },
-  { icon: Link2, accent: '#f59e0b', title: 'Seamless Integrations', desc: 'Biometric · GPS · Tally · WhatsApp · Payment — one unified nerve centre.' },
-  { icon: Cloud, accent: '#026dde', title: 'Enterprise Cloud', desc: 'ISO 27001:2022. Multi-tenant isolation. Point-in-time recovery. 99.9% uptime.' },
-  { icon: Wallet, accent: '#f59e0b', title: '24/7 Fee Payments', desc: 'Multi-gateway. Duplicate-proof. Parents pay anytime — you collect always.' },
-  { icon: FolderOpen, accent: '#026dde', title: 'Document Hub', desc: 'Instant digital records. No file cabinets. Admin turnaround: days to seconds.' },
-  { icon: Smartphone, accent: '#f59e0b', title: 'Personal Mobile App', desc: 'Exam wishes. Occasion nudges. Community at scale — with a human touch.' },
+  { icon: UserPlus, title: 'Digital Admissions', desc: '100% paperless. Mobile-first. Enrolments close faster — errors close to zero.' },
+  { icon: LineChart, title: 'AI Result Analytics', desc: '360° insights across students, teachers & exams. Spot gaps before they widen.' },
+  { icon: Wand2, title: 'AI Rephrase', desc: 'Every message to parents — GPT-polished, consistent, professional. Always.' },
+  { icon: Mic, title: 'Voice Broadcast', desc: 'One voice. Thousands of parents. Record or upload a message and broadcast instantly to all parents and staff — in your language, at the right moment.' },
+  { icon: CalendarClock, title: 'Smart Timetable', desc: 'Conflict-free schedules. Auto-substitutions. No more spreadsheet marathons.' },
+  { icon: Landmark, title: 'Fee Reconciliation', desc: 'Student ID-mapped. Bank-synced. Zero revenue leakage. 100% receipt rate.' },
+  { icon: Lock, title: 'Secure Data Vault', desc: 'OTP-verified changes. Role-based access. GoI IT Act 2000 compliant.' },
+  { icon: EyeOff, title: 'Data Privacy & Masking', desc: 'Personal data of students and staff is masked by default. Only authorised roles see what they need to — built in line with DPDP Act 2023 data protection principles.' },
+  { icon: IdCard, title: 'Profile Management', desc: 'Every student & staff — searchable, lifelong, always a click away.' },
+  { icon: Palette, title: 'Multiple Predefined Themes', desc: 'Choose from multiple predefined themes across web, app and admin panels.' },
+  { icon: ClipboardList, title: 'Parent Feedback', desc: 'Structured. Actionable. Capture parent sentiment. Close the loop before it becomes a complaint.' },
+  { icon: BadgeCheck, title: 'Student & Staff ID Card Generation', desc: 'Instant, print-ready ID cards for every student and staff member. Accurate data, consistent format — generated in seconds, not days.' },
+  { icon: LayoutDashboard, title: 'Actionable Dashboard for Every User', desc: 'No more data overload. Every role — from management to admin to teachers — sees exactly what matters to them, with clear next steps built in.' },
+  { icon: Bot, title: 'Chatbot for Parents', desc: 'Answers at midnight. No calls, no waiting. Parents get instant responses related to school information — 24/7.' },
+  { icon: Fingerprint, title: 'Know Your Parent (KYP)', desc: 'OTP-based profile verification. Verified identities, trusted community — KYP ensures every student profile is authenticated, keeping your school safe and records clean.' },
+  { icon: Link2, title: 'Seamless Integrations', desc: 'Biometric · GPS · Tally · WhatsApp · Payment — one unified nerve centre.' },
+  { icon: Cloud, title: 'Enterprise Cloud', desc: 'ISO 27001:2022. Multi-tenant isolation. Point-in-time recovery. 99.9% uptime.' },
+  { icon: Wallet, title: '24/7 Fee Payments', desc: 'Multi-gateway. Duplicate-proof. Parents pay anytime — you collect always.' },
+  { icon: FolderOpen, title: 'Document Hub', desc: 'Instant digital records. No file cabinets. Admin turnaround: days to seconds.' },
+  { icon: Smartphone, title: 'Personal Mobile App', desc: 'Exam wishes. Occasion nudges. Community at scale — with a human touch.' },
+];
+
+// Same brand gradient palette used site-wide (ProblemsSection, TrustStats, Why Choose Us),
+// cycled by index so this page's icon boxes look consistent with the rest of the site.
+const GRADIENTS = [
+  'from-[#f59e0b] to-[#fbbf24]',
+  'from-[#026dde] to-[#00d4ff]',
+  'from-[#e11d48] to-[#f87171]',
+  'from-[#10b981] to-[#34d399]',
+  'from-[#8b5cf6] to-[#a78bfa]',
+  'from-[#0891b2] to-[#22d3ee]',
+];
+
+const SHADOWS = [
+  'shadow-[#f59e0b]/20',
+  'shadow-[#026dde]/20',
+  'shadow-[#e11d48]/20',
+  'shadow-[#10b981]/20',
+  'shadow-[#8b5cf6]/20',
+  'shadow-[#0891b2]/20',
 ];
 
 export default function PlatformCapabilitiesPage() {
@@ -77,23 +97,27 @@ export default function PlatformCapabilitiesPage() {
       <section className="py-16 md:py-24 bg-card">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-6">
-            {FEATURES.map((f) => (
-              <div
-                key={f.title}
-                className="group flex items-start gap-5 bg-card rounded-2xl border border-border p-6 hover:shadow-lg hover:border-blue-100 transition-all"
-              >
+            {FEATURES.map((f, i) => {
+              const gradient = GRADIENTS[i % GRADIENTS.length];
+              const shadow = SHADOWS[i % SHADOWS.length];
+              return (
                 <div
-                  className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
-                  style={{ backgroundColor: `${f.accent}12`, color: f.accent }}
+                  key={f.title}
+                  className="group flex items-start gap-5 bg-card rounded-2xl border border-border p-6 hover:shadow-lg hover:border-[#026dde]/20 transition-all"
                 >
-                  <f.icon className="w-6 h-6" />
+                  <div className="relative shrink-0">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg ${shadow} text-white group-hover:scale-110 transition-transform duration-300`}>
+                      <f.icon className="w-6 h-6" />
+                    </div>
+                    <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-20 scale-125 blur-md transition-all duration-300`} />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-heading mb-1">{f.title}</h3>
+                    <p className="text-sm text-subtle leading-relaxed">{f.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-base font-bold text-heading mb-1">{f.title}</h3>
-                  <p className="text-sm text-subtle leading-relaxed">{f.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

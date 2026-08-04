@@ -80,12 +80,16 @@ export default async function AboutPage() {
       title: 'Our Mission',
       description: missionDescription,
       color: '#026dde',
+      gradient: 'from-[#026dde] to-[#00d4ff]',
+      shadow: 'shadow-[#026dde]/20',
     },
     {
       icon: Eye,
       title: 'Our Vision',
       description: visionDescription,
       color: '#f59e0b',
+      gradient: 'from-[#f59e0b] to-[#fbbf24]',
+      shadow: 'shadow-[#f59e0b]/20',
     },
   ];
 
@@ -120,10 +124,9 @@ export default async function AboutPage() {
                 >
                   <CardContent className="pt-6">
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
-                      style={{ backgroundColor: `${item.color}12` }}
+                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-6 shadow-lg ${item.shadow} text-white`}
                     >
-                      <IconComp className="w-6 h-6" style={{ color: item.color }} />
+                      <IconComp className="w-6 h-6" />
                     </div>
                     <h2 className="text-xl md:text-2xl font-bold text-heading mb-4">
                       {item.title}

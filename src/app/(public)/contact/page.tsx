@@ -51,10 +51,10 @@ export default async function ContactPage() {
   const mapUrl = getContent(sc, 'contact_map_url', 'https://www.google.com/maps?q=AA+Business+Centre+4th+Floor+East+Park+Road+Shenoy+Nagar+Chennai+600030&output=embed');
 
   const contactInfo = [
-    { icon: Phone, label: 'Helpline', value: phoneHelpline, href: `tel:${phoneHelpline.replace(/\s/g, '')}`, color: '#026dde' },
-    { icon: Mail, label: 'Email', value: contactEmail, href: `mailto:${contactEmail}`, color: '#f59e0b' },
-    { icon: MapPin, label: 'Office', value: 'Chennai 600030, Tamil Nadu', href: null, color: '#10b981' },
-    { icon: Clock, label: 'Business Hours', value: 'Mon – Fri.\n9:30 AM – 6:30 PM IST', href: null, color: '#8b5cf6' },
+    { icon: Phone, label: 'Helpline', value: phoneHelpline, href: `tel:${phoneHelpline.replace(/\s/g, '')}`, color: '#026dde', gradient: 'from-[#026dde] to-[#00d4ff]', shadow: 'shadow-[#026dde]/20' },
+    { icon: Mail, label: 'Email', value: contactEmail, href: `mailto:${contactEmail}`, color: '#f59e0b', gradient: 'from-[#f59e0b] to-[#fbbf24]', shadow: 'shadow-[#f59e0b]/20' },
+    { icon: MapPin, label: 'Office', value: 'Chennai 600030, Tamil Nadu', href: null, color: '#10b981', gradient: 'from-[#10b981] to-[#34d399]', shadow: 'shadow-[#10b981]/20' },
+    { icon: Clock, label: 'Business Hours', value: 'Mon – Fri.\n9:30 AM – 6:30 PM IST', href: null, color: '#8b5cf6', gradient: 'from-[#8b5cf6] to-[#a78bfa]', shadow: 'shadow-[#8b5cf6]/20' },
   ];
 
   return (
@@ -92,10 +92,9 @@ export default async function ContactPage() {
                 >
                   <CardContent className="pt-6 text-center">
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
-                      style={{ backgroundColor: `${item.color}12` }}
+                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mx-auto mb-4 shadow-lg ${item.shadow} text-white`}
                     >
-                      <IconComp className="w-6 h-6" style={{ color: item.color }} />
+                      <IconComp className="w-6 h-6" />
                     </div>
                     <h3 className="text-sm font-medium text-subtle mb-1">{item.label}</h3>
                     {item.href ? (
