@@ -138,6 +138,8 @@ const navDropdowns: Record<string, NavDropdownData> = {
 
       { label: 'About Us', href: '/about' },
 
+      { label: 'Why ChaloSchools?', href: '/compare' },
+
       { label: 'Our Team', href: '/about' },
 
       { label: 'Our Customers', href: '/about' },
