@@ -112,7 +112,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 md:py-24 bg-card">
+      <section className="py-12 md:py-16 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {missionVisionData.map((item) => {
@@ -143,7 +143,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Our Story */}
-      <section className="py-16 md:py-24 bg-surface-2">
+      <section className="py-12 md:py-16 bg-surface-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -193,7 +193,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-card">
+      <section className="py-12 md:py-16 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
@@ -230,7 +230,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Leadership Section */}
-      <section className="py-16 md:py-24 bg-surface-2">
+      <section className="py-12 md:py-16 bg-surface-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
@@ -261,7 +261,7 @@ export default async function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-card">
+      <section className="py-12 md:py-16 bg-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
             Ready to Transform Your School?

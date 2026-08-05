@@ -80,7 +80,7 @@ export default async function ContactPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-12 md:py-16 bg-card">
+      <section className="pt-12 pb-6 md:pt-16 md:pb-8 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 -mt-24 relative z-10">
             {contactInfo.map((item) => {
@@ -116,7 +116,7 @@ export default async function ContactPage() {
       </section>
 
       {/* Form + Map Section */}
-      <section id="contact-form" className="py-16 md:py-24 bg-card scroll-mt-20">
+      <section id="contact-form" className="pt-6 pb-12 md:pt-8 md:pb-16 bg-card scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
             {/* Form */}

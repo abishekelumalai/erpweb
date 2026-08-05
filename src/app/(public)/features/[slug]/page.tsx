@@ -192,7 +192,7 @@ export default async function FeatureDetailPage({ params }: PageProps) {
 
       {/* Benefits Grid */}
 
-      <section className="py-16 md:py-24 bg-card">
+      <section className="py-12 md:py-16 bg-card">
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -252,7 +252,7 @@ export default async function FeatureDetailPage({ params }: PageProps) {
 
       {/* Features List */}
 
-      <section className="py-16 md:py-24 bg-surface-2">
+      <section className="py-12 md:py-16 bg-surface-2">
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -388,7 +388,7 @@ export default async function FeatureDetailPage({ params }: PageProps) {
 
       {/* CTA Section */}
 
-      <section className="py-16 md:py-24 bg-card">
+      <section className="py-12 md:py-16 bg-card">
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 

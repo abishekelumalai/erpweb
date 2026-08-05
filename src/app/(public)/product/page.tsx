@@ -627,7 +627,7 @@ export default function ProductPage() {
 
             id={mod.id}
 
-            className={`pt-8 pb-16 md:pt-10 md:pb-24 ${idx === 0 ? 'pt-6 md:pt-8' : ''} ${isEven ? 'bg-card' : 'bg-surface-2'}`}
+            className={`pt-8 pb-8 md:pt-10 md:pb-12 ${idx === 0 ? 'pt-6 md:pt-8' : ''} ${isEven ? 'bg-card' : 'bg-surface-2'}`}
 
           >
 
@@ -845,7 +845,7 @@ export default function ProductPage() {
 
       {/* Product FAQ */}
 
-      <section className="py-16 md:py-24 bg-surface-2">
+      <section className="py-12 md:py-16 bg-surface-2">
 
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -907,7 +907,7 @@ export default function ProductPage() {
 
       {/* CTA Section */}
 
-      <section className="py-16 md:py-24 bg-brand-gradient">
+      <section className="py-12 md:py-16 bg-brand-gradient">
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 

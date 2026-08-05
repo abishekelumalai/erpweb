@@ -34,7 +34,7 @@ export default function TermsOfServicePage() {
       </section>
 
       {/* Content */}
-      <section className="py-16 md:py-24 bg-card">
+      <section className="py-12 md:py-16 bg-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-gray max-w-none space-y-8">
             <p className="text-sm text-subtle">
@@ -133,7 +133,7 @@ export default function TermsOfServicePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-surface-2">
+      <section className="py-12 md:py-16 bg-surface-2">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-heading mb-4">
             Ready to Get Started?

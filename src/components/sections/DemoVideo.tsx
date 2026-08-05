@@ -15,7 +15,7 @@ const VIDEO_URL = process.env.NEXT_PUBLIC_DEMO_VIDEO_URL;
 export default function DemoVideo() {
   const reduce = useReducedMotion();
   return (
-    <section className="py-16 md:py-24 bg-surface-2">
+    <section className="py-12 md:py-16 bg-surface-2">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

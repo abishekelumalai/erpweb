@@ -26,7 +26,7 @@ export default function CaseStudySnapshot({ caseStudy }: { caseStudy?: CaseStudy
   const stats = Array.isArray(caseStudy.stats) ? caseStudy.stats.slice(0, 3) : [];
 
   return (
-    <section className="py-16 md:py-24 bg-card">
+    <section className="py-12 md:py-16 bg-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: story */}

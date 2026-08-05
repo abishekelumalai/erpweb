@@ -123,7 +123,7 @@ export default function ComparePage() {
       </section>
 
       {/* Pain Points Section */}
-      <section className="py-16 md:py-24 bg-card">
+      <section className="py-12 md:py-16 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
@@ -154,7 +154,7 @@ export default function ComparePage() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-16 md:py-24 bg-surface-2">
+      <section className="py-12 md:py-16 bg-surface-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <Badge variant="secondary" className="mb-4 bg-[#026dde]/10 text-primary border-[#026dde]/20">
@@ -271,7 +271,7 @@ export default function ComparePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-card">
+      <section className="py-12 md:py-16 bg-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
             Ready to Upgrade?

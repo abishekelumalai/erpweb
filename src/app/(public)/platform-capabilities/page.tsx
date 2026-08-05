@@ -94,7 +94,7 @@ export default function PlatformCapabilitiesPage() {
       </section>
 
       {/* Feature grid */}
-      <section className="py-16 md:py-24 bg-card">
+      <section className="py-12 md:py-16 bg-card">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-6">
             {FEATURES.map((f, i) => {
@@ -123,7 +123,7 @@ export default function PlatformCapabilitiesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-brand-gradient">
+      <section className="py-12 md:py-16 bg-brand-gradient">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
             See Every Capability in Action
