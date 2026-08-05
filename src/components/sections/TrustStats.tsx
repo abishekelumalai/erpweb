@@ -36,9 +36,9 @@ const statShadows = [
 
 const FALLBACK_STATS = [
 
-  { value: '500+', label: 'Schools Served' },
+  { value: '200+', label: 'Schools Served' },
 
-  { value: '2 Lakh+', label: 'Students Impacted' },
+  { value: '1.5+ Million', label: 'Students Impacted' },
 
   { value: '4', label: 'Countries' },
 

@@ -41,7 +41,7 @@ export default function SocialProofBar() {
               <GraduationCap className="w-3.5 h-3.5 text-primary" />
               <span className="text-xs font-semibold text-primary uppercase tracking-wider">Trusted by</span>
             </div>
-            <p className="text-4xl font-extrabold text-primary leading-tight">{getContentValue(content, 'trust_stat_1_value', '500+')}</p>
+            <p className="text-4xl font-extrabold text-primary leading-tight">{getContentValue(content, 'trust_stat_1_value', '200+')}</p>
             <p className="text-sm font-medium text-subtle mt-0.5">Schools Across India</p>
           </motion.div>
 

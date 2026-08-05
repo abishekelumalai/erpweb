@@ -68,7 +68,7 @@ const navDropdowns: Record<string, NavDropdownData> = {
         { label: 'AI Feature Suite', href: '/platform-capabilities', icon: Sparkles },
         { label: 'Admissions', href: '/features/admissions', icon: UserPlus },
         { label: 'Students', href: '/product#student', icon: GraduationCap },
-        { label: 'Staff & HR', href: '/features/staff-hr', icon: Users },
+        { label: 'Staff & Payroll', href: '/features/staff-hr', icon: Users },
         { label: 'Fees & Finance', href: '/features/fees', icon: IndianRupee },
         { label: 'Timetable', href: '/features/timetable', icon: CalendarDays },
         { label: 'Attendance', href: '/features/attendance', icon: ClipboardCheck },

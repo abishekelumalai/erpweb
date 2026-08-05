@@ -13,7 +13,7 @@ const SEED_DATA: SeedItem[] = [
   // Homepage - Hero Section
   {
     key: 'hero_badge',
-    value: 'Trusted by 1000+ Indian Schools',
+    value: 'Trusted by 200+ Indian Schools',
     section: 'Homepage - Hero',
     label: 'Hero Badge Text',
     type: 'text',
@@ -521,9 +521,9 @@ const SEED_DATA: SeedItem[] = [
   },
 
   // Homepage - Trust Stats
-  { key: 'trust_stat_1_value', value: '500+', section: 'Homepage - Trust Stats', label: 'Stat 1 Value', type: 'text', order: 0 },
+  { key: 'trust_stat_1_value', value: '200+', section: 'Homepage - Trust Stats', label: 'Stat 1 Value', type: 'text', order: 0 },
   { key: 'trust_stat_1_label', value: 'Schools Served', section: 'Homepage - Trust Stats', label: 'Stat 1 Label', type: 'text', order: 1 },
-  { key: 'trust_stat_2_value', value: '2 Lakh+', section: 'Homepage - Trust Stats', label: 'Stat 2 Value', type: 'text', order: 2 },
+  { key: 'trust_stat_2_value', value: '1.5+ Million', section: 'Homepage - Trust Stats', label: 'Stat 2 Value', type: 'text', order: 2 },
   { key: 'trust_stat_2_label', value: 'Students Impacted', section: 'Homepage - Trust Stats', label: 'Stat 2 Label', type: 'text', order: 3 },
   { key: 'trust_stat_3_value', value: '4', section: 'Homepage - Trust Stats', label: 'Stat 3 Value', type: 'text', order: 4 },
   { key: 'trust_stat_3_label', value: 'Countries', section: 'Homepage - Trust Stats', label: 'Stat 3 Label', type: 'text', order: 5 },
