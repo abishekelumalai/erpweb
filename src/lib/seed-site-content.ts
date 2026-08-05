@@ -521,14 +521,14 @@ const SEED_DATA: SeedItem[] = [
   },
 
   // Homepage - Trust Stats
-  { key: 'trust_stat_1_value', value: '1000+', section: 'Homepage - Trust Stats', label: 'Stat 1 Value', type: 'text', order: 0 },
-  { key: 'trust_stat_1_label', value: 'Schools', section: 'Homepage - Trust Stats', label: 'Stat 1 Label', type: 'text', order: 1 },
-  { key: 'trust_stat_2_value', value: '2M+', section: 'Homepage - Trust Stats', label: 'Stat 2 Value', type: 'text', order: 2 },
-  { key: 'trust_stat_2_label', value: 'Students', section: 'Homepage - Trust Stats', label: 'Stat 2 Label', type: 'text', order: 3 },
-  { key: 'trust_stat_3_value', value: '10M+', section: 'Homepage - Trust Stats', label: 'Stat 3 Value', type: 'text', order: 4 },
-  { key: 'trust_stat_3_label', value: 'Fee Transactions', section: 'Homepage - Trust Stats', label: 'Stat 3 Label', type: 'text', order: 5 },
-  { key: 'trust_stat_4_value', value: '4.8/5', section: 'Homepage - Trust Stats', label: 'Stat 4 Value', type: 'text', order: 6 },
-  { key: 'trust_stat_4_label', value: 'Rating', section: 'Homepage - Trust Stats', label: 'Stat 4 Label', type: 'text', order: 7 },
+  { key: 'trust_stat_1_value', value: '500+', section: 'Homepage - Trust Stats', label: 'Stat 1 Value', type: 'text', order: 0 },
+  { key: 'trust_stat_1_label', value: 'Schools Served', section: 'Homepage - Trust Stats', label: 'Stat 1 Label', type: 'text', order: 1 },
+  { key: 'trust_stat_2_value', value: '2 Lakh+', section: 'Homepage - Trust Stats', label: 'Stat 2 Value', type: 'text', order: 2 },
+  { key: 'trust_stat_2_label', value: 'Students Impacted', section: 'Homepage - Trust Stats', label: 'Stat 2 Label', type: 'text', order: 3 },
+  { key: 'trust_stat_3_value', value: '4', section: 'Homepage - Trust Stats', label: 'Stat 3 Value', type: 'text', order: 4 },
+  { key: 'trust_stat_3_label', value: 'Countries', section: 'Homepage - Trust Stats', label: 'Stat 3 Label', type: 'text', order: 5 },
+  { key: 'trust_stat_4_value', value: '99.9%', section: 'Homepage - Trust Stats', label: 'Stat 4 Value', type: 'text', order: 6 },
+  { key: 'trust_stat_4_label', value: 'Platform Uptime', section: 'Homepage - Trust Stats', label: 'Stat 4 Label', type: 'text', order: 7 },
 
   // Homepage - Why Choose Us
   { key: 'why_choose_badge', value: 'Why Choose Chalo Schools?', section: 'Homepage - Why Choose Us', label: 'Section Badge', type: 'text', order: 0 },
