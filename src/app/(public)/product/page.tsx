@@ -661,7 +661,7 @@ export default function ProductPage() {
 
               </div>
 
-              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
+              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
 
                 {/* Content */}
 
