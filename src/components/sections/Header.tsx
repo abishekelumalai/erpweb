@@ -13,7 +13,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/s
 import {
   Menu, ChevronDown, ArrowRight, Sparkles, UserPlus, GraduationCap, Users,
   IndianRupee, CalendarDays, ClipboardCheck, FileText, MessageCircle, Package,
-  Wallet, BookOpen, Bus, TrendingUp, Bot, Smartphone, Send, BarChart3,
+  Wallet, BookOpen, Bus, TrendingUp, Bot, Smartphone, ShieldCheck,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -85,8 +85,8 @@ const navDropdowns: Record<string, NavDropdownData> = {
       ]},
       { title: 'More', items: [
         { label: 'Parent App', href: '/features/parent-app', icon: Smartphone },
-        { label: 'WhatsApp', href: '/features/whatsapp', icon: Send },
-        { label: 'Reports', href: '/features/reports', icon: BarChart3 },
+        { label: 'Teachers App', href: '/#our-apps', icon: GraduationCap },
+        { label: 'Management App', href: '/#our-apps', icon: ShieldCheck },
       ]},
     ],
 

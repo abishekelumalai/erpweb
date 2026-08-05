@@ -38,7 +38,7 @@ const APPS = [
 
 export default function OurApps() {
   return (
-    <section className="py-12 lg:py-16 bg-card">
+    <section id="our-apps" className="py-12 lg:py-16 bg-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-10">
           <Badge className="mb-4 bg-[#026dde]/10 text-primary border-[#026dde]/20 rounded-full">Our Apps</Badge>
