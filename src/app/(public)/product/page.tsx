@@ -14,7 +14,7 @@ import {
 
   ArrowRight, CheckCircle2, Sparkles, Shield, Zap,
   FileText, GraduationCap, Users, Wallet, Package,
-  Fingerprint, Navigation, Calculator, CreditCard, TrendingUp, Bot,
+  Fingerprint, Navigation, Calculator, CreditCard, TrendingUp, Bot, Link2,
 
 } from 'lucide-react';
 
@@ -531,7 +531,7 @@ export default function ProductPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
 
             <div className="flex items-center justify-center gap-3">
 
@@ -553,7 +553,19 @@ export default function ProductPage() {
 
               </div>
 
-              <span className="text-sm font-medium text-heading">19+ Integrated Modules</span>
+              <span className="text-sm font-medium text-heading">14 Modules</span>
+
+            </div>
+
+            <div className="flex items-center justify-center gap-3">
+
+              <div className="w-10 h-10 rounded-lg bg-[#8b5cf6]/10 flex items-center justify-center">
+
+                <Link2 className="w-5 h-5 text-[#8b5cf6]" />
+
+              </div>
+
+              <span className="text-sm font-medium text-heading">5 Integrations</span>
 
             </div>
 
