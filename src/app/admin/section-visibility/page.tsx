@@ -18,9 +18,10 @@ interface SiteContentRecord {
 // on — everything else can be switched off independently without affecting
 // that same content anywhere else it's used (e.g. the actual /blog page).
 const HOMEPAGE_SECTIONS = [
-  { key: 'trust_stats', label: 'Trust Stats', description: '"200+ Schools, 1.5+ Million Students" stat bar' },
+  { key: 'trust_stats', label: 'Trust Stats', description: '"500+ Schools, 2 Lakh+ Students" stat bar' },
   { key: 'social_proof', label: 'Social Proof Bar', description: 'Scrolling strip of school names' },
   { key: 'problems', label: 'Problems / Challenges', description: '"Running a School Shouldn\'t Mean..." cards' },
+  { key: 'module_showcase', label: 'Module Showcase', description: '"THE MODULES" dark scattered-icon statement section' },
   { key: 'features', label: 'Feature Highlights', description: '14-module grid with category tabs' },
   { key: 'our_apps', label: 'Our Apps', description: 'Parent / Teacher / Management app showcase' },
   { key: 'integrations', label: 'Integrations Strip', description: 'Biometric, GPS, Tally, WhatsApp, Payment' },
