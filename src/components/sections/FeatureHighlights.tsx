@@ -18,6 +18,7 @@ interface FeatureItem {
   label: string;
   desc: string;
   slug?: string;
+  href?: string;   // explicit link override for modules with no /features/[slug] page
   color: string;   // icon gradient
   accent: string;  // hex for top border + accents
   tag: ModuleBadge;
@@ -41,19 +42,19 @@ const CATEGORY_COLORS: Record<Category, { gradient: string; accent: string }> = 
 // Standard modules (8) + add-on modules (6) — matches the official ChaloSchools product brochure.
 const features: FeatureItem[] = [
   { icon: <UserPlus className="w-6 h-6" />, label: 'Admission Management', desc: 'Online admissions & enquiry management', slug: 'admissions', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: null, categories: ['Administration'] },
-  { icon: <GraduationCap className="w-6 h-6" />, label: 'Student Management', desc: 'Every student profile — searchable, lifelong, always a click away', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: null, categories: ['Academics'] },
+  { icon: <GraduationCap className="w-6 h-6" />, label: 'Student Management', desc: 'Every student profile — searchable, lifelong, always a click away', href: '/product#student', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: null, categories: ['Academics'] },
   { icon: <Users className="w-6 h-6" />, label: 'Staff Management', desc: 'Complete staff records, roles & access control', slug: 'staff-hr', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: null, categories: ['Administration'] },
   { icon: <IndianRupee className="w-6 h-6" />, label: 'Fee Management', desc: 'Bank-synced collection with zero revenue leakage', slug: 'fees', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Most Used', categories: ['Finance'] },
   { icon: <CalendarDays className="w-6 h-6" />, label: 'AI Powered Time Table & Scheduling', desc: 'Conflict-free schedules with auto-substitutions', slug: 'timetable', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'AI Powered', categories: ['Academics'] },
   { icon: <ClipboardCheck className="w-6 h-6" />, label: 'Attendance Management', desc: 'Biometric, RFID & mobile attendance tracking', slug: 'attendance', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: null, categories: ['Academics'] },
   { icon: <FileBarChart className="w-6 h-6" />, label: 'Academic & Examination', desc: 'Grades, report cards & 360° result analytics', slug: 'exams', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Popular', categories: ['Academics'] },
-  { icon: <MessageCircle className="w-6 h-6" />, label: 'Communication Management', desc: 'WhatsApp, SMS & voice broadcast to parents', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: null, categories: ['Communication'] },
-  { icon: <Package className="w-6 h-6" />, label: 'Academic Inventory Tracking', desc: 'Track academic assets and stock in real time', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Add-on', categories: ['Add-ons', 'Analytics'] },
+  { icon: <MessageCircle className="w-6 h-6" />, label: 'Communication Management', desc: 'WhatsApp, SMS & voice broadcast to parents', href: '/product#communication', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: null, categories: ['Communication'] },
+  { icon: <Package className="w-6 h-6" />, label: 'Academic Inventory Tracking', desc: 'Track academic assets and stock in real time', href: '/product#inventory', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Add-on', categories: ['Add-ons', 'Analytics'] },
   { icon: <Wallet className="w-6 h-6" />, label: 'Payroll Management', desc: 'Automated salary processing & compliance', slug: 'staff-hr', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Add-on', categories: ['Add-ons'] },
   { icon: <BookOpen className="w-6 h-6" />, label: 'Library Management', desc: 'Book inventory & issue management', slug: 'library', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Add-on', categories: ['Add-ons'] },
   { icon: <Bus className="w-6 h-6" />, label: 'Transport Management', desc: 'GPS-tracked fleet & route management', slug: 'transport', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Add-on', categories: ['Add-ons'] },
-  { icon: <TrendingUp className="w-6 h-6" />, label: 'Inspace Performance Insights', desc: 'Deep analytics on school-wide performance', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Add-on', categories: ['Analytics', 'Add-ons'] },
-  { icon: <Bot className="w-6 h-6" />, label: 'AI Secretary', desc: 'An AI assistant built exclusively for school management', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Add-on', categories: ['Add-ons'] },
+  { icon: <TrendingUp className="w-6 h-6" />, label: 'Inspace Performance Insights', desc: 'Deep analytics on school-wide performance', href: '/product#performance-insights', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Add-on', categories: ['Analytics', 'Add-ons'] },
+  { icon: <Bot className="w-6 h-6" />, label: 'AI Secretary', desc: 'An AI assistant built exclusively for school management', href: '/product#ai-secretary', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Add-on', categories: ['Add-ons'] },
 ];
 
 const CATEGORIES: ('All' | Category)[] = ['All', 'Academics', 'Administration', 'Finance', 'Communication', 'Analytics', 'Add-ons'];
@@ -133,6 +134,7 @@ export default function FeatureHighlights() {
               const displayName = cmsName || f.label;
               const displayDesc = cmsDesc || f.desc;
               const catColor = CATEGORY_COLORS[f.categories[0]];
+              const linkHref = f.href ?? (f.slug ? `/features/${f.slug}` : undefined);
 
               const cardInner = (
                 <>
@@ -163,7 +165,7 @@ export default function FeatureHighlights() {
                   <p className="text-sm text-subtle leading-relaxed">{displayDesc}</p>
 
                   {/* Explore link — appears/slides on hover, only when a detail page exists */}
-                  {f.slug && (
+                  {linkHref && (
                     <div
                       className="mt-4 flex items-center gap-1.5 text-sm font-semibold opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
                       style={{ color: catColor.accent }}
@@ -184,9 +186,9 @@ export default function FeatureHighlights() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ delay: i * 0.05, duration: 0.35 }}
                 >
-                  {f.slug ? (
+                  {linkHref ? (
                     <Link
-                      href={`/features/${f.slug}`}
+                      href={linkHref}
                       onMouseMove={handleSpotlightMove}
                     className="group card-shine spotlight relative block h-full rounded-2xl bg-card border border-border p-6 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 hover:border-transparent"
                     >
