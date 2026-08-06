@@ -8,8 +8,6 @@ import SocialProofBar from '@/components/sections/SocialProofBar';
 
 import ProblemsSection from '@/components/sections/ProblemsSection';
 
-import ModuleShowcase from '@/components/sections/ModuleShowcase';
-
 import FeatureHighlights from '@/components/sections/FeatureHighlights';
 
 import OurApps from '@/components/sections/OurApps';
@@ -177,8 +175,6 @@ export default async function Home() {
           {/* 4. Key Problems / Challenges */}
 
           {isVisible('problems') && <ProblemsSection />}
-
-          {isVisible('module_showcase') && <ModuleShowcase />}
 
           {/* 5. Feature Highlights */}
 
