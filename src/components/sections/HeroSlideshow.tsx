@@ -12,16 +12,19 @@ interface SlideInfo {
   key: string;
   title: string;
   icon: typeof UserPlus;
-  image: string;
+  // Only slides with a real screenshot file get an image — the rest render
+  // FallbackScreen directly instead of attempting to load a file that
+  // doesn't exist (which 400s the Next.js image optimizer).
+  image: string | null;
 }
 
 const SLIDES: SlideInfo[] = [
   { key: 'admissions', title: 'Admissions', icon: UserPlus, image: '/images/slides/admissions.png' },
-  { key: 'fees', title: 'Fee Management', icon: IndianRupee, image: '/images/slides/fees.png' },
-  { key: 'attendance', title: 'Attendance', icon: ClipboardCheck, image: '/images/slides/attendance.png' },
-  { key: 'timetable', title: 'Timetable', icon: CalendarDays, image: '/images/slides/timetable.png' },
-  { key: 'parent', title: 'Parent App', icon: MessageCircle, image: '/images/slides/parent.png' },
-  { key: 'reports', title: 'Reports', icon: BarChart3, image: '/images/slides/reports.png' },
+  { key: 'fees', title: 'Fee Management', icon: IndianRupee, image: null },
+  { key: 'attendance', title: 'Attendance', icon: ClipboardCheck, image: null },
+  { key: 'timetable', title: 'Timetable', icon: CalendarDays, image: null },
+  { key: 'parent', title: 'Parent App', icon: MessageCircle, image: null },
+  { key: 'reports', title: 'Reports', icon: BarChart3, image: null },
 ];
 
 // Accent color per slide, reused by the phone/tablet mini-mockups so they
@@ -204,7 +207,7 @@ export default function HeroSlideshow() {
                 aria-label={`${slide.title} (${index + 1} of ${SLIDES.length})`}
                 className="absolute inset-0"
               >
-                {!imageErrors.has(slide.key) ? (
+                {slide.image && !imageErrors.has(slide.key) ? (
                   <Image
                     src={slide.image}
                     alt={`${slide.title} - ChaloSchools ERP Module`}
