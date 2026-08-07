@@ -3,7 +3,7 @@ import CaseStudyPageClient from './CaseStudyPageClient';
 import { db } from '@/lib/db';
 
 export const metadata: Metadata = {
-  title: 'Case Studies | ChaloSchools',
+  title: 'Case Studies',
   description: 'See how schools across India transform their operations with ChaloSchools. Real stories, real results from CBSE, ICSE, and state board schools.',
   alternates: { canonical: '/case-studies' },
 };

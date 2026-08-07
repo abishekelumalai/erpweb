@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: WebinarPageProps): Promise<Me
   if (!webinar) return { title: 'Webinar Not Found' }
 
   return {
-    title: `${webinar.title} | ChaloSchools Webinars`,
+    title: `${webinar.title}`,
     description: webinar.description || webinar.title,
     alternates: { canonical: `/webinars/${slug}` },
   }

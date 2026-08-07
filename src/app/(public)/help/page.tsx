@@ -3,7 +3,7 @@ import HelpPageClient from './HelpPageClient';
 import { db } from '@/lib/db';
 
 export const metadata: Metadata = {
-  title: 'Help & Documentation | ChaloSchools',
+  title: 'Help & Documentation',
   description: 'Find guides, tutorials, and documentation to help you get the most out of ChaloSchools school management system.',
   alternates: { canonical: '/help' },
 };

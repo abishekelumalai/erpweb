@@ -3,7 +3,7 @@ import ReleaseNotesPageClient from './ReleaseNotesPageClient';
 import { db } from '@/lib/db';
 
 export const metadata: Metadata = {
-  title: 'Release Notes | ChaloSchools',
+  title: 'Release Notes',
   description: "See what's new in ChaloSchools. Browse release notes for the latest features, improvements, and bug fixes.",
   alternates: { canonical: '/release-notes' },
 };

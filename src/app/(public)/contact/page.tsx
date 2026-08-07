@@ -9,7 +9,7 @@ import { db } from '@/lib/db';
 import { getContent } from '@/lib/get-site-content';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | ChaloSchools',
+  title: 'Contact Us',
   description:
     'Get in touch with ChaloSchools. Book a free demo, request a callback, or reach our support team. We\'re here to help your school succeed.',
   alternates: { canonical: '/contact' },

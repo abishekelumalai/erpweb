@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: NewsPageProps): Promise<Metad
   if (!item) return { title: 'News Not Found' }
 
   return {
-    title: `${item.title} | ChaloSchools News`,
+    title: `${item.title}`,
     description: item.excerpt || item.content?.substring(0, 160) || item.title,
     alternates: { canonical: `/news/${slug}` },
   }

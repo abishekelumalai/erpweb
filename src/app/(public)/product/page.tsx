@@ -20,7 +20,7 @@ import {
 
 export const metadata: Metadata = {
 
-  title: 'Product Tour | ChaloSchools',
+  title: 'Product Tour',
 
   description:
 
@@ -601,7 +601,7 @@ export default function ProductPage() {
 
             WhatsApp groups, and paper registers with one platform covering admissions, fee collection, attendance,
 
-            timetable scheduling, staff and HR, and parent communication — used by 200+ schools serving 1.5M+ students,
+            timetable scheduling, staff and HR, and parent communication — used by 200+ schools serving 1.5+ Million students,
 
             with dedicated apps for parents, teachers, and school management.
 

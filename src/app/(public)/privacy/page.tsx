@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Shield } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | ChaloSchools',
+  title: 'Privacy Policy',
   description:
     'Learn how ChaloSchools collects, uses, and protects your personal information. We are committed to safeguarding the privacy of our users.',
   alternates: { canonical: '/privacy' },

@@ -16,7 +16,7 @@ import {
 
 export const metadata: Metadata = {
 
-  title: 'Pricing | ChaloSchools',
+  title: 'Pricing',
 
   description:
 

@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
   if (!cs) return { title: 'Case Study Not Found' }
 
   return {
-    title: `${cs.title} | ChaloSchools Case Studies`,
+    title: `${cs.title}`,
     description: cs.excerpt || cs.title,
     alternates: { canonical: `/case-studies/${slug}` },
   }

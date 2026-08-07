@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
 
-    title: `${feature.title} | ChaloSchools`,
+    title: `${feature.title}`,
 
     description: feature.description,
 

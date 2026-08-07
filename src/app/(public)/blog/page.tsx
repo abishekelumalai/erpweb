@@ -3,7 +3,7 @@ import BlogPageClient from './BlogPageClient';
 import { db } from '@/lib/db';
 
 export const metadata: Metadata = {
-  title: 'Blog & Insights | ChaloSchools',
+  title: 'Blog & Insights',
   description: 'Stay updated with the latest trends in school management, education technology, and best practices from ChaloSchools.',
   alternates: { canonical: '/blog' },
 };

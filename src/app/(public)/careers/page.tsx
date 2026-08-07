@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Careers | ChaloSchools',
+  title: 'Careers',
   description:
     'Join the ChaloSchools team and help transform Indian schools with technology. Explore open positions in engineering, sales, product, and more.',
   alternates: { canonical: '/careers' },

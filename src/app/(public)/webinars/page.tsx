@@ -3,7 +3,7 @@ import WebinarPageClient from './WebinarPageClient';
 import { db } from '@/lib/db';
 
 export const metadata: Metadata = {
-  title: 'Webinars | ChaloSchools',
+  title: 'Webinars',
   description: 'Watch on-demand webinars about school management best practices, education technology, and upcoming sessions from ChaloSchools.',
   alternates: { canonical: '/webinars' },
 };

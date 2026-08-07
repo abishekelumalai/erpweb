@@ -66,11 +66,27 @@ function hasSqlInjectionInUrl(url: string): boolean {
 export function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
   const ip = getClientIp(request);
+
+  // ─── 0. Canonicalize case: redirect uppercase/mixed-case paths to lowercase ───
+  // All real routes on this site are lowercase, so /PRODUCT, /Pricing, etc. would 404.
+  // Redirect them (308 permanent) to the lowercase form. Skips /api (may be case-sensitive).
+  if (pathname !== pathname.toLowerCase() && !pathname.startsWith('/api')) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.toLowerCase();
+    return NextResponse.redirect(url, 308);
+  }
+
   const response = NextResponse.next();
 
   // ─── 1. Security Headers ────────────────────────────────────────────────
 
   response.headers.set('X-Content-Type-Options', 'nosniff');
+  // HSTS: force HTTPS for 2 years, include subdomains, allow preload list.
+  // Safe here because the site is HTTPS-only (Cloudflare/Render terminate TLS).
+  response.headers.set(
+    'Strict-Transport-Security',
+    'max-age=63072000; includeSubDomains; preload'
+  );
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('X-XSS-Protection', '1; mode=block');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');

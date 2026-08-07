@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, FileText } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | ChaloSchools',
+  title: 'Terms of Service',
   description:
     'Read the Terms of Service for ChaloSchools. These terms govern your use of our website and services.',
   alternates: { canonical: '/terms' },

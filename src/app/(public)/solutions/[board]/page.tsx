@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const solution = getSolutionBySlug(board);
   if (!solution) return { title: 'Solution Not Found' };
   return {
-    title: `${solution.boardName} Solution | ChaloSchools`,
+    title: `${solution.boardName} Solution`,
     description: solution.description,
     alternates: { canonical: `/solutions/${board}` },
   };

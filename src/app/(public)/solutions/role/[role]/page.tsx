@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const data = getRoleBySlug(role);
   if (!data) return { title: 'Solution Not Found' };
   return {
-    title: `ChaloSchools for ${data.roleName} | ChaloSchools`,
+    title: `ChaloSchools for ${data.roleName}`,
     description: data.description,
     alternates: { canonical: `/solutions/role/${role}` },
   };

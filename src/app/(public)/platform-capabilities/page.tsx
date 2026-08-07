@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Platform Capabilities | ChaloSchools',
+  title: 'Platform Capabilities',
   description:
     '20+ industry-first, AI-powered capabilities built into ChaloSchools — from AI Rephrase and Voice Broadcast to KYP verification and Enterprise Cloud infrastructure.',
   alternates: { canonical: '/platform-capabilities' },

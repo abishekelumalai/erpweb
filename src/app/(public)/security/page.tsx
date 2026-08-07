@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Data Protection & Security | ChaloSchools',
+  title: 'Data Protection & Security',
   description:
     "How ChaloSchools implements India's DPDP Act, 2023 and DPDP Rules, 2025 — data masking, role-based access, encryption, and audit-ready compliance, backed by ISO 27001:2022 certification.",
   alternates: { canonical: '/security' },

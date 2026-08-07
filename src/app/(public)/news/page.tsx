@@ -3,7 +3,7 @@ import NewsPageClient from './NewsPageClient';
 import { db } from '@/lib/db';
 
 export const metadata: Metadata = {
-  title: 'News & Events | ChaloSchools',
+  title: 'News & Events',
   description: 'Latest news, events, and updates from ChaloSchools. Stay informed about product launches, school partnerships, and education industry events.',
   alternates: { canonical: '/news' },
 };
