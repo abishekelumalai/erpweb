@@ -7,7 +7,28 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
   CheckCircle2, ArrowRight, GraduationCap, Building2,
+  ClipboardCheck, Users, MessageCircle, BarChart3, Wallet,
 } from 'lucide-react';
+
+// Same brand gradient palette used site-wide (ProblemsSection, TrustStats),
+// cycled per feature so this grid's icon boxes aren't all identical.
+const FEATURE_ICONS = [CheckCircle2, Users, Wallet, ClipboardCheck, MessageCircle, BarChart3];
+const FEATURE_GRADIENTS = [
+  'from-[#026dde] to-[#00d4ff]',
+  'from-[#f59e0b] to-[#fbbf24]',
+  'from-[#10b981] to-[#34d399]',
+  'from-[#8b5cf6] to-[#a78bfa]',
+  'from-[#0891b2] to-[#22d3ee]',
+  'from-[#e11d48] to-[#f87171]',
+];
+const FEATURE_SHADOWS = [
+  'shadow-[#026dde]/20',
+  'shadow-[#f59e0b]/20',
+  'shadow-[#10b981]/20',
+  'shadow-[#8b5cf6]/20',
+  'shadow-[#0891b2]/20',
+  'shadow-[#e11d48]/20',
+];
 
 interface PageProps {
   params: Promise<{ board: string }>;
@@ -96,20 +117,25 @@ export default async function SolutionDetailPage({ params }: PageProps) {
               Every feature is customized to meet the specific requirements of {solution.boardName.toLowerCase()} schools.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {solution.features.map((feature, index) => (
-              <Card
-                key={index}
-                className="group card-lift card-shine border border-border hover:border-[#026dde]/30 transition-all duration-300"
-              >
-                <CardContent className="pt-6">
-                  <div className="w-10 h-10 rounded-lg bg-[#026dde]/10 flex items-center justify-center mb-4">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                  </div>
-                  <p className="text-heading font-medium leading-relaxed">{feature}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+            {solution.features.map((feature, index) => {
+              const gradient = FEATURE_GRADIENTS[index % FEATURE_GRADIENTS.length];
+              const shadow = FEATURE_SHADOWS[index % FEATURE_SHADOWS.length];
+              const FeatureIcon = FEATURE_ICONS[index % FEATURE_ICONS.length];
+              return (
+                <Card
+                  key={index}
+                  className="group card-lift card-shine border border-border hover:border-[#026dde]/30 transition-all duration-300"
+                >
+                  <CardContent className="pt-6">
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center mb-4 shadow-lg ${shadow} text-white`}>
+                      <FeatureIcon className="w-5 h-5" />
+                    </div>
+                    <p className="text-heading font-medium leading-relaxed">{feature}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
