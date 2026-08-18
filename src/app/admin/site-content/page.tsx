@@ -53,8 +53,9 @@ export default function SiteContentPage() {
       if (!res.ok) throw new Error('Failed to fetch');
       const raw: SiteContentRecord[] = await res.json();
       // Section on/off toggles are managed on the dedicated Section Visibility
-      // page (with proper switches), not as raw text here.
-      const data = raw.filter((r) => !r.key.startsWith('visibility_'));
+      // page (with proper switches), and module images on the dedicated
+      // Module Images page (with previews/upload) — not as raw text here.
+      const data = raw.filter((r) => !r.key.startsWith('visibility_') && !r.key.startsWith('module_image_'));
       setRecords(data);
 
       // Auto-select the first section

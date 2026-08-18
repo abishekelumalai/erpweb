@@ -1,3 +1,7 @@
+import type { Metadata } from 'next';
+
+import { buildMetadata } from '@/lib/metadata';
+
 import Header from '@/components/sections/Header';
 
 import HeroSection from '@/components/sections/HeroSection';
@@ -49,6 +53,12 @@ import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import ChatBot from '@/components/ChatBot';
 
 import { db } from '@/lib/db';
+
+export const metadata: Metadata = buildMetadata({
+  title: 'ChaloSchools - Complete School ERP Software for Indian Schools',
+  description: 'Fresh and New School Management Software – CHALO Schools Automated. Complete School Management Software which handles all the activities for operation of a school.',
+  path: '/',
+});
 
 // Safely parse the CaseStudy.stats JSON string into [{label, value}].
 

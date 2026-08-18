@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -6,14 +7,15 @@ import {
   UserPlus, LineChart, Wand2, Mic, CalendarClock, Landmark, Lock, EyeOff,
   IdCard, Palette, ClipboardList, BadgeCheck, LayoutDashboard, Bot, Fingerprint,
   Link2, Cloud, Wallet, FolderOpen, Smartphone, Sparkles, ArrowRight,
+  Layers, ShieldCheck, BarChart3, Gauge, UserCog, DatabaseBackup, Clock, Plug, LifeBuoy,
 } from 'lucide-react';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Platform Capabilities',
   description:
     '20+ industry-first, AI-powered capabilities built into ChaloSchools — from AI Rephrase and Voice Broadcast to KYP verification and Enterprise Cloud infrastructure.',
-  alternates: { canonical: '/platform-capabilities' },
-};
+  path: '/platform-capabilities',
+});
 
 const FEATURES = [
   { icon: UserPlus, title: 'Digital Admissions', desc: '100% paperless. Mobile-first. Enrolments close faster — errors close to zero.' },
@@ -58,6 +60,18 @@ const SHADOWS = [
   'shadow-[#0891b2]/20',
 ];
 
+const TECH_CAPABILITIES = [
+  { icon: Layers, title: 'Multi-Tenant Architecture', desc: 'Shared infrastructure, fully isolated data per school.' },
+  { icon: ShieldCheck, title: 'Security', desc: 'Data encryption in transit and at rest, secure protocols throughout.' },
+  { icon: BarChart3, title: 'Data Analytics', desc: 'Real-time reporting with custom dashboards for every role.' },
+  { icon: Gauge, title: 'Scalability', desc: 'Elastic scaling and optimized resources as your school grows.' },
+  { icon: UserCog, title: 'User Management', desc: 'Role-based access with granular permissions.' },
+  { icon: DatabaseBackup, title: 'Backup & Recovery', desc: 'Automated backups with point-in-time recovery.' },
+  { icon: Clock, title: 'Access & Availability', desc: '24/7 uptime across web, app, and admin platforms.' },
+  { icon: Plug, title: 'Integration', desc: 'API-first design with third-party connectors built in.' },
+  { icon: LifeBuoy, title: 'Support', desc: 'Regular platform updates and round-the-clock support.' },
+];
+
 export default function PlatformCapabilitiesPage() {
   return (
     <>
@@ -82,7 +96,7 @@ export default function PlatformCapabilitiesPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all" asChild>
               <Link href="/contact#contact-form">
-                Book an Introductory Demo
+                Book a Demo
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
@@ -122,6 +136,51 @@ export default function PlatformCapabilitiesPage() {
         </div>
       </section>
 
+      {/* Technical Capabilities */}
+      <section className="py-12 md:py-16 bg-surface-2">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
+              Enterprise-Grade Under the Hood
+            </h2>
+            <p className="text-subtle text-lg max-w-2xl mx-auto">
+              The technical foundation every capability above runs on.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            {TECH_CAPABILITIES.map((c, i) => {
+              const gradient = GRADIENTS[i % GRADIENTS.length];
+              const shadow = SHADOWS[i % SHADOWS.length];
+              return (
+              <div
+                key={c.title}
+                className="flex items-start gap-4 bg-card rounded-xl border border-border p-5"
+              >
+                <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center shrink-0 shadow-lg ${shadow} text-white`}>
+                  <c.icon className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-heading mb-1">{c.title}</h3>
+                  <p className="text-xs text-subtle leading-relaxed">{c.desc}</p>
+                </div>
+              </div>
+              );
+            })}
+          </div>
+          <div className="flex items-center justify-center gap-10">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-primary">99.9%</div>
+              <p className="text-sm text-subtle font-medium">Uptime</p>
+            </div>
+            <div className="w-px h-10 bg-border" />
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-primary">24/7</div>
+              <p className="text-sm text-subtle font-medium">Support</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-12 md:py-16 bg-brand-gradient">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -134,7 +193,7 @@ export default function PlatformCapabilitiesPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all" asChild>
               <Link href="/contact">
-                Book an Introductory Demo
+                Book a Demo
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>

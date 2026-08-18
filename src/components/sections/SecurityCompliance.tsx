@@ -6,6 +6,26 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, FileCheck, Lock, Scale, ShieldCheck } from 'lucide-react';
 
+// Brand gradient palette used site-wide, cycled by index so icon boxes look
+// consistent with the rest of the site.
+const GRADIENTS = [
+  'from-[#026dde] to-[#00d4ff]',
+  'from-[#f59e0b] to-[#fbbf24]',
+  'from-[#10b981] to-[#34d399]',
+  'from-[#8b5cf6] to-[#a78bfa]',
+  'from-[#0891b2] to-[#22d3ee]',
+  'from-[#e11d48] to-[#f87171]',
+];
+
+const SHADOWS = [
+  'shadow-[#026dde]/20',
+  'shadow-[#f59e0b]/20',
+  'shadow-[#10b981]/20',
+  'shadow-[#8b5cf6]/20',
+  'shadow-[#0891b2]/20',
+  'shadow-[#e11d48]/20',
+];
+
 const PILLARS = [
   { icon: FileCheck, title: 'Transparency', description: 'Clear on what data is collected and why.' },
   { icon: Lock, title: 'Security', description: 'Safeguards built into the platform, not bolted on.' },
@@ -42,7 +62,10 @@ export default function SecurityCompliance() {
               </Button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 gap-4">
-              {PILLARS.map((p, i) => (
+              {PILLARS.map((p, i) => {
+                const gradient = GRADIENTS[i % GRADIENTS.length];
+                const shadow = SHADOWS[i % SHADOWS.length];
+                return (
                 <motion.div
                   key={p.title}
                   initial={{ opacity: 0, y: 16 }}
@@ -51,7 +74,7 @@ export default function SecurityCompliance() {
                   transition={{ delay: i * 0.08 }}
                   className="flex items-center gap-4 rounded-xl bg-card border border-border p-4"
                 >
-                  <div className="w-11 h-11 shrink-0 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                  <div className={`w-11 h-11 shrink-0 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg ${shadow} text-white`}>
                     <p.icon className="w-5 h-5" />
                   </div>
                   <div>
@@ -59,7 +82,8 @@ export default function SecurityCompliance() {
                     <p className="text-xs text-subtle">{p.description}</p>
                   </div>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </motion.div>

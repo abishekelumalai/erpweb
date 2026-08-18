@@ -18,21 +18,30 @@ import {
 
 } from 'lucide-react';
 
-// Maps each feature's base color to the same vibrant gradient + shadow pairing
-// used site-wide (ProblemsSection, TrustStats, Why Choose Us), so this page's
-// icon boxes look consistent instead of flat pastel tints.
-const GRADIENT_BY_COLOR: Record<string, { gradient: string; shadow: string }> = {
-  '#026dde': { gradient: 'from-[#026dde] to-[#00d4ff]', shadow: 'shadow-[#026dde]/20' },
-  '#f59e0b': { gradient: 'from-[#f59e0b] to-[#fbbf24]', shadow: 'shadow-[#f59e0b]/20' },
-  '#10b981': { gradient: 'from-[#10b981] to-[#34d399]', shadow: 'shadow-[#10b981]/20' },
-  '#8b5cf6': { gradient: 'from-[#8b5cf6] to-[#a78bfa]', shadow: 'shadow-[#8b5cf6]/20' },
-  '#ef4444': { gradient: 'from-[#ef4444] to-[#f87171]', shadow: 'shadow-[#ef4444]/20' },
-  '#25D366': { gradient: 'from-[#25D366] to-[#4ade80]', shadow: 'shadow-[#25D366]/20' },
-};
+import { buildMetadata } from '@/lib/metadata';
 
-function getGradient(color: string) {
-  return GRADIENT_BY_COLOR[color] ?? { gradient: `from-[${color}] to-[${color}]`, shadow: 'shadow-black/10' };
-}
+import { SITE_URL } from '@/lib/site-url';
+
+// Brand gradient palette used site-wide, cycled by index so grids of icons
+// (Key Benefits, the features checklist) show real color variety instead of
+// repeating a single feature-accent color for every item.
+const GRADIENTS = [
+  'from-[#026dde] to-[#00d4ff]',
+  'from-[#f59e0b] to-[#fbbf24]',
+  'from-[#10b981] to-[#34d399]',
+  'from-[#8b5cf6] to-[#a78bfa]',
+  'from-[#0891b2] to-[#22d3ee]',
+  'from-[#e11d48] to-[#f87171]',
+];
+
+const SHADOWS = [
+  'shadow-[#026dde]/20',
+  'shadow-[#f59e0b]/20',
+  'shadow-[#10b981]/20',
+  'shadow-[#8b5cf6]/20',
+  'shadow-[#0891b2]/20',
+  'shadow-[#e11d48]/20',
+];
 
 interface PageProps {
 
@@ -54,15 +63,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!feature) return { title: 'Feature Not Found' };
 
-  return {
+  return buildMetadata({
 
     title: `${feature.title}`,
 
     description: feature.description,
 
-    alternates: { canonical: `/features/${slug}` },
+    path: `/features/${slug}`,
 
-  };
+  });
 
 }
 
@@ -84,11 +93,11 @@ export default async function FeatureDetailPage({ params }: PageProps) {
 
     itemListElement: [
 
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://chaloschools.com' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
 
-      { '@type': 'ListItem', position: 2, name: 'Features', item: 'https://chaloschools.com/product' },
+      { '@type': 'ListItem', position: 2, name: 'Features', item: `${SITE_URL}/product` },
 
-      { '@type': 'ListItem', position: 3, name: feature.title, item: `https://chaloschools.com/features/${slug}` },
+      { '@type': 'ListItem', position: 3, name: feature.title, item: `${SITE_URL}/features/${slug}` },
 
     ],
 
@@ -228,7 +237,7 @@ export default async function FeatureDetailPage({ params }: PageProps) {
 
                   <div
 
-                    className={`w-10 h-10 rounded-lg bg-gradient-to-br ${getGradient(feature.color).gradient} flex items-center justify-center mb-4 shadow-lg ${getGradient(feature.color).shadow} text-white group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-10 h-10 rounded-lg bg-gradient-to-br ${GRADIENTS[index % GRADIENTS.length]} flex items-center justify-center mb-4 shadow-lg ${SHADOWS[index % SHADOWS.length]} text-white group-hover:scale-110 transition-transform duration-300`}
 
                   >
 
@@ -280,9 +289,7 @@ export default async function FeatureDetailPage({ params }: PageProps) {
 
                     <div
 
-                      className="w-6 h-6 rounded-full flex items-center justify-center mt-0.5 shrink-0"
-
-                      style={{ backgroundColor: feature.color }}
+                      className={`w-6 h-6 rounded-full bg-gradient-to-br ${GRADIENTS[index % GRADIENTS.length]} flex items-center justify-center mt-0.5 shrink-0 shadow-sm ${SHADOWS[index % SHADOWS.length]}`}
 
                     >
 
@@ -418,7 +425,7 @@ export default async function FeatureDetailPage({ params }: PageProps) {
 
               <Link href="/contact#contact-form">
 
-                Book an Introductory Demo
+                Book a Demo
 
                 <ArrowRight className="w-5 h-5 ml-2" />
 

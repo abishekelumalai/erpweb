@@ -187,6 +187,7 @@ export default function HeroSlideshow() {
           {/* Screen */}
           <div
             className="relative bg-card rounded-lg overflow-hidden aspect-[16/10]"
+            style={{ perspective: 1200 }}
             aria-live={autoRotating ? 'off' : 'polite'}
             aria-atomic="true"
           >
@@ -194,18 +195,20 @@ export default function HeroSlideshow() {
             <p className="sr-only" role="status">
               {`Slide ${index + 1} of ${SLIDES.length}: ${slide.title}`}
             </p>
-            {/* Slide content */}
+            {/* Slide content — flips around the Y axis like a page turning,
+                instead of a plain slide/fade. */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={slide.key}
-                initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, x: 80 }}
-                animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
-                exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, x: -80 }}
-                transition={{ duration: prefersReducedMotion ? 0.2 : 0.5, ease: 'easeInOut' }}
+                initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, rotateY: 90 }}
+                animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, rotateY: 0 }}
+                exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, rotateY: -90 }}
+                transition={{ duration: prefersReducedMotion ? 0.2 : 0.6, ease: 'easeInOut' }}
                 role="group"
                 aria-roledescription="slide"
                 aria-label={`${slide.title} (${index + 1} of ${SLIDES.length})`}
                 className="absolute inset-0"
+                style={{ transformStyle: 'preserve-3d', backfaceVisibility: 'hidden' }}
               >
                 {slide.image && !imageErrors.has(slide.key) ? (
                   <Image
@@ -242,20 +245,21 @@ export default function HeroSlideshow() {
           className="hidden md:block absolute -bottom-8 -left-10 w-[130px] z-10"
         >
           <div className="bg-[#1a1a1a] rounded-[1rem] p-1.5 shadow-2xl border border-black/20">
-            <div className="relative bg-card rounded-[0.7rem] overflow-hidden aspect-[3/4]">
+            <div className="relative bg-card rounded-[0.7rem] overflow-hidden aspect-[3/4]" style={{ perspective: 600 }}>
               {/* Camera dot */}
               <div className="h-3 flex items-center justify-center">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#1a1a1a]" />
               </div>
-              {/* Generic dashboard UI blocks — crossfades in sync with the monitor's active slide */}
+              {/* Generic dashboard UI blocks — flips in sync with the monitor's active slide */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={slide.key}
-                  initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
-                  transition={{ duration: 0.4 }}
+                  initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, rotateY: 90 }}
+                  animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, rotateY: 0 }}
+                  exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, rotateY: -90 }}
+                  transition={{ duration: prefersReducedMotion ? 0.2 : 0.6, ease: 'easeInOut' }}
                   className="px-2.5 pt-1 space-y-1.5"
+                  style={{ transformStyle: 'preserve-3d', backfaceVisibility: 'hidden' }}
                 >
                   <div className="flex items-center gap-1 mb-1">
                     <slide.icon className="w-3 h-3 shrink-0" style={{ color: SLIDE_ACCENTS[index] }} />
@@ -290,20 +294,21 @@ export default function HeroSlideshow() {
           className="hidden sm:block absolute -bottom-6 -right-4 md:-right-8 w-[92px] z-10"
         >
           <div className="bg-[#1a1a1a] rounded-[1.1rem] p-1.5 shadow-2xl border border-black/20">
-            <div className="relative bg-card rounded-[0.85rem] overflow-hidden aspect-[9/19]">
+            <div className="relative bg-card rounded-[0.85rem] overflow-hidden aspect-[9/19]" style={{ perspective: 600 }}>
               {/* Notch */}
               <div className="h-3 flex items-center justify-center">
                 <div className="w-8 h-1.5 bg-[#1a1a1a] rounded-full" />
               </div>
-              {/* Generic app UI blocks — crossfades in sync with the monitor's active slide */}
+              {/* Generic app UI blocks — flips in sync with the monitor's active slide */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={slide.key}
-                  initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
-                  transition={{ duration: 0.4 }}
+                  initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, rotateY: 90 }}
+                  animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, rotateY: 0 }}
+                  exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, rotateY: -90 }}
+                  transition={{ duration: prefersReducedMotion ? 0.2 : 0.6, ease: 'easeInOut' }}
                   className="px-2 pt-1 space-y-1.5"
+                  style={{ transformStyle: 'preserve-3d', backfaceVisibility: 'hidden' }}
                 >
                   <div className="flex items-center gap-1 mb-1.5">
                     <div className="w-4 h-4 rounded-full shrink-0 flex items-center justify-center" style={{ backgroundColor: SLIDE_ACCENTS[index] }}>

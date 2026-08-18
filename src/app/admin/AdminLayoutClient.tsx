@@ -21,6 +21,7 @@ import {
   History,
   Users,
   Eye,
+  Image as ImageIcon,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -36,6 +37,7 @@ const navItems = [
   { href: '/admin/users', label: 'Users', icon: Users, adminOnly: true },
   { href: '/admin/site-content', label: 'Site Content', icon: Settings2, adminOnly: false },
   { href: '/admin/section-visibility', label: 'Section Visibility', icon: Eye, adminOnly: false },
+  { href: '/admin/modules', label: 'Module Images', icon: ImageIcon, adminOnly: false },
   { href: '/admin/blogs', label: 'Blogs', icon: FileText, adminOnly: false },
   { href: '/admin/webinars', label: 'Webinars', icon: Video, adminOnly: false },
   { href: '/admin/case-studies', label: 'Case Studies', icon: BookOpen, adminOnly: false },

@@ -9,6 +9,8 @@ import {
   CheckCircle2, ArrowRight, GraduationCap, Building2,
   ClipboardCheck, Users, MessageCircle, BarChart3, Wallet,
 } from 'lucide-react';
+import { buildMetadata } from '@/lib/metadata';
+import { SITE_URL } from '@/lib/site-url';
 
 // Same brand gradient palette used site-wide (ProblemsSection, TrustStats),
 // cycled per feature so this grid's icon boxes aren't all identical.
@@ -42,11 +44,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { board } = await params;
   const solution = getSolutionBySlug(board);
   if (!solution) return { title: 'Solution Not Found' };
-  return {
+  return buildMetadata({
     title: `${solution.boardName} Solution`,
     description: solution.description,
-    alternates: { canonical: `/solutions/${board}` },
-  };
+    path: `/solutions/${board}`,
+  });
 }
 
 export default async function SolutionDetailPage({ params }: PageProps) {
@@ -59,9 +61,9 @@ export default async function SolutionDetailPage({ params }: PageProps) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://chaloschools.com' },
-      { '@type': 'ListItem', position: 2, name: 'Solutions', item: 'https://chaloschools.com' },
-      { '@type': 'ListItem', position: 3, name: solution.boardName, item: `https://chaloschools.com/solutions/${board}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Solutions', item: SITE_URL },
+      { '@type': 'ListItem', position: 3, name: solution.boardName, item: `${SITE_URL}/solutions/${board}` },
     ],
   };
 

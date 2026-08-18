@@ -2,13 +2,14 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, FileText } from 'lucide-react';
+import { buildMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Terms of Service',
   description:
     'Read the Terms of Service for ChaloSchools. These terms govern your use of our website and services.',
-  alternates: { canonical: '/terms' },
-};
+  path: '/terms',
+});
 
 export default function TermsOfServicePage() {
   return (

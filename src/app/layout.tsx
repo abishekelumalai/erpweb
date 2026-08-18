@@ -8,6 +8,7 @@ import { getThemeInitScript } from "@/lib/theme-config";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { getActiveTheme } from "@/lib/get-active-theme";
+import { SITE_URL } from "@/lib/site-url";
 
 const inter = Inter({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
 const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"], weight: ["600", "700", "800"], display: "swap" });
@@ -24,12 +25,11 @@ export const metadata: Metadata = {
   },
   description: "Fresh and New School Management Software – CHALO Schools Automated. Complete School Management Software which handles all the activities for operation of a school.",
   keywords: ["ChaloSchools", "School ERP", "School Management Software", "CBSE School Software", "IB School Software", "Cambridge School Software", "Fee Management", "Attendance Management", "India"],
-  icons: { icon: "/images/logo.png" },
-  metadataBase: new URL("https://chaloschools.com"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://chaloschools.com",
+    url: SITE_URL,
     siteName: "ChaloSchools",
     title: "ChaloSchools - Complete School ERP Software for Indian Schools",
     description: "Fresh and New School Management Software – CHALO Schools Automated. Complete School Management Software which handles all the activities for operation of a school.",
@@ -48,9 +48,15 @@ const jsonLd = {
   name: "Inspace Edu Solutions Private Limited",
   legalName: "Inspace Edu Solutions Private Limited",
   alternateName: "CHALO – Schools Automated",
-  url: "https://chaloschools.com",
-  logo: "https://chaloschools.com/images/logo.png",
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/logo.png`,
   description: "Fresh and New School Management Software – CHALO Schools Automated. Complete School Management Software which handles all the activities for operation of a school.",
+  foundingDate: "2003",
+  numberOfEmployees: {
+    "@type": "QuantitativeValue",
+    value: 350,
+  },
+  award: "Frost & Sullivan India School Automation - New Product Innovation Leadership Award, 2017",
   address: {
     "@type": "PostalAddress",
     streetAddress: "AA Business Centre, 4th Floor, Old Door No.94/1 & 2, New No.27 and 28, East Park Road, Shenoy Nagar",

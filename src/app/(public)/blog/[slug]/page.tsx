@@ -16,6 +16,8 @@ import { Calendar, User, ArrowLeft } from 'lucide-react'
 import { format } from 'date-fns'
 import ReactMarkdown from 'react-markdown'
 import { db } from '@/lib/db'
+import { buildMetadata } from '@/lib/metadata'
+import { SITE_URL } from '@/lib/site-url'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -26,11 +28,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const blog = await db.blogPost.findUnique({ where: { slug } })
   if (!blog) return { title: 'Blog Post Not Found' }
 
-  return {
+  return buildMetadata({
     title: `${blog.title}`,
     description: blog.excerpt || blog.content.substring(0, 160),
-    alternates: { canonical: `/blog/${slug}` },
-  }
+    path: `/blog/${slug}`,
+    ...(blog.coverImage ? { image: blog.coverImage } : {}),
+  })
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -51,20 +54,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     publisher: {
       '@type': 'Organization',
       name: 'ChaloSchools',
-      logo: { '@type': 'ImageObject', url: 'https://chaloschools.com/images/logo.png' },
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo.png` },
     },
     datePublished: (blog.publishedAt || blog.createdAt).toISOString(),
     dateModified: blog.updatedAt.toISOString(),
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://chaloschools.com/blog/${blog.slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/blog/${blog.slug}` },
   };
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://chaloschools.com' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://chaloschools.com/blog' },
-      { '@type': 'ListItem', position: 3, name: blog.title, item: `https://chaloschools.com/blog/${blog.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+      { '@type': 'ListItem', position: 3, name: blog.title, item: `${SITE_URL}/blog/${blog.slug}` },
     ],
   };
 
@@ -166,7 +169,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             See how ChaloSchools can streamline your operations.
           </p>
           <Button className="bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold rounded-full px-8 shadow-lg">
-            Book an Introductory Demo
+            Book a Demo
           </Button>
         </div>
       </article>

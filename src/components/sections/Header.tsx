@@ -10,8 +10,10 @@ import { Button } from '@/components/ui/button';
 
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+
 import {
-  Menu, ChevronDown, ArrowRight, Sparkles, UserPlus, GraduationCap, Users,
+  Menu, ChevronDown, ArrowRight, UserPlus, GraduationCap, Users,
   IndianRupee, CalendarDays, ClipboardCheck, FileText, MessageCircle, Package,
   Wallet, BookOpen, Bus, TrendingUp, Bot, Smartphone, ShieldCheck,
   type LucideIcon,
@@ -61,26 +63,25 @@ const navDropdowns: Record<string, NavDropdownData> = {
 
     gridClass: 'grid-cols-3',
 
-    footer: { label: 'View All 14 Modules', href: '/product' },
+    footer: { label: 'View All Modules', href: '/product' },
 
     sections: [
       { title: 'Core Modules', items: [
-        { label: 'AI Feature Suite', href: '/platform-capabilities', icon: Sparkles },
-        { label: 'Admissions', href: '/features/admissions', icon: UserPlus },
-        { label: 'Students', href: '/product#student', icon: GraduationCap },
-        { label: 'Staff & Payroll', href: '/features/staff-hr', icon: Users },
-        { label: 'Fees & Finance', href: '/features/fees', icon: IndianRupee },
-        { label: 'Timetable', href: '/features/timetable', icon: CalendarDays },
-        { label: 'Attendance', href: '/features/attendance', icon: ClipboardCheck },
-        { label: 'Exams & Marks', href: '/features/exams', icon: FileText },
-        { label: 'Communication', href: '/product#communication', icon: MessageCircle },
+        { label: 'Admissions Management', href: '/features/admissions', icon: UserPlus },
+        { label: 'Student Management', href: '/product#student', icon: GraduationCap },
+        { label: 'Staff Management', href: '/features/staff-hr', icon: Users },
+        { label: 'Fee Management', href: '/features/fees', icon: IndianRupee },
+        { label: 'AI Powered Timetable & Scheduling', href: '/features/timetable', icon: CalendarDays },
+        { label: 'Attendance Management', href: '/features/attendance', icon: ClipboardCheck },
+        { label: 'Academic & Examination', href: '/features/exams', icon: FileText },
+        { label: 'Communication Management', href: '/product#communication', icon: MessageCircle },
       ]},
       { title: 'Add-on Modules', items: [
-        { label: 'Inventory Tracking', href: '/product#inventory', icon: Package },
-        { label: 'Payroll', href: '/product#payroll', icon: Wallet },
-        { label: 'Library', href: '/features/library', icon: BookOpen },
-        { label: 'Transport', href: '/features/transport', icon: Bus },
-        { label: 'Performance Insights', href: '/product#performance-insights', icon: TrendingUp },
+        { label: 'Academic Inventory Tracking', href: '/product#inventory', icon: Package },
+        { label: 'Payroll Management', href: '/product#payroll', icon: Wallet },
+        { label: 'Library Management', href: '/features/library', icon: BookOpen },
+        { label: 'Transport Management', href: '/features/transport', icon: Bus },
+        { label: 'Inspace Performance Insights', href: '/product#performance-insights', icon: TrendingUp },
         { label: 'AI Secretary', href: '/product#ai-secretary', icon: Bot },
       ]},
       { title: 'More', items: [
@@ -97,8 +98,6 @@ const navDropdowns: Record<string, NavDropdownData> = {
     sections: [
 
       { title: 'By Board', items: [
-
-        { label: 'Pre School', href: '/solutions/pre-school' },
 
         { label: 'IB Schools', href: '/solutions/ib' },
 
@@ -123,6 +122,12 @@ const navDropdowns: Record<string, NavDropdownData> = {
         { label: 'Parents', href: '/solutions/role/parents' },
 
         { label: 'Accountants', href: '/solutions/role/accountants' },
+
+        { label: 'Administrators', href: '/solutions/role/administrators' },
+
+        { label: 'Coordinator', href: '/solutions/role/coordinator' },
+
+        { label: 'Transport Incharge', href: '/solutions/role/transport-incharge' },
 
       ]},
 
@@ -161,8 +166,6 @@ const navDropdowns: Record<string, NavDropdownData> = {
       { label: 'Data Protection & Security', href: '/security' },
 
       { label: 'Our Team', href: '/about' },
-
-      { label: 'Our Customers', href: '/about' },
 
       { label: 'Careers', href: '/careers' },
 
@@ -547,10 +550,11 @@ export default function Header() {
 
           <div className="hidden lg:flex items-center gap-2">
 
+            <LanguageSwitcher />
 
             <Button asChild size="sm" className="text-xs bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-4 h-8 shadow-sm shadow-primary/20">
 
-              <Link href="/contact#contact-form">Book an Introductory Demo <ArrowRight className="w-3 h-3 ml-1" /></Link>
+              <Link href="/contact#contact-form">Book a Demo <ArrowRight className="w-3 h-3 ml-1" /></Link>
 
             </Button>
 
@@ -590,7 +594,7 @@ export default function Header() {
 
                   <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">
 
-                    <Link href="/contact#contact-form">Book an Introductory Demo <ArrowRight className="w-4 h-4 ml-2" /></Link>
+                    <Link href="/contact#contact-form">Book a Demo <ArrowRight className="w-4 h-4 ml-2" /></Link>
 
                   </Button>
 

@@ -14,7 +14,7 @@ const STEP_COLORS = [
 const NODE_COLORS = ['#026dde', '#f59e0b', '#10b981'];
 
 const FALLBACK_STEPS = [
-  { title: 'Book an Introductory Demo', description: 'Fill out the form and our team will schedule a personalized demo for your school.' },
+  { title: 'Book a Demo', description: 'Fill out the form and our team will schedule a personalized demo for your school.' },
   { title: 'Quick Setup', description: 'Our team handles complete data migration and customization for your school.' },
   { title: 'Go Live', description: 'Start using Chalo Schools with full training and 24/7 support for your team.' },
 ];

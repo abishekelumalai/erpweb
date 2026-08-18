@@ -16,49 +16,6 @@ import { useEffect, useRef, useState } from 'react';
 
 import HeroSlideshow from './HeroSlideshow';
 
-// --- Word-by-word reveal: blur 10px -> 0, staggered ---
-
-function WordReveal({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) {
-
-  const reduce = useReducedMotion();
-
-  const words = text.split(' ');
-
-  if (reduce) return <span className={className}>{text}</span>;
-
-  return (
-
-    <span className={className}>
-
-      {words.map((w, i) => (
-
-        <motion.span
-
-          key={`${w}-${i}`}
-
-          className="inline-block"
-
-          initial={{ opacity: 0, filter: 'blur(16px)', y: 14 }}
-
-          animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
-
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: delay + i * 0.13 }}
-
-        >
-
-          {w}
-
-          {i < words.length - 1 ? '\u00A0' : ''}
-
-        </motion.span>
-
-      ))}
-
-    </span>
-
-  );
-
-}
 
 // --- Typing/deleting loop over a set of phrases ---
 
@@ -280,15 +237,23 @@ export default function HeroSection() {
 
               {/* Word-by-word blur reveal headline */}
 
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.05] tracking-tight text-white">
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.05] tracking-tight text-white text-shine" aria-label={`${t('titleLine1Pre')} ${t('titleHighlight')} ${t('titleLine2')} ${t('titleLine3')}`}>
 
-                <WordReveal text={t('titleLine1Pre')} delay={0.2} />{' '}
+                {t('titleLine1Pre')}{' '}
 
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] to-[#026dde]">{t('titleHighlight')}</span><br />
 
-                <WordReveal text={t('titleLine2')} delay={0.45} /><br />
+                {t('titleLine2')}<br />
 
-                <WordReveal text={t('titleLine3')} delay={0.6} />
+                {t('titleLine3')}
+
+                {/* Shine overlay — same text, clipped to letterforms */}
+                <span aria-hidden="true" className="text-shine-overlay font-display text-4xl sm:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.05] tracking-tight">
+                  {t('titleLine1Pre')}{' '}
+                  <span>{t('titleHighlight')}</span><br />
+                  {t('titleLine2')}<br />
+                  {t('titleLine3')}
+                </span>
 
               </h1>
 

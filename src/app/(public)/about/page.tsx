@@ -1,21 +1,22 @@
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
   Target, Eye, Heart, Shield, Zap, Users, Award, TrendingUp,
-  ArrowRight, GraduationCap, BookOpen,
+  ArrowRight, GraduationCap, BookOpen, Building2, Globe,
 } from 'lucide-react';
 import { db } from '@/lib/db';
 import { getSiteContent, getContent } from '@/lib/get-site-content';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'About Us',
   description:
     'Learn about ChaloSchools – CHALO Schools Automated, built by Inspace Edu Solutions Private Limited. We serve 200+ schools and 1.5+ Million students across India with a complete school management ERP.',
-  alternates: { canonical: '/about' },
-};
+  path: '/about',
+});
 
 const FALLBACK_MISSION = 'Giving every Indian school access to the same efficient, data-driven administration tools — currently serving 200+ schools and 1.5+ Million students across India, with more joining every month.';
 const FALLBACK_VISION = 'To be the most trusted school management platform, making quality education management accessible to every school and empowering excellence in academic performance.';
@@ -23,6 +24,26 @@ const FALLBACK_STORY_1 = 'ChaloSchools – Schools Automated — is a product of
 const FALLBACK_STORY_2 = 'What started as an effort to digitize school operations has grown into a comprehensive platform. Today, ChaloSchools handles all the activities for the operation of a school — from admissions and attendance to fees, transport, library, payroll, and more.';
 const FALLBACK_STORY_3 = "We've built ChaloSchools specifically for Indian schools — supporting Pre School, State & CBSE, IB, Cambridge, Montessori, and Matriculation/Higher Education curricula. Every feature is designed with input from real school leaders, teachers, and parents.";
 const FALLBACK_STORY_4 = 'Our passionate team of educators and engineers works tirelessly to ensure that every school, regardless of size or budget, has access to world-class management technology.';
+
+// Brand gradient palette used site-wide, cycled by index so icon boxes look
+// consistent with the rest of the site.
+const GRADIENTS = [
+  'from-[#026dde] to-[#00d4ff]',
+  'from-[#f59e0b] to-[#fbbf24]',
+  'from-[#10b981] to-[#34d399]',
+  'from-[#8b5cf6] to-[#a78bfa]',
+  'from-[#0891b2] to-[#22d3ee]',
+  'from-[#e11d48] to-[#f87171]',
+];
+
+const SHADOWS = [
+  'shadow-[#026dde]/20',
+  'shadow-[#f59e0b]/20',
+  'shadow-[#10b981]/20',
+  'shadow-[#8b5cf6]/20',
+  'shadow-[#0891b2]/20',
+  'shadow-[#e11d48]/20',
+];
 
 const whyChooseData = [
   {
@@ -55,6 +76,13 @@ const whyChooseData = [
     title: 'Continuous Innovation',
     description: 'Monthly feature releases driven by real feedback from school leaders, teachers, and parents.',
   },
+];
+
+const milestoneStats = [
+  { icon: Building2, value: '2003', label: 'Incorporated' },
+  { icon: Users, value: '350+', label: 'Team members' },
+  { icon: TrendingUp, value: '80%', label: 'Repeat business rate' },
+  { icon: Globe, value: '4', label: 'Countries — India, Singapore, Malaysia, Oman' },
 ];
 
 const leadershipItems = [
@@ -192,6 +220,49 @@ export default async function AboutPage() {
         </div>
       </section>
 
+      {/* Company Milestones & Recognition */}
+      <section className="py-12 md:py-16 bg-surface-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
+              Built on Two Decades of Experience
+            </h2>
+            <p className="text-subtle text-lg max-w-2xl mx-auto">
+              ChaloSchools is built by Inspace Technologies — an established enterprise software company with a track record schools can trust.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            {milestoneStats.map((stat, i) => {
+              const IconComp = stat.icon;
+              const gradient = GRADIENTS[i % GRADIENTS.length];
+              const shadow = SHADOWS[i % SHADOWS.length];
+              return (
+                <Card key={stat.label} className="border-border text-center">
+                  <CardContent className="pt-6">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center mx-auto mb-4 shadow-lg ${shadow} text-white`}>
+                      <IconComp className="w-6 h-6" />
+                    </div>
+                    <div className="text-2xl md:text-3xl font-bold text-heading mb-1">{stat.value}</div>
+                    <p className="text-xs text-subtle">{stat.label}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+          <p className="text-subtle text-center max-w-2xl mx-auto mb-8">
+            Beyond India, Inspace Technologies supports school and business automation
+            engagements in Singapore, Malaysia, and Oman — the same platform, backed by
+            the same team, wherever your school operates.
+          </p>
+          <div className="flex justify-center">
+            <Badge className="px-4 py-2 text-sm font-medium bg-[#f59e0b]/10 text-[#f59e0b] border-[#f59e0b]/20 rounded-full">
+              <Award className="w-4 h-4 mr-2" />
+              Frost &amp; Sullivan India School Automation — New Product Innovation Leadership Award, 2017
+            </Badge>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us */}
       <section className="py-12 md:py-16 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -204,16 +275,18 @@ export default async function AboutPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyChooseData.map((item) => {
+            {whyChooseData.map((item, i) => {
               const IconComp = item.icon;
+              const gradient = GRADIENTS[i % GRADIENTS.length];
+              const shadow = SHADOWS[i % SHADOWS.length];
               return (
                 <Card
                   key={item.title}
                   className="group border border-border hover:border-[#026dde]/30 hover:shadow-lg transition-all duration-300"
                 >
                   <CardContent className="pt-6">
-                    <div className="w-10 h-10 rounded-lg bg-[#026dde]/10 flex items-center justify-center mb-4">
-                      <IconComp className="w-5 h-5 text-primary" />
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center mb-4 shadow-lg ${shadow} text-white`}>
+                      <IconComp className="w-5 h-5" />
                     </div>
                     <h3 className="text-lg font-semibold text-heading mb-2">
                       {item.title}

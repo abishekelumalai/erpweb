@@ -17,6 +17,8 @@ import { Calendar, MapPin, ArrowLeft } from 'lucide-react'
 import { format } from 'date-fns'
 import ReactMarkdown from 'react-markdown'
 import { db } from '@/lib/db'
+import { buildMetadata } from '@/lib/metadata'
+import { SITE_URL } from '@/lib/site-url'
 
 interface NewsPageProps {
   params: Promise<{ slug: string }>
@@ -27,11 +29,12 @@ export async function generateMetadata({ params }: NewsPageProps): Promise<Metad
   const item = await db.newsEvent.findUnique({ where: { slug } })
   if (!item) return { title: 'News Not Found' }
 
-  return {
+  return buildMetadata({
     title: `${item.title}`,
     description: item.excerpt || item.content?.substring(0, 160) || item.title,
-    alternates: { canonical: `/news/${slug}` },
-  }
+    path: `/news/${slug}`,
+    ...(item.coverImage ? { image: item.coverImage } : {}),
+  })
 }
 
 export default async function NewsArticlePage({ params }: NewsPageProps) {
@@ -63,20 +66,20 @@ export default async function NewsArticlePage({ params }: NewsPageProps) {
     publisher: {
       '@type': 'Organization',
       name: 'ChaloSchools',
-      logo: { '@type': 'ImageObject', url: 'https://chaloschools.com/images/logo.png' },
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo.png` },
     },
     datePublished: item.createdAt.toISOString(),
     dateModified: item.updatedAt.toISOString(),
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://chaloschools.com/news/${item.slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/news/${item.slug}` },
   };
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://chaloschools.com' },
-      { '@type': 'ListItem', position: 2, name: 'News & Events', item: 'https://chaloschools.com/news' },
-      { '@type': 'ListItem', position: 3, name: item.title, item: `https://chaloschools.com/news/${item.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'News & Events', item: `${SITE_URL}/news` },
+      { '@type': 'ListItem', position: 3, name: item.title, item: `${SITE_URL}/news/${item.slug}` },
     ],
   };
 

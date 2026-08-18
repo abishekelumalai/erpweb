@@ -6,13 +6,14 @@ import { Badge } from '@/components/ui/badge';
 import {
   ArrowRight, CheckCircle2, XCircle, MinusCircle, Sparkles, Shield,
 } from 'lucide-react';
+import { buildMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'ChaloSchools vs Alternatives | Compare School Management Software',
   description:
     'Compare ChaloSchools with Excel spreadsheets, WhatsApp groups, and generic ERP systems. See why schools choose a purpose-built school management platform.',
-  alternates: { canonical: '/compare' },
-};
+  path: '/compare',
+});
 
 type Support = 'yes' | 'no' | 'partial';
 
@@ -286,7 +287,7 @@ export default function ComparePage() {
               asChild
             >
               <Link href="/contact">
-                Book an Introductory Demo
+                Book a Demo
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>

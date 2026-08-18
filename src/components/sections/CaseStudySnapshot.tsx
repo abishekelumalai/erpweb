@@ -6,6 +6,26 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, TrendingUp, MapPin } from 'lucide-react';
 
+// Brand gradient palette used site-wide, cycled by index so icon boxes look
+// consistent with the rest of the site.
+const GRADIENTS = [
+  'from-[#026dde] to-[#00d4ff]',
+  'from-[#f59e0b] to-[#fbbf24]',
+  'from-[#10b981] to-[#34d399]',
+  'from-[#8b5cf6] to-[#a78bfa]',
+  'from-[#0891b2] to-[#22d3ee]',
+  'from-[#e11d48] to-[#f87171]',
+];
+
+const SHADOWS = [
+  'shadow-[#026dde]/20',
+  'shadow-[#f59e0b]/20',
+  'shadow-[#10b981]/20',
+  'shadow-[#8b5cf6]/20',
+  'shadow-[#0891b2]/20',
+  'shadow-[#e11d48]/20',
+];
+
 interface CaseStudyStat { label: string; value: string }
 
 interface CaseStudyCard {
@@ -66,17 +86,21 @@ export default function CaseStudySnapshot({ caseStudy }: { caseStudy?: CaseStudy
               viewport={{ once: true }}
               className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4"
             >
-              {stats.map((stat, i) => (
+              {stats.map((stat, i) => {
+                const gradient = GRADIENTS[i % GRADIENTS.length];
+                const shadow = SHADOWS[i % SHADOWS.length];
+                return (
                 <div key={i} className="flex items-center gap-4 rounded-2xl border border-border bg-surface-2 p-5">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <TrendingUp className="w-6 h-6 text-primary" />
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shrink-0 shadow-lg ${shadow} text-white`}>
+                    <TrendingUp className="w-6 h-6" />
                   </div>
                   <div>
                     <p className="text-2xl font-extrabold text-heading">{stat.value}</p>
                     <p className="text-sm text-subtle">{stat.label}</p>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </motion.div>
           )}
         </div>

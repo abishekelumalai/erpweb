@@ -1194,6 +1194,43 @@ html { background-color: var(--footer-bg); }
 .card-shine::before { content:''; position:absolute; top:0; left:0; width:60%; height:100%; background:linear-gradient(100deg, transparent, color-mix(in srgb, #fff 35%, transparent), transparent); transform:translateX(-120%) skewX(-20deg); pointer-events:none; }
 .card-shine:hover::before { animation: shine-sweep .9s ease; }
 
+/* Continuous glitter/shine band sweeping left-to-right through text — the
+   gradient is clipped to the text's own glyph shapes (background-clip:
+   text), so it reads as light glinting across the letters rather than a
+   rectangle sliding over the element. A nested child with its own explicit
+   color/background (e.g. an accent-colored span inside a headline) is
+   unaffected — it keeps rendering its own color, not this gradient. */
+.text-shine {
+  position: relative;
+  color: #fff;
+}
+.text-shine-overlay {
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 20%,
+    rgba(0,212,255,0.6) 35%,
+    rgba(0,212,255,0.9) 50%,
+    rgba(0,212,255,0.6) 65%,
+    transparent 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shine 3s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes text-shine {
+  0% { background-position: -150% center; }
+  100% { background-position: 150% center; }
+}
+
 /* conic-gradient rotating border (uses @property --angle) */
 .conic-border { position: relative; z-index: 0; }
 .conic-border::before { content:''; position:absolute; inset:-2px; z-index:-1; border-radius:inherit; background:conic-gradient(from var(--angle), var(--primary), var(--accent), var(--primary)); animation: spin-border 4s linear infinite; }

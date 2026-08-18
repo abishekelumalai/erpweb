@@ -1,3 +1,5 @@
+import { SITE_URL } from '@/lib/site-url';
+
 interface TestimonialForSchema {
   name: string;
   role: string | null;
@@ -25,11 +27,11 @@ export default function SoftwareApplicationStructuredData({ testimonials }: { te
     applicationSubCategory: 'School Management Software',
     operatingSystem: 'Web, iOS, Android',
     description: 'ChaloSchools is a complete school management ERP for K-12 schools in India, handling admissions, fee management, attendance, timetable scheduling, and parent communication in one platform.',
-    url: 'https://chaloschools.com',
+    url: SITE_URL,
     publisher: {
       '@type': 'Organization',
       name: 'Inspace Edu Solutions Private Limited',
-      url: 'https://chaloschools.com',
+      url: SITE_URL,
     },
     ...(averageRating !== null && {
       aggregateRating: {

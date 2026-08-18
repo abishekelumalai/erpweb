@@ -8,6 +8,28 @@ import { Badge } from '@/components/ui/badge';
 import {
   CheckCircle2, ArrowRight, UserCircle2, GraduationCap,
 } from 'lucide-react';
+import { buildMetadata } from '@/lib/metadata';
+import { SITE_URL } from '@/lib/site-url';
+
+// Brand gradient palette used site-wide, cycled by index so icon boxes look
+// consistent with the rest of the site.
+const GRADIENTS = [
+  'from-[#026dde] to-[#00d4ff]',
+  'from-[#f59e0b] to-[#fbbf24]',
+  'from-[#10b981] to-[#34d399]',
+  'from-[#8b5cf6] to-[#a78bfa]',
+  'from-[#0891b2] to-[#22d3ee]',
+  'from-[#e11d48] to-[#f87171]',
+];
+
+const SHADOWS = [
+  'shadow-[#026dde]/20',
+  'shadow-[#f59e0b]/20',
+  'shadow-[#10b981]/20',
+  'shadow-[#8b5cf6]/20',
+  'shadow-[#0891b2]/20',
+  'shadow-[#e11d48]/20',
+];
 
 interface PageProps {
   params: Promise<{ role: string }>;
@@ -21,11 +43,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { role } = await params;
   const data = getRoleBySlug(role);
   if (!data) return { title: 'Solution Not Found' };
-  return {
+  return buildMetadata({
     title: `ChaloSchools for ${data.roleName}`,
     description: data.description,
-    alternates: { canonical: `/solutions/role/${role}` },
-  };
+    path: `/solutions/role/${role}`,
+  });
 }
 
 export default async function RoleSolutionPage({ params }: PageProps) {
@@ -38,9 +60,9 @@ export default async function RoleSolutionPage({ params }: PageProps) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://chaloschools.com' },
-      { '@type': 'ListItem', position: 2, name: 'Solutions', item: 'https://chaloschools.com' },
-      { '@type': 'ListItem', position: 3, name: data.roleName, item: `https://chaloschools.com/solutions/role/${role}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Solutions', item: SITE_URL },
+      { '@type': 'ListItem', position: 3, name: data.roleName, item: `${SITE_URL}/solutions/role/${role}` },
     ],
   };
 
@@ -79,19 +101,23 @@ export default async function RoleSolutionPage({ params }: PageProps) {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {data.points.map((point, index) => (
+            {data.points.map((point, index) => {
+              const gradient = GRADIENTS[index % GRADIENTS.length];
+              const shadow = SHADOWS[index % SHADOWS.length];
+              return (
               <Card
                 key={index}
                 className="group border border-border hover:border-[#026dde]/30 hover:shadow-lg transition-all duration-300"
               >
                 <CardContent className="pt-6 flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#026dde]/10 flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center shrink-0 shadow-lg ${shadow} text-white`}>
+                    <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <p className="text-heading font-medium leading-relaxed">{point}</p>
                 </CardContent>
               </Card>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -112,7 +138,7 @@ export default async function RoleSolutionPage({ params }: PageProps) {
               asChild
             >
               <Link href="/contact#contact-form">
-                Book an Introductory Demo
+                Book a Demo
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>

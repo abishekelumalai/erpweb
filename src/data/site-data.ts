@@ -1170,6 +1170,78 @@ export const roles: RoleData[] = [
 
   },
 
+  {
+
+    slug: 'administrators',
+
+    roleName: 'Administrators',
+
+    headline: 'Run the Front Office Without the Paper Trail',
+
+    description: 'Handle admissions, front-office enquiries, and day-to-day school administration from one dashboard — no more digging through registers or scattered spreadsheets.',
+
+    points: [
+
+      'Centralized front office & visitor management',
+
+      'Digital admissions processing, from enquiry to enrolment',
+
+      'Document verification & digital record-keeping',
+
+      'Cross-department coordination without endless phone calls',
+
+    ],
+
+  },
+
+  {
+
+    slug: 'coordinator',
+
+    roleName: 'Coordinator',
+
+    headline: 'Keep Every Department in Sync, Automatically',
+
+    description: 'Coordinate timetables, exams, and academic schedules across departments without conflicts — with AI-powered scheduling that adjusts the moment something changes.',
+
+    points: [
+
+      'AI-powered, conflict-free timetable generation',
+
+      'Exam scheduling & academic calendar management',
+
+      'Real-time substitution handling on teacher absence',
+
+      'Cross-department reporting for management reviews',
+
+    ],
+
+  },
+
+  {
+
+    slug: 'transport-incharge',
+
+    roleName: 'Transport Incharge',
+
+    headline: 'Every Bus, Every Route, Tracked in Real Time',
+
+    description: 'Manage routes, vehicles, and driver records from one place, with live GPS tracking that keeps parents informed and your fleet accountable.',
+
+    points: [
+
+      'Real-time GPS tracking for every bus',
+
+      'Route & stop planning across the fleet',
+
+      'Driver & vehicle record management',
+
+      'Automated parent notifications on pickup/drop',
+
+    ],
+
+  },
+
 ];
 
 export function getFeatureBySlug(slug: string): FeatureData | undefined {

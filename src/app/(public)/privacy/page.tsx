@@ -2,13 +2,14 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Shield } from 'lucide-react';
+import { buildMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Privacy Policy',
   description:
     'Learn how ChaloSchools collects, uses, and protects your personal information. We are committed to safeguarding the privacy of our users.',
-  alternates: { canonical: '/privacy' },
-};
+  path: '/privacy',
+});
 
 export default function PrivacyPolicyPage() {
   return (

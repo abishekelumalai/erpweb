@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -7,12 +8,32 @@ import {
   Heart, Zap, GraduationCap, Globe, Users, ArrowRight, Send, Briefcase,
 } from 'lucide-react';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Careers',
   description:
     'Join the ChaloSchools team and help transform Indian schools with technology. Explore open positions in engineering, sales, product, and more.',
-  alternates: { canonical: '/careers' },
-};
+  path: '/careers',
+});
+
+// Brand gradient palette used site-wide, cycled by index so icon boxes look
+// consistent with the rest of the site.
+const GRADIENTS = [
+  'from-[#026dde] to-[#00d4ff]',
+  'from-[#f59e0b] to-[#fbbf24]',
+  'from-[#10b981] to-[#34d399]',
+  'from-[#8b5cf6] to-[#a78bfa]',
+  'from-[#0891b2] to-[#22d3ee]',
+  'from-[#e11d48] to-[#f87171]',
+];
+
+const SHADOWS = [
+  'shadow-[#026dde]/20',
+  'shadow-[#f59e0b]/20',
+  'shadow-[#10b981]/20',
+  'shadow-[#8b5cf6]/20',
+  'shadow-[#0891b2]/20',
+  'shadow-[#e11d48]/20',
+];
 
 const cultureValues = [
   {
@@ -82,16 +103,18 @@ export default function CareersPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cultureValues.map((item) => {
+            {cultureValues.map((item, i) => {
               const IconComp = item.icon;
+              const gradient = GRADIENTS[i % GRADIENTS.length];
+              const shadow = SHADOWS[i % SHADOWS.length];
               return (
                 <Card
                   key={item.title}
                   className="group border border-border hover:border-[#026dde]/30 hover:shadow-lg transition-all duration-300"
                 >
                   <CardContent className="pt-6">
-                    <div className="w-10 h-10 rounded-lg bg-[#026dde]/10 flex items-center justify-center mb-4">
-                      <IconComp className="w-5 h-5 text-primary" />
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center mb-4 shadow-lg ${shadow} text-white`}>
+                      <IconComp className="w-5 h-5" />
                     </div>
                     <h3 className="text-lg font-semibold text-heading mb-2">
                       {item.title}

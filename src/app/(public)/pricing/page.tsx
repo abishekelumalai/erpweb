@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 
+import { buildMetadata } from '@/lib/metadata';
+
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
@@ -14,17 +16,12 @@ import {
 
 } from 'lucide-react';
 
-export const metadata: Metadata = {
-
+export const metadata: Metadata = buildMetadata({
   title: 'Pricing',
-
   description:
-
     'Simple, transparent pricing for schools of every size — view plans and what\'s included. Pay per student, per year. No hidden costs, no long-term lock-in.',
-
-  alternates: { canonical: '/pricing' },
-
-};
+  path: '/pricing',
+});
 
 const tiers = [
 
@@ -120,13 +117,13 @@ const tiers = [
 
 const includedInEveryPlan = [
 
-  { icon: GraduationCap, label: 'Free onboarding & data migration' },
+  { icon: GraduationCap, label: 'Free onboarding & data migration', gradient: 'from-[#026dde] to-[#00d4ff]', shadow: 'shadow-[#026dde]/20' },
 
-  { icon: HeadphonesIcon, label: 'Free training for staff' },
+  { icon: HeadphonesIcon, label: 'Free training for staff', gradient: 'from-[#f59e0b] to-[#fbbf24]', shadow: 'shadow-[#f59e0b]/20' },
 
-  { icon: Smartphone, label: 'Mobile apps for parents, teachers & management' },
+  { icon: Smartphone, label: 'Mobile apps for parents, teachers & management', gradient: 'from-[#10b981] to-[#34d399]', shadow: 'shadow-[#10b981]/20' },
 
-  { icon: ShieldCheck, label: 'Data security & cloud backup' },
+  { icon: ShieldCheck, label: 'Data security & cloud backup', gradient: 'from-[#8b5cf6] to-[#a78bfa]', shadow: 'shadow-[#8b5cf6]/20' },
 
 ];
 
@@ -220,31 +217,31 @@ export default function PricingPage() {
 
             {tiers.map((tier) => (
 
-              <div
-
-                key={tier.name}
-
-                className={`relative flex flex-col rounded-2xl border p-8 transition-all card-lift card-shine ${
-
-                  tier.highlight
-
-                    ? 'border-primary shadow-xl shadow-primary/10 bg-card scale-[1.02]'
-
-                    : 'border-border bg-card hover:border-primary/30 hover:shadow-lg'
-
-                }`}
-
-              >
+              <div key={tier.name} className="relative">
 
                 {tier.highlight && (
 
-                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground border-0 rounded-full px-4">
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-primary text-primary-foreground border-0 rounded-full px-4">
 
                     Most Popular
 
                   </Badge>
 
                 )}
+
+                <div
+
+                  className={`relative flex flex-col h-full rounded-2xl border p-8 transition-all card-lift card-shine ${
+
+                    tier.highlight
+
+                      ? 'border-primary shadow-xl shadow-primary/10 bg-card scale-[1.02]'
+
+                      : 'border-border bg-card hover:border-primary/30 hover:shadow-lg'
+
+                  }`}
+
+                >
 
                 <h3 className="text-2xl font-bold text-heading">{tier.name}</h3>
 
@@ -290,6 +287,8 @@ export default function PricingPage() {
 
                 </Button>
 
+                </div>
+
               </div>
 
             ))}
@@ -324,13 +323,13 @@ export default function PricingPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            {includedInEveryPlan.map(({ icon: Icon, label }) => (
+            {includedInEveryPlan.map(({ icon: Icon, label, gradient, shadow }) => (
 
               <div key={label} className="flex flex-col items-center text-center gap-3 bg-card rounded-xl border border-border p-6">
 
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg ${shadow} text-white`}>
 
-                  <Icon className="w-6 h-6 text-primary" />
+                  <Icon className="w-6 h-6" />
 
                 </div>
 

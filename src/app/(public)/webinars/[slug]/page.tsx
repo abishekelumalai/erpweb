@@ -17,6 +17,8 @@ import { Calendar, Clock, ArrowLeft, User, Play } from 'lucide-react'
 import { format } from 'date-fns'
 import ReactMarkdown from 'react-markdown'
 import { db } from '@/lib/db'
+import { buildMetadata } from '@/lib/metadata'
+import { SITE_URL } from '@/lib/site-url'
 
 interface WebinarPageProps {
   params: Promise<{ slug: string }>
@@ -27,11 +29,12 @@ export async function generateMetadata({ params }: WebinarPageProps): Promise<Me
   const webinar = await db.webinar.findUnique({ where: { slug } })
   if (!webinar) return { title: 'Webinar Not Found' }
 
-  return {
+  return buildMetadata({
     title: `${webinar.title}`,
     description: webinar.description || webinar.title,
-    alternates: { canonical: `/webinars/${slug}` },
-  }
+    path: `/webinars/${slug}`,
+    ...(webinar.coverImage ? { image: webinar.coverImage } : {}),
+  })
 }
 
 export default async function WebinarPage({ params }: WebinarPageProps) {
@@ -53,8 +56,8 @@ export default async function WebinarPage({ params }: WebinarPageProps) {
       eventStatus: 'https://schema.org/EventScheduled',
     }),
     eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
-    location: { '@type': 'VirtualLocation', url: `https://chaloschools.com/webinars/${webinar.slug}` },
-    organizer: { '@type': 'Organization', name: 'ChaloSchools', url: 'https://chaloschools.com' },
+    location: { '@type': 'VirtualLocation', url: `${SITE_URL}/webinars/${webinar.slug}` },
+    organizer: { '@type': 'Organization', name: 'ChaloSchools', url: SITE_URL },
     ...(webinar.speaker && {
       performer: { '@type': 'Person', name: webinar.speaker, jobTitle: webinar.speakerTitle || undefined },
     }),
@@ -64,9 +67,9 @@ export default async function WebinarPage({ params }: WebinarPageProps) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://chaloschools.com' },
-      { '@type': 'ListItem', position: 2, name: 'Webinars', item: 'https://chaloschools.com/webinars' },
-      { '@type': 'ListItem', position: 3, name: webinar.title, item: `https://chaloschools.com/webinars/${webinar.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Webinars', item: `${SITE_URL}/webinars` },
+      { '@type': 'ListItem', position: 3, name: webinar.title, item: `${SITE_URL}/webinars/${webinar.slug}` },
     ],
   };
 

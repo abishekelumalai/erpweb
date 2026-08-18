@@ -16,6 +16,8 @@ import {
 import { MapPin, Building2, ArrowLeft, TrendingUp, Users, Award } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import { db } from '@/lib/db'
+import { buildMetadata } from '@/lib/metadata'
+import { SITE_URL } from '@/lib/site-url'
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>
@@ -26,11 +28,12 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
   const cs = await db.caseStudy.findUnique({ where: { slug } })
   if (!cs) return { title: 'Case Study Not Found' }
 
-  return {
+  return buildMetadata({
     title: `${cs.title}`,
     description: cs.excerpt || cs.title,
-    alternates: { canonical: `/case-studies/${slug}` },
-  }
+    path: `/case-studies/${slug}`,
+    ...(cs.coverImage ? { image: cs.coverImage } : {}),
+  })
 }
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
@@ -59,20 +62,20 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     publisher: {
       '@type': 'Organization',
       name: 'ChaloSchools',
-      logo: { '@type': 'ImageObject', url: 'https://chaloschools.com/images/logo.png' },
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo.png` },
     },
     datePublished: cs.createdAt.toISOString(),
     dateModified: cs.updatedAt.toISOString(),
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://chaloschools.com/case-studies/${cs.slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/case-studies/${cs.slug}` },
   };
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://chaloschools.com' },
-      { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://chaloschools.com/case-studies' },
-      { '@type': 'ListItem', position: 3, name: cs.title, item: `https://chaloschools.com/case-studies/${cs.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Case Studies', item: `${SITE_URL}/case-studies` },
+      { '@type': 'ListItem', position: 3, name: cs.title, item: `${SITE_URL}/case-studies/${cs.slug}` },
     ],
   };
 
@@ -208,7 +211,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   Join hundreds of schools using ChaloSchools.
                 </p>
                 <Button className="w-full bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold rounded-full shadow-lg">
-                  Book an Introductory Demo
+                  Book a Demo
                 </Button>
               </CardContent>
             </Card>

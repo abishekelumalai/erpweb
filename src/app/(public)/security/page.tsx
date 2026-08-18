@@ -7,13 +7,34 @@ import {
   ArrowRight, ShieldCheck, EyeOff, Users, Fingerprint, Lock, ClipboardCheck,
   Scale, FileCheck, Eraser, MessageSquareWarning, Sparkles,
 } from 'lucide-react';
+import { buildMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Data Protection & Security',
   description:
     "How ChaloSchools implements India's DPDP Act, 2023 and DPDP Rules, 2025 — data masking, role-based access, encryption, and audit-ready compliance, backed by ISO 27001:2022 certification.",
-  alternates: { canonical: '/security' },
-};
+  path: '/security',
+});
+
+// Brand gradient palette used site-wide, cycled by index so icon boxes look
+// consistent with the rest of the site.
+const GRADIENTS = [
+  'from-[#026dde] to-[#00d4ff]',
+  'from-[#f59e0b] to-[#fbbf24]',
+  'from-[#10b981] to-[#34d399]',
+  'from-[#8b5cf6] to-[#a78bfa]',
+  'from-[#0891b2] to-[#22d3ee]',
+  'from-[#e11d48] to-[#f87171]',
+];
+
+const SHADOWS = [
+  'shadow-[#026dde]/20',
+  'shadow-[#f59e0b]/20',
+  'shadow-[#10b981]/20',
+  'shadow-[#8b5cf6]/20',
+  'shadow-[#0891b2]/20',
+  'shadow-[#e11d48]/20',
+];
 
 const implementation = [
   {
@@ -98,15 +119,19 @@ export default function SecurityPage() {
           </p>
 
           <div className="grid sm:grid-cols-3 gap-6 mt-12">
-            {pillars.map((p) => (
+            {pillars.map((p, i) => {
+              const gradient = GRADIENTS[i % GRADIENTS.length];
+              const shadow = SHADOWS[i % SHADOWS.length];
+              return (
               <div key={p.title} className="text-center">
-                <div className="w-14 h-14 mx-auto rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
+                <div className={`w-14 h-14 mx-auto rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center mb-4 shadow-lg ${shadow} text-white`}>
                   <p.icon className="w-6 h-6" />
                 </div>
                 <h3 className="font-bold text-heading mb-1.5">{p.title}</h3>
                 <p className="text-sm text-subtle leading-relaxed">{p.description}</p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -124,17 +149,21 @@ export default function SecurityPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {implementation.map((item) => (
+            {implementation.map((item, i) => {
+              const gradient = GRADIENTS[i % GRADIENTS.length];
+              const shadow = SHADOWS[i % SHADOWS.length];
+              return (
               <Card key={item.title} className="border-border hover:shadow-lg transition-shadow">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center mb-4 shadow-lg ${shadow} text-white`}>
                     <item.icon className="w-6 h-6" />
                   </div>
                   <h3 className="font-bold text-heading mb-2">{item.title}</h3>
                   <p className="text-sm text-subtle leading-relaxed">{item.description}</p>
                 </CardContent>
               </Card>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -168,9 +197,12 @@ export default function SecurityPage() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 gap-6">
-            {rights.map((r) => (
+            {rights.map((r, i) => {
+              const gradient = GRADIENTS[i % GRADIENTS.length];
+              const shadow = SHADOWS[i % SHADOWS.length];
+              return (
               <div key={r.title} className="flex items-start gap-4 rounded-xl border border-border bg-card p-5">
-                <div className="w-10 h-10 shrink-0 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                <div className={`w-10 h-10 shrink-0 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg ${shadow} text-white`}>
                   <r.icon className="w-5 h-5" />
                 </div>
                 <div>
@@ -178,7 +210,8 @@ export default function SecurityPage() {
                   <p className="text-sm text-subtle leading-relaxed">{r.description}</p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -199,7 +232,7 @@ export default function SecurityPage() {
               asChild
             >
               <Link href="/contact">
-                Book an Introductory Demo
+                Book a Demo
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>

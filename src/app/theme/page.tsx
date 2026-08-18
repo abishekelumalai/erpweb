@@ -177,7 +177,7 @@ export default function ThemePreviewPage() {
             </div>
             <div className="flex items-center gap-2">
               <button className="text-xs border border-primary text-primary rounded-full px-3 py-1.5 font-semibold">Talk to Sales</button>
-              <button className="text-xs bg-primary text-primary-foreground rounded-full px-3 py-1.5 font-semibold">Book an Introductory Demo</button>
+              <button className="text-xs bg-primary text-primary-foreground rounded-full px-3 py-1.5 font-semibold">Book a Demo</button>
             </div>
           </div>
 
@@ -189,7 +189,7 @@ export default function ThemePreviewPage() {
             <h2 className="text-3xl md:text-4xl font-extrabold leading-tight mb-3">India&apos;s #1 School Management Software</h2>
             <p className="text-white/70 max-w-lg mb-6">Automate Admissions, Fees, Attendance &amp; Communication — all in one elegant platform.</p>
             <div className="flex gap-3">
-              <button className="bg-primary text-primary-foreground font-semibold rounded-full px-5 py-2.5 text-sm inline-flex items-center gap-2">Book an Introductory Demo <ArrowRight className="w-4 h-4" /></button>
+              <button className="bg-primary text-primary-foreground font-semibold rounded-full px-5 py-2.5 text-sm inline-flex items-center gap-2">Book a Demo <ArrowRight className="w-4 h-4" /></button>
               <button className="border border-white/30 text-white font-semibold rounded-full px-5 py-2.5 text-sm inline-flex items-center gap-2"><Phone className="w-4 h-4" /> Talk to Sales</button>
             </div>
           </div>

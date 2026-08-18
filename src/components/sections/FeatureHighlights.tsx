@@ -164,10 +164,10 @@ export default function FeatureHighlights() {
                   {/* One-line description */}
                   <p className="text-sm text-subtle leading-relaxed">{displayDesc}</p>
 
-                  {/* Explore link — appears/slides on hover, only when a detail page exists */}
+                  {/* Explore link — always visible, only when a detail page exists */}
                   {linkHref && (
                     <div
-                      className="mt-4 flex items-center gap-1.5 text-sm font-semibold opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                      className="mt-4 flex items-center gap-1.5 text-sm font-semibold transition-all duration-300"
                       style={{ color: catColor.accent }}
                     >
                       Explore Module
