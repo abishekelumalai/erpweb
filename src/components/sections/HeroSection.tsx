@@ -344,14 +344,6 @@ export default function HeroSection() {
 
                 <CheckCircle2 className="w-4 h-4 text-[#10b981]" />
 
-                <span className="text-sm text-white/50">{t('trustNoCard')}</span>
-
-              </div>
-
-              <div className="flex items-center gap-2">
-
-                <CheckCircle2 className="w-4 h-4 text-[#10b981]" />
-
                 <span className="text-sm text-white/50">{t('trustFreeSetup')}</span>
 
               </div>

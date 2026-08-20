@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,12 +10,15 @@ import {
   Layers, ShieldCheck, BarChart3, Gauge, UserCog, DatabaseBackup, Clock, Plug, LifeBuoy,
 } from 'lucide-react';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Platform Capabilities',
-  description:
-    '20+ industry-first, AI-powered capabilities built into ChaloSchools — from AI Rephrase and Voice Broadcast to KYP verification and Enterprise Cloud infrastructure.',
-  path: '/platform-capabilities',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'platform-capabilities',
+    title: 'Platform Capabilities',
+    description:
+      '20+ industry-first, AI-powered capabilities built into ChaloSchools — from AI Rephrase and Voice Broadcast to KYP verification and Enterprise Cloud infrastructure.',
+    path: '/platform-capabilities',
+  });
+}
 
 const FEATURES = [
   { icon: UserPlus, title: 'Digital Admissions', desc: '100% paperless. Mobile-first. Enrolments close faster — errors close to zero.' },

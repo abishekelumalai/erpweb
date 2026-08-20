@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import ImageUploadField from '@/components/admin/ImageUploadField';
 
 function slugify(text: string): string {
   return text
@@ -174,15 +175,12 @@ export default function NewNewsPage() {
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="coverImage">Cover Image URL</Label>
-              <Input
-                id="coverImage"
-                placeholder="https://example.com/image.jpg"
-                value={form.coverImage}
-                onChange={(e) => updateField('coverImage', e.target.value)}
-              />
-            </div>
+            <ImageUploadField
+              id="coverImage"
+              label="Cover Image"
+              value={form.coverImage}
+              onChange={(v) => updateField('coverImage', v)}
+            />
 
             <div className="flex items-center justify-between rounded-lg border p-3">
               <div>

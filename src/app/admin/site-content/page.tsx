@@ -15,6 +15,7 @@ import {
   CollapsibleTrigger,
 } from '@/components/ui/collapsible';
 import { Label } from '@/components/ui/label';
+import ImageUploadField from '@/components/admin/ImageUploadField';
 
 interface SiteContentRecord {
   id: string;
@@ -53,9 +54,10 @@ export default function SiteContentPage() {
       if (!res.ok) throw new Error('Failed to fetch');
       const raw: SiteContentRecord[] = await res.json();
       // Section on/off toggles are managed on the dedicated Section Visibility
-      // page (with proper switches), and module images on the dedicated
-      // Module Images page (with previews/upload) — not as raw text here.
-      const data = raw.filter((r) => !r.key.startsWith('visibility_') && !r.key.startsWith('module_image_'));
+      // page (with proper switches), module images on the dedicated Module
+      // Images page, and per-page SEO title/description on the dedicated
+      // SEO Meta Tags page — not as raw text here.
+      const data = raw.filter((r) => !r.key.startsWith('visibility_') && !r.key.startsWith('module_image_') && !r.key.startsWith('seo_title_') && !r.key.startsWith('seo_description_'));
       setRecords(data);
 
       // Auto-select the first section
@@ -299,6 +301,13 @@ export default function SiteContentPage() {
                         value={getEditedValue(record.key, record.value)}
                         onChange={(e) => handleChange(record.key, e.target.value)}
                         className="min-h-[100px] resize-y"
+                      />
+                    ) : record.type === 'image' ? (
+                      <ImageUploadField
+                        id={record.key}
+                        label=""
+                        value={getEditedValue(record.key, record.value)}
+                        onChange={(v) => handleChange(record.key, v)}
                       />
                     ) : (
                       <Input

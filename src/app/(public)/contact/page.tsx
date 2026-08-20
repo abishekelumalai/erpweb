@@ -7,14 +7,17 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { db } from '@/lib/db';
 import { getContent } from '@/lib/get-site-content';
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Contact Us',
-  description:
-    'Get in touch with ChaloSchools. Book a free demo, request a callback, or reach our support team. We\'re here to help your school succeed.',
-  path: '/contact',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'contact',
+    title: 'Contact Us',
+    description:
+      'Get in touch with ChaloSchools. Book a free demo, request a callback, or reach our support team. We\'re here to help your school succeed.',
+    path: '/contact',
+  });
+}
 
 // Fallback values
 const FALLBACK_HERO_TITLE = 'Contact Us';

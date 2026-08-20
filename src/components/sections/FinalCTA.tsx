@@ -177,7 +177,7 @@ export default function FinalCTA() {
 
           </div>
 
-          <p className="text-sm text-white/50 pt-2">No credit card required &middot; Free setup &amp; training</p>
+          <p className="text-sm text-white/50 pt-2">Free setup &amp; training</p>
 
         </motion.div>
 

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -11,14 +11,18 @@ import {
 import { db } from '@/lib/db';
 import { getSiteContent, getContent } from '@/lib/get-site-content';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'About Us',
-  description:
-    'Learn about ChaloSchools – CHALO Schools Automated, built by Inspace Edu Solutions Private Limited. We serve 200+ schools and 1.5+ Million students across India with a complete school management ERP.',
-  path: '/about',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'about',
+    title: 'About Us',
+    description:
+      'Learn about ChaloSchools – CHALO Schools Automated, built by Inspace Edu Solutions Private Limited. We serve 200+ schools and 1.5+ Million students across India with a complete school management ERP.',
+    path: '/about',
+  });
+}
 
-const FALLBACK_MISSION = 'Giving every Indian school access to the same efficient, data-driven administration tools — currently serving 200+ schools and 1.5+ Million students across India, with more joining every month.';
+const FALLBACK_TAGLINE = 'Simplify the paperwork. Strengthen the school. Give educators their time back.';
+const FALLBACK_MISSION = 'Designed specifically for the needs of Indian schools, our platform brings efficient, data-driven administration to institutions of every size. Today, we proudly support 200+ schools and 1.5M+ students across India, with more schools joining us every month.';
 const FALLBACK_VISION = 'To be the most trusted school management platform, making quality education management accessible to every school and empowering excellence in academic performance.';
 const FALLBACK_STORY_1 = 'ChaloSchools – Schools Automated — is a product of Inspace Edu Solutions Private Limited. It was built from a simple observation: Indian schools spend more time managing paperwork than educating students.';
 const FALLBACK_STORY_2 = 'What started as an effort to digitize school operations has grown into a comprehensive platform. Today, ChaloSchools handles all the activities for the operation of a school — from admissions and attendance to fees, transport, library, payroll, and more.';
@@ -95,6 +99,7 @@ const leadershipItems = [
 export default async function AboutPage() {
   const sc = await getSiteContent();
 
+  const tagline = getContent(sc, 'about_tagline', FALLBACK_TAGLINE);
   const missionDescription = getContent(sc, 'about_mission', FALLBACK_MISSION);
   const visionDescription = getContent(sc, 'about_vision', FALLBACK_VISION);
   const story1 = getContent(sc, 'about_story_1', FALLBACK_STORY_1);
@@ -130,6 +135,9 @@ export default async function AboutPage() {
           <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-card/20 rounded-full blur-3xl" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-lg md:text-xl font-semibold text-[#f59e0b] mb-4">
+            {tagline}
+          </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Built in India, for Indian Schools
           </h1>

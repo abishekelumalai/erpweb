@@ -330,13 +330,22 @@ const SEED_DATA: SeedItem[] = [
 
   // About Page
   {
+    key: 'about_tagline',
+    value:
+      'Simplify the paperwork. Strengthen the school. Give educators their time back.',
+    section: 'About',
+    label: 'Tagline',
+    type: 'textarea',
+    order: 0,
+  },
+  {
     key: 'about_mission',
     value:
-      'Giving every Indian school access to the same efficient, data-driven administration tools — currently serving 200+ schools and 1.5M+ students across India, with more joining every month.',
+      'Designed specifically for the needs of Indian schools, our platform brings efficient, data-driven administration to institutions of every size. Today, we proudly support 200+ schools and 1.5M+ students across India, with more schools joining us every month.',
     section: 'About',
     label: 'Our Mission',
     type: 'textarea',
-    order: 0,
+    order: 1,
   },
   {
     key: 'about_vision',

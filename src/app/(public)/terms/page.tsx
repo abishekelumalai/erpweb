@@ -2,14 +2,17 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, FileText } from 'lucide-react';
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Terms of Service',
-  description:
-    'Read the Terms of Service for ChaloSchools. These terms govern your use of our website and services.',
-  path: '/terms',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'terms',
+    title: 'Terms of Service',
+    description:
+      'Read the Terms of Service for ChaloSchools. These terms govern your use of our website and services.',
+    path: '/terms',
+  });
+}
 
 export default function TermsOfServicePage() {
   return (

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -8,12 +8,15 @@ import {
   Heart, Zap, GraduationCap, Globe, Users, ArrowRight, Send, Briefcase,
 } from 'lucide-react';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Careers',
-  description:
-    'Join the ChaloSchools team and help transform Indian schools with technology. Explore open positions in engineering, sales, product, and more.',
-  path: '/careers',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'careers',
+    title: 'Careers',
+    description:
+      'Join the ChaloSchools team and help transform Indian schools with technology. Explore open positions in engineering, sales, product, and more.',
+    path: '/careers',
+  });
+}
 
 // Brand gradient palette used site-wide, cycled by index so icon boxes look
 // consistent with the rest of the site.

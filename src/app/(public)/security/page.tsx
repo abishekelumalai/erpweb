@@ -7,14 +7,17 @@ import {
   ArrowRight, ShieldCheck, EyeOff, Users, Fingerprint, Lock, ClipboardCheck,
   Scale, FileCheck, Eraser, MessageSquareWarning, Sparkles,
 } from 'lucide-react';
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Data Protection & Security',
-  description:
-    "How ChaloSchools implements India's DPDP Act, 2023 and DPDP Rules, 2025 — data masking, role-based access, encryption, and audit-ready compliance, backed by ISO 27001:2022 certification.",
-  path: '/security',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'security',
+    title: 'Data Protection & Security',
+    description:
+      "How ChaloSchools implements India's DPDP Act, 2023 and DPDP Rules, 2025 — data masking, role-based access, encryption, and audit-ready compliance, backed by ISO 27001:2022 certification.",
+    path: '/security',
+  });
+}
 
 // Brand gradient palette used site-wide, cycled by index so icon boxes look
 // consistent with the rest of the site.

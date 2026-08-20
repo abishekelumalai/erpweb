@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 
 import Link from 'next/link';
 
@@ -23,12 +23,15 @@ import {
 
 } from 'lucide-react';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Product Tour',
-  description:
-    'Take a tour of ChaloSchools — explore all our modules, from Admissions and Fee Management to Payroll, Inventory, and our AI Secretary.',
-  path: '/product',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'product',
+    title: 'Product Tour',
+    description:
+      'Take a tour of ChaloSchools — explore all our modules, from Admissions and Fee Management to Payroll, Inventory, and our AI Secretary.',
+    path: '/product',
+  });
+}
 
 const productFaqs = [
 

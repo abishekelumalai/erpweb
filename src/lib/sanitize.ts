@@ -63,6 +63,18 @@ const XSS_PATTERNS = [
   /window\.\s*(location|top|parent|frames|open|navigate)/i,
 ];
 
+// ─── Trusted base64 image data URLs ─────────────────────────────────────────
+// Produced only by our own client-side canvas.toDataURL() image-compression
+// step (never raw attacker input), and only ever consumed as an <img src>,
+// which can't execute script content regardless of what the string contains.
+// Every field carrying uploaded image data (coverImage, module images, hero
+// slide images, …) legitimately contains "base64," and lots of '/' — without
+// this allowlist, the XSS base64 heuristic below rejects the request outright,
+// and even if it didn't, sanitizeInput's '/' escaping would corrupt the data.
+// The full string must match this exact shape, so it can't be used to smuggle
+// a broader payload past the checks.
+export const IMAGE_DATA_URL_PATTERN = /^data:image\/(png|jpe?g|webp|gif);base64,[A-Za-z0-9+/]+=*$/;
+
 // ─── Dangerous Characters for HTML Context ──────────────────────────────────
 
 const HTML_ESCAPE_MAP: Record<string, string> = {
@@ -82,6 +94,7 @@ const HTML_ESCAPE_MAP: Record<string, string> = {
  */
 export function sanitizeInput(str: string): string {
   if (typeof str !== 'string') return String(str);
+  if (IMAGE_DATA_URL_PATTERN.test(str)) return str;
   return str.replace(/[&<>"'\/]/g, (char) => HTML_ESCAPE_MAP[char] || char);
 }
 
@@ -117,6 +130,7 @@ export function sanitizeObject<T extends Record<string, unknown>>(obj: T): T {
  */
 export function isSqlInjection(str: string): boolean {
   if (typeof str !== 'string') return false;
+  if (IMAGE_DATA_URL_PATTERN.test(str)) return false;
   return SQL_INJECTION_PATTERNS.some((pattern) => pattern.test(str));
 }
 
@@ -125,6 +139,7 @@ export function isSqlInjection(str: string): boolean {
  */
 export function isXssAttempt(str: string): boolean {
   if (typeof str !== 'string') return false;
+  if (IMAGE_DATA_URL_PATTERN.test(str)) return false;
   return XSS_PATTERNS.some((pattern) => pattern.test(str));
 }
 

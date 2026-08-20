@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 
 import Link from 'next/link';
 
@@ -16,12 +16,15 @@ import {
 
 } from 'lucide-react';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Pricing',
-  description:
-    'Simple, transparent pricing for schools of every size — view plans and what\'s included. Pay per student, per year. No hidden costs, no long-term lock-in.',
-  path: '/pricing',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'pricing',
+    title: 'Pricing',
+    description:
+      'Simple, transparent pricing for schools of every size — view plans and what\'s included. Pay per student, per year. No hidden costs, no long-term lock-in.',
+    path: '/pricing',
+  });
+}
 
 const tiers = [
 

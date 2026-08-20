@@ -11,6 +11,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { compressImage } from '@/lib/compress-image';
 
 interface ModuleDef {
   id: string;
@@ -40,43 +41,6 @@ const MODULES: ModuleDef[] = [
   { id: 'ai-secretary', title: 'AI Secretary', icon: Bot },
   { id: 'parent-app', title: 'Parent & Student App', icon: MessageCircle },
 ];
-
-const MAX_DIMENSION = 640;
-const JPEG_QUALITY = 0.82;
-
-// Resize/compress in the browser before storing — there's no file-upload
-// backend or persistent disk on Render, so the image is stored as a data URL
-// directly in SiteContent.value (Turso is the actual persistent store here).
-// Keeping it small keeps that row (and the page payload) reasonable.
-function compressImage(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onerror = () => reject(new Error('Could not read file'));
-    reader.onload = () => {
-      const img = new Image();
-      img.onerror = () => reject(new Error('Could not decode image'));
-      img.onload = () => {
-        let { width, height } = img;
-        if (width > height && width > MAX_DIMENSION) {
-          height = Math.round((height * MAX_DIMENSION) / width);
-          width = MAX_DIMENSION;
-        } else if (height > MAX_DIMENSION) {
-          width = Math.round((width * MAX_DIMENSION) / height);
-          height = MAX_DIMENSION;
-        }
-        const canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return reject(new Error('Canvas not supported'));
-        ctx.drawImage(img, 0, 0, width, height);
-        resolve(canvas.toDataURL('image/jpeg', JPEG_QUALITY));
-      };
-      img.src = reader.result as string;
-    };
-    reader.readAsDataURL(file);
-  });
-}
 
 export default function ModuleImagesPage() {
   const [images, setImages] = useState<Record<string, string>>({});

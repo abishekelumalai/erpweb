@@ -182,7 +182,8 @@ export default function FeatureHighlights() {
                   key={f.label}
                   layout
                   initial={{ opacity: 0, y: 24, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: '0px 0px -80px 0px' }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ delay: i * 0.05, duration: 0.35 }}
                 >

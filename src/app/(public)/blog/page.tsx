@@ -1,13 +1,16 @@
 import { Metadata } from 'next';
 import BlogPageClient from './BlogPageClient';
 import { db } from '@/lib/db';
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Blog & Insights',
-  description: 'Stay updated with the latest trends in school management, education technology, and best practices from ChaloSchools.',
-  path: '/blog',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'blog',
+    title: 'Blog & Insights',
+    description: 'Stay updated with the latest trends in school management, education technology, and best practices from ChaloSchools.',
+    path: '/blog',
+  });
+}
 
 export default async function BlogPage() {
   const blogs = await db.blogPost.findMany({

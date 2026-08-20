@@ -518,11 +518,26 @@ export default function Header() {
 
           <div className="hidden lg:flex items-center gap-1 ml-auto mr-6">
 
-            <Link href="/" className="relative px-3 py-2 text-sm font-medium text-heading/80 hover:text-primary transition-colors hover-underline">Home</Link>
+            <Link href="/" className={`relative px-3 py-2 text-sm font-medium transition-colors hover-underline ${pathname === '/' ? 'text-primary' : 'text-heading/80 hover:text-primary'}`}>
+              Home
+              {pathname === '/' && (
+                <motion.span layoutId="nav-active" className="absolute left-2 right-2 -bottom-0.5 h-0.5 rounded-full bg-primary" transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              )}
+            </Link>
 
-            <Link href="/product" className="relative px-3 py-2 text-sm font-medium text-heading/80 hover:text-primary transition-colors hover-underline">Modules</Link>
+            <Link href="/product" className={`relative px-3 py-2 text-sm font-medium transition-colors hover-underline ${pathname.startsWith('/product') ? 'text-primary' : 'text-heading/80 hover:text-primary'}`}>
+              Modules
+              {pathname.startsWith('/product') && (
+                <motion.span layoutId="nav-active" className="absolute left-2 right-2 -bottom-0.5 h-0.5 rounded-full bg-primary" transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              )}
+            </Link>
 
-            <Link href="/pricing" className="relative px-3 py-2 text-sm font-medium text-heading/80 hover:text-primary transition-colors hover-underline">Pricing</Link>
+            <Link href="/pricing" className={`relative px-3 py-2 text-sm font-medium transition-colors hover-underline ${pathname.startsWith('/pricing') ? 'text-primary' : 'text-heading/80 hover:text-primary'}`}>
+              Pricing
+              {pathname.startsWith('/pricing') && (
+                <motion.span layoutId="nav-active" className="absolute left-2 right-2 -bottom-0.5 h-0.5 rounded-full bg-primary" transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              )}
+            </Link>
 
             {navItems.map((item) => navDropdowns[item] ? (
 

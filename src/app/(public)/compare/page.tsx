@@ -6,14 +6,17 @@ import { Badge } from '@/components/ui/badge';
 import {
   ArrowRight, CheckCircle2, XCircle, MinusCircle, Sparkles, Shield,
 } from 'lucide-react';
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'ChaloSchools vs Alternatives | Compare School Management Software',
-  description:
-    'Compare ChaloSchools with Excel spreadsheets, WhatsApp groups, and generic ERP systems. See why schools choose a purpose-built school management platform.',
-  path: '/compare',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'compare',
+    title: 'ChaloSchools vs Alternatives | Compare School Management Software',
+    description:
+      'Compare ChaloSchools with Excel spreadsheets, WhatsApp groups, and generic ERP systems. See why schools choose a purpose-built school management platform.',
+    path: '/compare',
+  });
+}
 
 type Support = 'yes' | 'no' | 'partial';
 

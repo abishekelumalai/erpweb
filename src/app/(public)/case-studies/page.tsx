@@ -1,13 +1,16 @@
 import { Metadata } from 'next';
 import CaseStudyPageClient from './CaseStudyPageClient';
 import { db } from '@/lib/db';
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Case Studies',
-  description: 'See how schools across India transform their operations with ChaloSchools. Real stories, real results from CBSE, ICSE, and state board schools.',
-  path: '/case-studies',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'case-studies',
+    title: 'Case Studies',
+    description: 'See how schools across India transform their operations with ChaloSchools. Real stories, real results from CBSE, ICSE, and state board schools.',
+    path: '/case-studies',
+  });
+}
 
 export default async function CaseStudiesPage() {
   const caseStudies = await db.caseStudy.findMany({

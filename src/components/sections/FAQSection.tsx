@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { ChevronDown, CircleHelp } from 'lucide-react';
 
@@ -21,7 +22,12 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
   if (faqs.length === 0) {
     return (
       <section className="py-12 md:py-16 bg-surface-2">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
           <Badge variant="secondary" className="mb-4 bg-[#026dde]/10 text-primary border-[#026dde]/20">
             <CircleHelp className="w-4 h-4 mr-2" />
             FAQ
@@ -33,7 +39,7 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
             <CircleHelp className="w-10 h-10 text-primary/20 mx-auto mb-2" />
             <p className="text-subtle">FAQs Coming Soon</p>
           </div>
-        </div>
+        </motion.div>
       </section>
     );
   }
@@ -43,10 +49,14 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
   const leftColumn = faqs.slice(0, midPoint);
   const rightColumn = faqs.slice(midPoint);
 
-  function FAQItem({ faq }: { faq: FAQItem }) {
+  function FAQItem({ faq, index }: { faq: FAQItem; index: number }) {
     const isOpen = openId === faq.id;
     return (
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+        transition={{ delay: Math.min(index, 6) * 0.05, duration: 0.35 }}
         className={`border rounded-lg transition-all cursor-pointer ${
           isOpen
             ? 'border-[#026dde]/30 bg-card shadow-sm'
@@ -67,14 +77,19 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
             </div>
           </div>
         )}
-      </div>
+      </motion.div>
     );
   }
 
   return (
     <section className="pt-10 pb-10 md:pt-14 md:pb-14 bg-surface-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-7">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-7"
+        >
           <Badge variant="secondary" className="mb-3 bg-[#026dde]/10 text-primary border-[#026dde]/20">
             <CircleHelp className="w-4 h-4 mr-2" />
             FAQ
@@ -85,18 +100,18 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
           <p className="text-subtle text-base">
             Find quick answers to common questions about ChaloSchools.
           </p>
-        </div>
+        </motion.div>
 
         {/* 2-column grid for desktop, single column for mobile */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="space-y-3">
-            {leftColumn.map((faq) => (
-              <FAQItem key={faq.id} faq={faq} />
+            {leftColumn.map((faq, index) => (
+              <FAQItem key={faq.id} faq={faq} index={index} />
             ))}
           </div>
           <div className="space-y-3">
-            {rightColumn.map((faq) => (
-              <FAQItem key={faq.id} faq={faq} />
+            {rightColumn.map((faq, index) => (
+              <FAQItem key={faq.id} faq={faq} index={index} />
             ))}
           </div>
         </div>

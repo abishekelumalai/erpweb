@@ -2,14 +2,17 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Shield } from 'lucide-react';
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadataWithOverrides } from '@/lib/metadata';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Privacy Policy',
-  description:
-    'Learn how ChaloSchools collects, uses, and protects your personal information. We are committed to safeguarding the privacy of our users.',
-  path: '/privacy',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadataWithOverrides({
+    pageKey: 'privacy',
+    title: 'Privacy Policy',
+    description:
+      'Learn how ChaloSchools collects, uses, and protects your personal information. We are committed to safeguarding the privacy of our users.',
+    path: '/privacy',
+  });
+}
 
 export default function PrivacyPolicyPage() {
   return (
