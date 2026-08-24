@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 
 import { ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 
 import Link from 'next/link';
 
@@ -85,6 +85,12 @@ export default function HeroSection() {
 
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [spotlight, setSpotlight] = useState({ x: 0, y: 0, active: false });
+
+  // Scroll-linked "recede" — as the hero scrolls out of view, its content
+  // gently scales down and fades, giving the section depth as you move past it.
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const contentScale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 0.93]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 0.4]);
 
   // Mouse parallax for floating orbs (depth factors applied per-orb below).
 
@@ -195,7 +201,10 @@ export default function HeroSection() {
         />
       )}
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 w-full">
+      <motion.div
+        style={{ scale: contentScale, opacity: contentOpacity }}
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 w-full"
+      >
 
         <div className="grid lg:grid-cols-[1fr_480px] gap-8 lg:gap-12 items-center">
 
@@ -382,7 +391,7 @@ export default function HeroSection() {
 
         </div>
 
-      </div>
+      </motion.div>
 
       {/* Bottom edge line */}
 

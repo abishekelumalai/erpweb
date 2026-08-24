@@ -50,13 +50,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let caseStudyPages: MetadataRoute.Sitemap = [];
   let newsPages: MetadataRoute.Sitemap = [];
   let webinarPages: MetadataRoute.Sitemap = [];
+  let helpDocPages: MetadataRoute.Sitemap = [];
+  let releaseNotePages: MetadataRoute.Sitemap = [];
 
   try {
-    const [blogPosts, caseStudies, newsEvents, webinars] = await Promise.all([
+    const [blogPosts, caseStudies, newsEvents, webinars, helpDocs, releaseNotes] = await Promise.all([
       db.blogPost.findMany({ where: { published: true }, select: { slug: true, updatedAt: true } }),
       db.caseStudy.findMany({ where: { published: true }, select: { slug: true, updatedAt: true } }),
       db.newsEvent.findMany({ where: { published: true }, select: { slug: true, updatedAt: true } }),
       db.webinar.findMany({ where: { published: true }, select: { slug: true, updatedAt: true } }),
+      db.helpDoc.findMany({ where: { published: true }, select: { slug: true, updatedAt: true } }),
+      db.releaseNote.findMany({ where: { published: true }, select: { slug: true, updatedAt: true } }),
     ]);
 
     blogPages = blogPosts.map((post) => ({
@@ -86,6 +90,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     }));
+
+    helpDocPages = helpDocs.map((h) => ({
+      url: `${BASE_URL}/help/${h.slug}`,
+      lastModified: h.updatedAt,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    }));
+
+    releaseNotePages = releaseNotes.map((r) => ({
+      url: `${BASE_URL}/release-notes/${r.slug}`,
+      lastModified: r.updatedAt,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    }));
   } catch {
     // DB may not be available during build — silently skip dynamic pages
   }
@@ -99,5 +117,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...caseStudyPages,
     ...newsPages,
     ...webinarPages,
+    ...helpDocPages,
+    ...releaseNotePages,
   ];
 }

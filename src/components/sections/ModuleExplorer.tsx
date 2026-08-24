@@ -350,37 +350,59 @@ export default function ModuleExplorer({ moduleImages }: { moduleImages?: Record
           <p className="text-subtle">Click a module below to see its details.</p>
         </div>
 
-        {/* Module selector */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10 md:mb-12">
-          {modules.map((mod, i) => {
-            const Icon = mod.icon;
-            const isActive = mod.id === activeId;
-            const gradient = GRADIENTS[i % GRADIENTS.length];
-            const shadow = SHADOWS[i % SHADOWS.length];
-            return (
-              <button
-                key={mod.id}
-                type="button"
-                onClick={() => setActiveId(mod.id)}
-                aria-pressed={isActive}
-                className={`flex items-center gap-2 pl-2 pr-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-200 ${
-                  isActive
-                    ? 'text-white shadow-md border-transparent'
-                    : 'bg-card text-body border-border hover:border-[color-mix(in_srgb,var(--brand)_40%,transparent)]'
-                }`}
-                style={isActive ? { backgroundColor: 'var(--brand)' } : undefined}
-              >
-                {isActive ? (
-                  <Icon className="w-4 h-4" />
-                ) : (
-                  <span className={`w-5 h-5 rounded-full bg-gradient-to-br ${gradient} flex items-center justify-center shrink-0 shadow-sm ${shadow}`}>
-                    <Icon className="w-3 h-3 text-white" />
-                  </span>
-                )}
-                {mod.title}
-              </button>
-            );
-          })}
+        {/* Module selector — cone/pyramid layout:
+            Row 1: 2 items
+            Row 2: 3 items
+            Row 3: 4 items
+            Row 4: 5 items
+            Row 5: 2 items (remaining)
+            Each row is centered, creating a widening pyramid effect.
+        */}
+        <div className="flex flex-col items-center gap-2.5 mb-10 md:mb-12">
+          {(() => {
+            const rows = [2, 3, 4, 5, 2];
+            let idx = 0;
+            return rows.map((rowSize, rowIdx) => {
+              const rowModules = modules.slice(idx, idx + rowSize);
+              const rowStart = idx;
+              idx += rowSize;
+              if (rowModules.length === 0) return null;
+              return (
+                <div key={rowIdx} className="flex flex-wrap items-center justify-center gap-2">
+                  {rowModules.map((mod, localIdx) => {
+                    const i = rowStart + localIdx;
+                    const Icon = mod.icon;
+                    const isActive = mod.id === activeId;
+                    const gradient = GRADIENTS[i % GRADIENTS.length];
+                    const shadow = SHADOWS[i % SHADOWS.length];
+                    return (
+                      <button
+                        key={mod.id}
+                        type="button"
+                        onClick={() => setActiveId(mod.id)}
+                        aria-pressed={isActive}
+                        className={`flex items-center gap-2 pl-2 pr-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-200 ${
+                          isActive
+                            ? 'text-white shadow-md border-transparent'
+                            : 'bg-card text-body border-border hover:border-[color-mix(in_srgb,var(--brand)_40%,transparent)]'
+                        }`}
+                        style={isActive ? { backgroundColor: 'var(--brand)' } : undefined}
+                      >
+                        {isActive ? (
+                          <Icon className="w-4 h-4" />
+                        ) : (
+                          <span className={`w-5 h-5 rounded-full bg-gradient-to-br ${gradient} flex items-center justify-center shrink-0 shadow-sm ${shadow}`}>
+                            <Icon className="w-3 h-3 text-white" />
+                          </span>
+                        )}
+                        {mod.title}
+                      </button>
+                    );
+                  })}
+                </div>
+              );
+            });
+          })()}
         </div>
 
         {/* Detail panels — all present in the DOM, only the active one visible */}
