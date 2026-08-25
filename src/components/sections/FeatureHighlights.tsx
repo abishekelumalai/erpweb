@@ -164,10 +164,10 @@ export default function FeatureHighlights() {
                   {/* One-line description */}
                   <p className="text-sm text-subtle leading-relaxed">{displayDesc}</p>
 
-                  {/* Explore link — always visible, only when a detail page exists */}
+                  {/* Explore link — always visible, only when a detail page exists. Pinned to the card's bottom edge so it lines up across cards regardless of description length. */}
                   {linkHref && (
                     <div
-                      className="mt-4 flex items-center gap-1.5 text-sm font-semibold transition-all duration-300"
+                      className="mt-auto pt-4 flex items-center gap-1.5 text-sm font-semibold transition-all duration-300"
                       style={{ color: catColor.accent }}
                     >
                       Explore Module
@@ -191,12 +191,12 @@ export default function FeatureHighlights() {
                     <Link
                       href={linkHref}
                       onMouseMove={handleSpotlightMove}
-                    className="group card-shine spotlight relative block h-full rounded-2xl bg-card border border-border p-6 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 hover:border-transparent"
+                    className="group card-shine spotlight relative flex flex-col h-full rounded-2xl bg-card border border-border p-6 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 hover:border-transparent"
                     >
                       {cardInner}
                     </Link>
                   ) : (
-                    <div onMouseMove={handleSpotlightMove} className="group spotlight relative block h-full rounded-2xl bg-card border border-border p-6 overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <div onMouseMove={handleSpotlightMove} className="group spotlight relative flex flex-col h-full rounded-2xl bg-card border border-border p-6 overflow-hidden transition-all duration-300 hover:shadow-lg">
                       {cardInner}
                     </div>
                   )}
