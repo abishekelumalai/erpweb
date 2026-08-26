@@ -31,6 +31,24 @@ const SHADOWS = [
   'shadow-[#e11d48]/20',
 ];
 
+// Not every module id has its own /features/[slug] page — some are covered
+// inline elsewhere (e.g. payroll content lives on the staff-hr page) or only
+// exist as this in-page section. Map to a real slug, or omit for no link.
+const FEATURE_SLUG_OVERRIDES: Record<string, string | null> = {
+  student: null,
+  staff: 'staff-hr',
+  communication: null,
+  inventory: null,
+  payroll: 'staff-hr',
+  'performance-insights': null,
+  'ai-secretary': null,
+};
+
+function getFeatureHref(moduleId: string): string | null {
+  if (moduleId in FEATURE_SLUG_OVERRIDES) return FEATURE_SLUG_OVERRIDES[moduleId] ? `/features/${FEATURE_SLUG_OVERRIDES[moduleId]}` : null;
+  return `/features/${moduleId}`;
+}
+
 // Icon components can't cross the Server -> Client Component boundary as props
 // (React strips function references), so the modules array lives here instead
 // of being passed in from product/page.tsx.
@@ -441,16 +459,18 @@ export default function ModuleExplorer({ moduleImages }: { moduleImages?: Record
                         </li>
                       ))}
                     </ul>
-                    <Button
-                      className="font-semibold rounded-lg self-start"
-                      style={{ backgroundColor: 'var(--brand)' }}
-                      asChild
-                    >
-                      <Link href={`/features/${mod.id}`}>
-                        Learn More
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Link>
-                    </Button>
+                    {getFeatureHref(mod.id) && (
+                      <Button
+                        className="font-semibold rounded-lg self-start"
+                        style={{ backgroundColor: 'var(--brand)' }}
+                        asChild
+                      >
+                        <Link href={getFeatureHref(mod.id)!}>
+                          Learn More
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
+                      </Button>
+                    )}
                   </div>
 
                   {/* Visual Card — a full image when the admin has uploaded
