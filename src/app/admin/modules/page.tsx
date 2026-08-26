@@ -12,6 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { compressImage } from '@/lib/compress-image';
+import { MODULE_IDS } from '@/data/modules';
 
 interface ModuleDef {
   id: string;
@@ -19,28 +20,30 @@ interface ModuleDef {
   icon: LucideIcon;
 }
 
-// Same modules as src/components/sections/ModuleExplorer.tsx (id + title
-// must match exactly — that's what the SiteContent key `module_image_<id>`
-// and the public /product page join on). Keep this list in sync whenever a
-// module is added/removed there.
-const MODULES: ModuleDef[] = [
-  { id: 'admissions', title: 'Admissions Management', icon: UserPlus },
-  { id: 'student', title: 'Student Management', icon: GraduationCap },
-  { id: 'staff', title: 'Staff Management', icon: Users },
-  { id: 'fees', title: 'Fees & Finance', icon: IndianRupee },
-  { id: 'timetable', title: 'Timetable Scheduler', icon: CalendarDays },
-  { id: 'attendance', title: 'Attendance Tracking', icon: ClipboardCheck },
-  { id: 'exams', title: 'Academic & Examination', icon: FileText },
-  { id: 'communication', title: 'Communication Management', icon: MessageCircle },
-  { id: 'reports', title: 'Reports & Analytics', icon: BarChart3 },
-  { id: 'inventory', title: 'Academic Inventory Tracking', icon: Package },
-  { id: 'payroll', title: 'Payroll Management', icon: Wallet },
-  { id: 'library', title: 'Library Management', icon: BookOpen },
-  { id: 'transport', title: 'Transport Management', icon: Bus },
-  { id: 'performance-insights', title: 'Inspace Performance Insights', icon: TrendingUp },
-  { id: 'ai-secretary', title: 'AI Secretary', icon: Bot },
-  { id: 'parent-app', title: 'Parent & Student App', icon: MessageCircle },
-];
+// Icons keyed by id, layered onto the shared id/title list from
+// @/data/modules (that's what the SiteContent key `module_image_<id>` and
+// the public /product page join on) — icons can't live in that shared data
+// file since it's also imported by server components.
+const ICON_MAP: Record<string, LucideIcon> = {
+  admissions: UserPlus,
+  student: GraduationCap,
+  staff: Users,
+  fees: IndianRupee,
+  timetable: CalendarDays,
+  attendance: ClipboardCheck,
+  exams: FileText,
+  communication: MessageCircle,
+  reports: BarChart3,
+  inventory: Package,
+  payroll: Wallet,
+  library: BookOpen,
+  transport: Bus,
+  'performance-insights': TrendingUp,
+  'ai-secretary': Bot,
+  'parent-app': MessageCircle,
+};
+
+const MODULES: ModuleDef[] = MODULE_IDS.map((m) => ({ ...m, icon: ICON_MAP[m.id] }));
 
 export default function ModuleImagesPage() {
   const [images, setImages] = useState<Record<string, string>>({});
