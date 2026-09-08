@@ -1,15 +1,16 @@
 {
   "Hero": {
-    "badge": "Trusted by 200+ Indian Schools",
-    "titleLine1Pre": "India's",
-    "titleHighlight": "#1",
-    "titleLine2": "School Management",
-    "titleLine3": "Software",
-    "subtitle": "Automate Admissions, Fees, Attendance & Communication — all in one elegant platform.",
-    "ctaPrimary": "Book a Demo",
-    "ctaSecondary": "Talk to Sales: +91 9962228160",
-    "trustNoCard": "No credit card required",
-    "trustFreeSetup": "Free setup & training"
+    "badge": "Trusted by 200+ schools across India",
+    "titleLine1Pre": "School Management Software",
+    "titleHighlight": "for Smarter, Simpler",
+    "titleLine2": "School Administration",
+    "titleLine3": "",
+    "subtitle": "All-in-one school management system that helps schools manage admissions, student information, academics, attendance, fees, examinations, communication and more from a single platform.",
+    "ctaPrimary": "Book a free demo",
+    "ctaSecondary": "Explore school management features",
+    "trustFreeSetup": "Free setup & Training",
+    "trustDedicatedSupport": "Dedicated support",
+    "trustSecureCloud": "Secure Cloud platform"
   },
   "Nav": {
     "home": "Home",

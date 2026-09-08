@@ -2,9 +2,13 @@
 
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 
-import { School, Users, Activity, Globe } from 'lucide-react';
+import { School, Users, Activity, Globe, ArrowRight } from 'lucide-react';
 
 import { useEffect, useRef, useState } from 'react';
+
+import Link from 'next/link';
+
+import { Button } from '@/components/ui/button';
 
 import { useSiteContent, getContentValue } from './SiteContentProvider';
 
@@ -36,13 +40,13 @@ const statShadows = [
 
 const FALLBACK_STATS = [
 
-  { value: '200+', label: 'Schools Served' },
+  { value: '200+', label: 'Schools' },
 
-  { value: '1.5+ Million', label: 'Students Impacted' },
+  { value: '1.5M+', label: 'Students' },
 
   { value: '4', label: 'Countries' },
 
-  { value: '99.9%', label: 'Platform Uptime' },
+  { value: '99.9%', label: 'Uptime' },
 
 ];
 
@@ -142,6 +146,8 @@ export default function TrustStats() {
 
   const { content } = useSiteContent();
 
+  const headline = getContentValue(content, 'trust_stats_headline', "All of Your School's Needs in One Place");
+
   const stats = FALLBACK_STATS.map((s, i) => ({
 
     value: getContentValue(content, `trust_stat_${i + 1}_value`, s.value),
@@ -155,6 +161,8 @@ export default function TrustStats() {
     <section className="py-14 bg-card relative">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <h2 className="text-2xl lg:text-3xl font-bold text-heading text-center mb-10">{headline}</h2>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
 
@@ -203,6 +211,19 @@ export default function TrustStats() {
             );
 
           })}
+
+        </div>
+
+        <div className="text-center mt-10">
+
+          <Button asChild size="lg" variant="outline" className="rounded-full font-semibold group">
+
+            <Link href="/pricing">
+              Plans &amp; Pricing
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Link>
+
+          </Button>
 
         </div>
 

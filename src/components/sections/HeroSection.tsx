@@ -343,6 +343,24 @@ export default function HeroSection() {
                 </Button>
 
               </div>
+
+              <Button
+
+                asChild
+
+                size="lg"
+
+                variant="outline"
+
+                className="text-base px-8 h-13 bg-white/5 hover:bg-white/10 text-white border-white/20 hover:border-white/30 rounded-full font-semibold backdrop-blur-md transition-all"
+
+              >
+
+                <Link href="/product">
+                  {t('ctaSecondary')}
+                </Link>
+
+              </Button>
             </div>
 
             {/* Trust indicators */}
@@ -354,6 +372,22 @@ export default function HeroSection() {
                 <CheckCircle2 className="w-4 h-4 text-[#10b981]" />
 
                 <span className="text-sm text-white/50">{t('trustFreeSetup')}</span>
+
+              </div>
+
+              <div className="flex items-center gap-2">
+
+                <CheckCircle2 className="w-4 h-4 text-[#10b981]" />
+
+                <span className="text-sm text-white/50">{t('trustDedicatedSupport')}</span>
+
+              </div>
+
+              <div className="flex items-center gap-2">
+
+                <CheckCircle2 className="w-4 h-4 text-[#10b981]" />
+
+                <span className="text-sm text-white/50">{t('trustSecureCloud')}</span>
 
               </div>
 

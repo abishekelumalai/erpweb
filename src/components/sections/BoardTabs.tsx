@@ -22,8 +22,8 @@ export default function BoardTabs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-12">
           <Badge className="mb-4 bg-[#026dde]/10 text-primary border-[#026dde]/20 rounded-full">By Board</Badge>
-          <h2 className="text-3xl lg:text-4xl font-bold text-heading mb-4">Tailored for Every Board & Curriculum</h2>
-          <p className="text-lg text-body">ChaloSchools adapts to your curriculum, not the other way around.</p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-heading mb-4">Designed for Different Boards & Curriculum</h2>
+          <p className="text-lg text-body">Every school has its own academic structure and operational requirements. ChaloSchools provides flexible workflows to support different boards and curriculum.</p>
         </motion.div>
         <div role="tablist" aria-label="School board or curriculum" className="flex flex-wrap justify-center gap-2 mb-12">
           {boards.map((b) => (

@@ -26,9 +26,9 @@ import {
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadataWithOverrides({
     pageKey: 'product',
-    title: 'Product Tour',
+    title: 'School Management Software for Complete School Operations',
     description:
-      'Take a tour of ChaloSchools — explore all our modules, from Admissions and Fee Management to Payroll, Inventory, and our AI Secretary.',
+      'From admissions and student management to fees, academics, attendance and communication — manage your entire school with one powerful school ERP platform.',
     path: '/product',
   });
 }
@@ -37,41 +37,57 @@ const productFaqs = [
 
   {
 
-    question: 'What modules does ChaloSchools include?',
+    question: 'Is ChaloSchools a school ERP software?',
 
-    answer: 'ChaloSchools includes 8 standard modules — Admission Management, Student Management, Staff Management, Fee Management, AI-Powered Timetable & Scheduling, Attendance Management, Academic & Examination, and Communication Management — plus add-on modules for Academic Inventory Tracking, Payroll, Library Management, Transport Management, Inspace Performance Insights, and an AI Secretary for school management.',
-
-  },
-
-  {
-
-    question: 'Is ChaloSchools suitable for CBSE, ICSE, IB, or Cambridge schools?',
-
-    answer: 'Yes. ChaloSchools supports Pre School, State & CBSE, IB, Cambridge, Montessori, and Matriculation/Higher Education boards and curricula, with board-specific reporting and workflows.',
+    answer: 'Yes. ChaloSchools works as an integrated school ERP software that connects different areas of school administration through one platform. Instead of managing admissions, student records, fees, attendance and other activities through separate tools, schools can manage them through one connected school ERP solution.',
 
   },
 
   {
 
-    question: 'Does ChaloSchools have a mobile app?',
+    question: 'Does ChaloSchools include admission management software?',
 
-    answer: 'Yes — ChaloSchools includes three dedicated apps: Chaloschools for parents, AnsApp for teachers, and C-365 for school management, each built for its specific role.',
-
-  },
-
-  {
-
-    question: 'Is student and staff data secure with ChaloSchools?',
-
-    answer: 'ChaloSchools is ISO 27001:2022 certified and follows DPDP Act 2023 data protection principles, with role-based access, OTP-verified changes, and personal data masked by default for unauthorised roles.',
+    answer: 'ChaloSchools includes an admission management module within its overall school management software. It helps schools manage enquiries, online applications, document collection, verification, interviews, follow-ups and enrollment while keeping admission information connected with student records.',
 
   },
 
   {
 
-    question: 'How does ChaloSchools handle setup and training?',
+    question: 'Can I manage student records with ChaloSchools?',
 
-    answer: 'ChaloSchools includes free setup and training as part of onboarding — the team handles data migration and configuration so schools can go live without needing in-house technical staff.',
+    answer: 'Yes. The Student Management module provides a centralized student record management system for maintaining student profiles, academic history, documents, parent information and other essential records. This information can also connect with other areas of the school management system.',
+
+  },
+
+  {
+
+    question: 'Does ChaloSchools have a student database management system?',
+
+    answer: 'Yes. The Student Management module functions as a centralized student database management system, allowing authorized school users to organize and access student information from one place instead of maintaining disconnected records and spreadsheets.',
+
+  },
+
+  {
+
+    question: 'Is ChaloSchools an attendance management software?',
+
+    answer: "Attendance management software is one of the capabilities built into ChaloSchools' overall school management system. Rather than using a separate attendance application, schools can manage attendance alongside student records, academics, communication and other school operations.",
+
+  },
+
+  {
+
+    question: 'Does ChaloSchools include employee management software?',
+
+    answer: 'Yes. ChaloSchools includes Staff Management capabilities that function as employee management software for schools. Administrators can maintain employee records, roles, documents, attendance, leave and appraisal information within the wider school management system.',
+
+  },
+
+  {
+
+    question: 'Why use one school management system instead of separate software for each department?',
+
+    answer: 'An integrated school management system keeps information connected across departments. For example, admission information can flow into student records, student information can support attendance and academics, and fee and communication activities can be managed from the same platform. This reduces duplicate data entry and gives school management a more complete view of operations.',
 
   },
 
@@ -120,13 +136,13 @@ export default async function ProductPage() {
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
 
-            Everything Your School Needs,<br className="hidden md:block" /> In One Platform
+            School Management Software for<br className="hidden md:block" /> Complete School Operations
 
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed mb-10">
 
-            ChaloSchools handles all the activities for the operation of a school — from admissions to analytics. Explore our core modules below.
+            From admissions and student management to fees, academics, attendance and communication — manage your entire school with one powerful school ERP platform.
 
           </p>
 
@@ -142,9 +158,9 @@ export default async function ProductPage() {
 
             >
 
-              <Link href="/contact">
+              <Link href="#modules">
 
-                Book a Demo
+                Explore All Modules
 
                 <ArrowRight className="w-5 h-5 ml-2" />
 
@@ -164,9 +180,9 @@ export default async function ProductPage() {
 
             >
 
-              <Link href="/contact">
+              <Link href="/contact#contact-form">
 
-                Talk to Sales
+                Book a Demo
 
               </Link>
 
@@ -246,17 +262,55 @@ export default async function ProductPage() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-          <h2 className="text-2xl md:text-3xl font-bold text-heading mb-4">What is ChaloSchools?</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-heading mb-4">What is Chalo Schools?</h2>
+
+          <p className="text-lg text-body leading-relaxed mb-4">
+
+            ChaloSchools is a complete school management software and school ERP platform built for K-12 schools in India. Bring admissions, student management, fees, attendance, academics, communication, staff management and school operations together in one connected school management system.
+
+          </p>
+
+          <p className="text-lg text-body leading-relaxed mb-8">
+
+            Replace spreadsheets, paper registers and disconnected processes with a centralized platform that helps administrators, teachers, management and parents access the information they need.
+
+          </p>
+
+          <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full font-semibold">
+
+            <Link href="/contact">
+              Talk to Sales
+            </Link>
+
+          </Button>
+
+        </div>
+
+      </section>
+
+      {/* One School ERP. Complete School Operations. */}
+
+      <section className="bg-surface-2 py-10 md:py-12">
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+          <h2 className="text-2xl md:text-3xl font-bold text-heading mb-4">One School ERP. Complete School Operations.</h2>
+
+          <p className="text-lg text-body leading-relaxed mb-4">
+
+            From admissions and student management to fees, attendance, academics, communication and analytics, ChaloSchools brings essential school operations together in one connected platform.
+
+          </p>
+
+          <p className="text-lg text-body leading-relaxed mb-4">
+
+            Instead of managing information across spreadsheets, paper registers and separate systems, school administrators can access the information they need from a centralized school management system.
+
+          </p>
 
           <p className="text-lg text-body leading-relaxed">
 
-            ChaloSchools is a school management ERP built for K-12 schools in India. It replaces spreadsheets,
-
-            WhatsApp groups, and paper registers with one platform covering admissions, fee collection, attendance,
-
-            timetable scheduling, staff management, and parent communication — used by 200+ schools serving 1.5+ Million students,
-
-            with dedicated apps for parents, teachers, and school management.
+            Whether you are looking for school management software, school ERP software, school administration software or a student information system, ChaloSchools provides an integrated platform for managing your school&apos;s daily operations.
 
           </p>
 
@@ -365,13 +419,13 @@ export default async function ProductPage() {
 
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
 
-            Ready to See It in Action?
+            Ready to Simplify Your School Management?
 
           </h2>
 
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
 
-            Book a personalized demo and see how ChaloSchools fits your school&apos;s specific needs. No commitment, no pressure.
+            Bring admissions, students, fees, attendance, academics and more together with ChaloSchools - your complete school management software.
 
           </p>
 
@@ -387,9 +441,9 @@ export default async function ProductPage() {
 
             >
 
-              <Link href="/contact">
+              <Link href="/contact#contact-form">
 
-                Book a Demo
+                Book a Free Demo
 
                 <ArrowRight className="w-5 h-5 ml-2" />
 
@@ -409,9 +463,9 @@ export default async function ProductPage() {
 
             >
 
-              <Link href="/compare">
+              <Link href="#modules">
 
-                Compare With Alternatives
+                Explore ChaloSchools
 
                 <ArrowRight className="w-5 h-5 ml-2" />
 

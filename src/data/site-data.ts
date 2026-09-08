@@ -4,6 +4,8 @@ import {
 
   Smartphone, Users, BookOpen, Bus, MessageSquare, BarChart3,
 
+  UserCircle, MessageCircle, Package, TrendingUp, Bot,
+
   LucideIcon
 
 } from 'lucide-react';
@@ -811,6 +813,276 @@ export const features: FeatureData[] = [
       { q: 'Can reports be exported and scheduled?', a: 'Yes — export to PDF, Excel, or CSV, and schedule automated reports to stakeholders.' },
 
     ],
+
+  },
+
+  {
+
+    slug: 'student',
+
+    title: 'Student Management',
+
+    shortTitle: 'Student Management',
+
+    headline: "Keep Every Student's Information Organized in One Place",
+
+    description: "Create a centralized student record within your ChaloSchools school management software. The student management module connects personal information, academic history, documents and family details, giving administrators a reliable view of each student's journey throughout the school.",
+
+    icon: UserCircle,
+
+    color: '#f59e0b',
+
+    problems: [],
+
+    benefits: [
+
+      'Maintain detailed student profiles and contact information',
+
+      'Organize academic records across school years',
+
+      'Store certificates and important student documents',
+
+      'Maintain parent, guardian and sibling information',
+
+      'Manage student promotion and progression',
+
+      'Quickly search and access student information',
+
+    ],
+
+    features: [
+
+      'Student Profiles',
+
+      'Academic Records',
+
+      'Document Storage',
+
+      'Family Information',
+
+      'Student Promotion',
+
+      'Quick Search',
+
+    ],
+
+    faqs: [],
+
+  },
+
+  {
+
+    slug: 'communication',
+
+    title: 'Communication Management',
+
+    shortTitle: 'Communication',
+
+    headline: 'Keep Parents, Teachers and School Teams Connected',
+
+    description: "Make school communication more organized with ChaloSchools' communication module. Instead of depending on multiple disconnected channels, schools can use their school management platform to share announcements, reminders, alerts and important updates with the right groups.",
+
+    icon: MessageCircle,
+
+    color: '#10b981',
+
+    problems: [],
+
+    benefits: [
+
+      'Send class-wise and school-wide announcements',
+
+      'Connect WhatsApp and SMS communication',
+
+      'Share important alerts and reminders',
+
+      'Keep parents updated about school activities',
+
+      'Enable parent-teacher communication',
+
+      'Monitor message delivery and engagement',
+
+    ],
+
+    features: [
+
+      'Announcements',
+
+      'WhatsApp & SMS',
+
+      'Alerts & Reminders',
+
+      'Parent Updates',
+
+      'Parent-Teacher Chat',
+
+      'Delivery Tracking',
+
+    ],
+
+    faqs: [],
+
+  },
+
+  {
+
+    slug: 'inventory',
+
+    title: 'Academic Inventory Tracking',
+
+    shortTitle: 'Inventory Tracking',
+
+    headline: 'Keep Track of Every Resource Your School Depends On',
+
+    description: 'Manage academic assets and inventory within your ChaloSchools school ERP. From laboratory equipment and sports materials to furniture and departmental resources, schools can maintain better visibility over what they have, where it is being used and what needs attention.',
+
+    icon: Package,
+
+    color: '#026dde',
+
+    problems: [],
+
+    benefits: [
+
+      'Maintain digital inventory records',
+
+      'Monitor stock across departments',
+
+      'Track asset allocation and movement',
+
+      'Identify low-stock items',
+
+      'Maintain purchase and vendor information',
+
+      'Use barcode or QR-based identification',
+
+    ],
+
+    features: [
+
+      'Digital Inventory',
+
+      'Stock Monitoring',
+
+      'Asset Tracking',
+
+      'Low-Stock Alerts',
+
+      'Vendor Records',
+
+      'Barcode/QR Scanning',
+
+    ],
+
+    faqs: [],
+
+  },
+
+  {
+
+    slug: 'performance-insights',
+
+    title: 'Inspace Performance Insights',
+
+    shortTitle: 'Performance Insights',
+
+    headline: "See What Your School's Data Is Really Telling You",
+
+    description: 'Go beyond individual reports with Inspace Performance Insights, an analytics capability within the ChaloSchools school management platform. It brings information from different school operations together so leadership teams can identify patterns, measure progress and make data-driven decisions.',
+
+    icon: TrendingUp,
+
+    color: '#0891b2',
+
+    problems: [],
+
+    benefits: [
+
+      'Combine insights from multiple school modules',
+
+      'Analyze academic performance trends',
+
+      'Monitor attendance and fee-related indicators',
+
+      'Compare performance across classes and periods',
+
+      'Track school-specific KPIs',
+
+      'Prepare insights for management reviews',
+
+    ],
+
+    features: [
+
+      'Cross-Module Insights',
+
+      'Performance Trends',
+
+      'Attendance & Fee KPIs',
+
+      'Comparative Analysis',
+
+      'Custom KPIs',
+
+      'Management Reports',
+
+    ],
+
+    faqs: [],
+
+  },
+
+  {
+
+    slug: 'ai-secretary',
+
+    title: 'AI Secretary',
+
+    shortTitle: 'AI Secretary',
+
+    headline: "Get Answers From Your School Data Without Digging Through Reports",
+
+    description: "AI Secretary adds an intelligent layer to your ChaloSchools school management system, helping school leaders access important information through simple questions. Instead of searching across different reports and modules, administrators can ask about attendance, fees, admissions and other school activities and receive relevant insights quickly.",
+
+    icon: Bot,
+
+    color: '#e11d48',
+
+    problems: [],
+
+    benefits: [
+
+      'Ask questions about school data in natural language',
+
+      'Get quick answers across key management areas',
+
+      'Receive daily and weekly school activity summaries',
+
+      'Identify unusual patterns and important changes',
+
+      'Access insights directly through the management app',
+
+      'Support faster, data-informed administrative decisions',
+
+    ],
+
+    features: [
+
+      'Natural Language Queries',
+
+      'Instant Answers',
+
+      'Activity Summaries',
+
+      'Anomaly Detection',
+
+      'In-App Insights',
+
+      'Faster Decisions',
+
+    ],
+
+    faqs: [],
 
   },
 

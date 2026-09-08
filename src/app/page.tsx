@@ -12,9 +12,13 @@ import SocialProofBar from '@/components/sections/SocialProofBar';
 
 import ProblemsSection from '@/components/sections/ProblemsSection';
 
+import AboutSection from '@/components/sections/AboutSection';
+
 import FeatureHighlights from '@/components/sections/FeatureHighlights';
 
 import OurApps from '@/components/sections/OurApps';
+
+import AISection from '@/components/sections/AISection';
 
 import IntegrationsStrip from '@/components/sections/IntegrationsStrip';
 
@@ -57,8 +61,8 @@ import { db } from '@/lib/db';
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadataWithOverrides({
     pageKey: 'home',
-    title: 'ChaloSchools - Complete School ERP Software for Indian Schools',
-    description: 'Fresh and New School Management Software – CHALO Schools Automated. Complete School Management Software which handles all the activities for operation of a school.',
+    title: 'School Management Software | School ERP | ChaloSchools',
+    description: 'ChaloSchools is an all-in-one school management software and school ERP for admissions, fees, attendance, academics, communication, analytics and more.',
     path: '/',
   });
 }
@@ -189,6 +193,10 @@ export default async function Home() {
 
           {isVisible('problems') && <ProblemsSection />}
 
+          {/* 4b. About / What is a school management software */}
+
+          {isVisible('about') && <AboutSection />}
+
           {/* 5. Feature Highlights */}
 
           {isVisible('features') && <FeatureHighlights />}
@@ -197,7 +205,11 @@ export default async function Home() {
 
           {isVisible('our_apps') && <OurApps />}
 
-          {/* 5c. Integrations */}
+          {/* 5c. AI Section */}
+
+          {isVisible('ai_section') && <AISection />}
+
+          {/* 5d. Integrations */}
 
           {isVisible('integrations') && <IntegrationsStrip />}
 
@@ -205,17 +217,17 @@ export default async function Home() {
 
           {isVisible('demo_video') && <DemoVideo />}
 
-          {/* 7. Why Choose Us */}
+          {/* 7. Why Choose Us (Benefits + Managed IT Services) */}
 
           {isVisible('why_choose_us') && <WhyChooseUs />}
-
-          {/* Security & Compliance (DPDP Act) */}
-
-          {isVisible('security_compliance') && <SecurityCompliance />}
 
           {/* 8. Board-Specific Tabs */}
 
           {isVisible('board_tabs') && <BoardTabs />}
+
+          {/* Security & Compliance (DPDP Act) */}
+
+          {isVisible('security_compliance') && <SecurityCompliance />}
 
           {/* 9. Process Steps */}
 

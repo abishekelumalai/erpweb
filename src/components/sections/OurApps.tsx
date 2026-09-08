@@ -18,21 +18,21 @@ const APPS = [
     icon: GraduationCap,
     role: 'Parent App',
     name: 'Chaloschools',
-    desc: 'Attendance, fees, results & communication — all in your pocket.',
+    desc: 'Attendance, fees, results, announcements and communication — all from one app.',
     color: 'from-[#026dde] to-[#024fb3]',
   },
   {
     icon: Smartphone,
-    role: 'Teachers App',
+    role: 'Teacher App',
     name: 'AnsApp',
-    desc: 'Mark attendance, enter grades, and message parents on the go.',
+    desc: 'Mark attendance, manage grades and stay connected with parents while on the move.',
     color: 'from-[#f59e0b] to-[#d97706]',
   },
   {
     icon: ShieldCheck,
     role: 'Management App',
     name: 'C-365',
-    desc: 'Real-time dashboards and approvals for school leadership, anywhere.',
+    desc: 'Access dashboards, approvals, reports and important school information wherever you are.',
     color: 'from-[#10b981] to-[#059669]',
   },
 ];
@@ -148,8 +148,8 @@ export default function OurApps() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-16">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-10">
           <Badge className="mb-4 bg-[#026dde]/10 text-primary border-[#026dde]/20 rounded-full">Our Apps</Badge>
-          <h2 className="text-3xl lg:text-4xl font-bold text-heading mb-4">A Dedicated App for Every Role</h2>
-          <p className="text-lg text-body">One platform, three purpose-built apps — for parents, teachers, and school management.</p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-heading mb-4">ChaloSchools Mobile App</h2>
+          <p className="text-lg text-body">Your School Management System, Wherever You Are. School administration doesn&apos;t stop when you leave the campus.</p>
         </motion.div>
       </div>
 

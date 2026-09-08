@@ -33,17 +33,11 @@ const SHADOWS = [
   'shadow-[#e11d48]/20',
 ];
 
-// Not every module id has its own /features/[slug] page — some are covered
-// inline elsewhere (e.g. payroll content lives on the staff-hr page) or only
-// exist as this in-page section. Map to a real slug, or omit for no link.
+// Staff and Payroll share the staff-hr detail page (HR + payroll workflows
+// live together there) — every other module id has its own /features/[slug] page.
 const FEATURE_SLUG_OVERRIDES: Record<string, string | null> = {
-  student: null,
   staff: 'staff-hr',
-  communication: null,
-  inventory: null,
   payroll: 'staff-hr',
-  'performance-insights': null,
-  'ai-secretary': null,
 };
 
 function getFeatureHref(moduleId: string): string | null {
@@ -100,9 +94,9 @@ export default function ModuleExplorer({ moduleImages }: { moduleImages?: Record
   return (
     <section className="bg-surface-2 py-10 md:py-14" id="modules">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-heading mb-2">Explore All Modules</h2>
-          <p className="text-subtle">Click a module below to see its details.</p>
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-heading mb-2">Explore All School Software Modules</h2>
+          <p className="text-subtle">Discover powerful modules designed to simplify school administration, automate everyday processes and give your school better visibility across academic and operational activities.</p>
         </div>
 
         {/* Module selector — cone/pyramid layout:
@@ -196,6 +190,9 @@ export default function ModuleExplorer({ moduleImages }: { moduleImages?: Record
                         </li>
                       ))}
                     </ul>
+                    {mod.outro && (
+                      <p className="text-sm text-subtle leading-relaxed mb-6">{mod.outro}</p>
+                    )}
                     {getFeatureHref(mod.id) && (
                       <Button
                         className="font-semibold rounded-lg self-start"

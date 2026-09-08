@@ -33,12 +33,12 @@ const PROBLEM_SHADOWS = [
 ];
 
 const FALLBACK_PROBLEMS = [
-  { title: 'Fee Defaulters Tracked Manually', description: 'Fee defaulters are chased manually, every single month — with reminders slipping through the cracks and collections falling behind.' },
-  { title: 'Attendance & Marks Scattered', description: 'Attendance and marks live across paper registers and Excel sheets, making accurate records slow to compile and easy to lose.' },
-  { title: 'Parents Chasing Teachers on WhatsApp', description: 'Parents chase teachers across dozens of WhatsApp groups for updates, and important announcements fail to reach them on time.' },
-  { title: 'No Single View for Management', description: 'There is no single view of admissions, finance, and academics — leaving management without the real-time picture they need to decide.' },
-  { title: 'Parent Frustration', description: 'Parents struggle with fragmented communication and the lack of real-time updates on their child\'s attendance, academics, fees, and school activities.' },
-  { title: 'Data Security Risks', description: 'Protect sensitive student and school data with ChaloSchools\' ISO 27001 Certified platform, ensuring secure, centralized, and compliant data management.' },
+  { title: 'Fee Defaulters Tracked Manually', description: 'Fee defaulters are chased manually, every single month — with reminders slipping through the cracks and collections falling behind. A centralized school fee management system can help schools automate fee tracking, payment reminders and outstanding dues.' },
+  { title: 'Attendance & Marks Scattered', description: 'Attendance and marks live across paper registers and Excel sheets, making accurate records slow to compile and easy to lose. A school management system brings attendance, marks and academic records together in one centralized platform.' },
+  { title: 'Parents Chasing Teachers on WhatsApp', description: 'Parents chase teachers across dozens of WhatsApp groups for updates, and important announcements fail to reach them on time. An integrated parent communication system gives schools a more organized way to share updates, attendance, academic progress and important notifications.' },
+  { title: 'No Single View for Management', description: 'There is no single view of admissions, finance, and academics — leaving management without the real-time picture they need to make informed decisions. A complete school ERP software platform brings key school operations, reports and data together in one place.' },
+  { title: 'Parent Frustration', description: 'Parents struggle with fragmented communication and the lack of real-time updates on their child\'s attendance, academics, fees, and school activities. A modern school management software solution gives parents convenient access to the information they need while keeping them connected with the school.' },
+  { title: 'Data Security Risks', description: 'Protect sensitive student and school data with ChaloSchools\' ISO 27001 Certified platform, ensuring stronger data protection, controlled access and secure management of critical school information.' },
 ];
 
 export default function ProblemsSection() {
@@ -46,7 +46,8 @@ export default function ProblemsSection() {
 
   const badge = getContentValue(content, 'problems_badge', 'The Challenges');
   const headline = getContentValue(content, 'problems_headline', "Running a School Shouldn't Mean Running After Paperwork");
-  const subtitle = getContentValue(content, 'problems_subtitle', 'If any of these sound familiar, it\'s time for an upgrade.');
+  const description = getContentValue(content, 'problems_description', 'Managing a school involves admissions, fees, attendance, academics, parent communication and countless administrative tasks. Without the right school management software, these everyday processes can become time-consuming and difficult to manage.');
+  const subtitle = getContentValue(content, 'problems_subtitle', 'If any of this sound familiar, it\'s time for an upgrade.');
 
   const problems = FALLBACK_PROBLEMS.map((p, i) => {
     const IconComp = PROBLEM_ICON_DATA[i].icon;
@@ -65,7 +66,8 @@ export default function ProblemsSection() {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-14">
           <Badge className="mb-4 bg-[#026dde]/10 text-primary border-[#026dde]/20 rounded-full">{badge}</Badge>
           <h2 className="text-3xl lg:text-4xl font-bold text-heading mb-4">{headline}</h2>
-          <p className="text-lg text-body">{subtitle}</p>
+          <p className="text-lg text-body mb-3">{description}</p>
+          <p className="text-lg text-body font-medium">{subtitle}</p>
         </motion.div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {problems.map((p, i) => (

@@ -41,20 +41,20 @@ const CATEGORY_COLORS: Record<Category, { gradient: string; accent: string }> = 
 
 // Standard modules (8) + add-on modules (6) — matches the official ChaloSchools product brochure.
 const features: FeatureItem[] = [
-  { icon: <UserPlus className="w-6 h-6" />, label: 'Admission Management', desc: 'Online admissions & enquiry management', slug: 'admissions', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: null, categories: ['Administration'] },
-  { icon: <GraduationCap className="w-6 h-6" />, label: 'Student Management', desc: 'Every student profile — searchable, lifelong, always a click away', href: '/product#student', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: null, categories: ['Academics'] },
-  { icon: <Users className="w-6 h-6" />, label: 'Staff Management', desc: 'Complete staff records, roles & access control', slug: 'staff-hr', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: null, categories: ['Administration'] },
-  { icon: <IndianRupee className="w-6 h-6" />, label: 'Fee Management', desc: 'Bank-synced collection with zero revenue leakage', slug: 'fees', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Most Used', categories: ['Finance'] },
-  { icon: <CalendarDays className="w-6 h-6" />, label: 'AI Powered Time Table & Scheduling', desc: 'Conflict-free schedules with auto-substitutions', slug: 'timetable', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'AI Powered', categories: ['Academics'] },
-  { icon: <ClipboardCheck className="w-6 h-6" />, label: 'Attendance Management', desc: 'Biometric, RFID & mobile attendance tracking', slug: 'attendance', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: null, categories: ['Academics'] },
-  { icon: <FileBarChart className="w-6 h-6" />, label: 'Academic & Examination', desc: 'Grades, report cards & 360° result analytics', slug: 'exams', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Popular', categories: ['Academics'] },
-  { icon: <MessageCircle className="w-6 h-6" />, label: 'Communication Management', desc: 'WhatsApp, SMS & voice broadcast to parents', href: '/product#communication', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: null, categories: ['Communication'] },
-  { icon: <Package className="w-6 h-6" />, label: 'Academic Inventory Tracking', desc: 'Track academic assets and stock in real time', href: '/product#inventory', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Add-on', categories: ['Add-ons', 'Analytics'] },
-  { icon: <Wallet className="w-6 h-6" />, label: 'Payroll Management', desc: 'Automated salary processing & compliance', slug: 'staff-hr', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Add-on', categories: ['Add-ons'] },
-  { icon: <BookOpen className="w-6 h-6" />, label: 'Library Management', desc: 'Book inventory & issue management', slug: 'library', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Add-on', categories: ['Add-ons'] },
-  { icon: <Bus className="w-6 h-6" />, label: 'Transport Management', desc: 'GPS-tracked fleet & route management', slug: 'transport', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Add-on', categories: ['Add-ons'] },
-  { icon: <TrendingUp className="w-6 h-6" />, label: 'Inspace Performance Insights', desc: 'Deep analytics on school-wide performance', href: '/product#performance-insights', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Add-on', categories: ['Analytics', 'Add-ons'] },
-  { icon: <Bot className="w-6 h-6" />, label: 'AI Secretary', desc: 'An AI assistant built exclusively for school management', href: '/product#ai-secretary', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Add-on', categories: ['Add-ons'] },
+  { icon: <UserPlus className="w-6 h-6" />, label: 'Admission Management', desc: 'Streamline enquiries, applications and admissions with an organized online admission management system.', slug: 'admissions', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: null, categories: ['Administration'] },
+  { icon: <GraduationCap className="w-6 h-6" />, label: 'Student Management', desc: 'Manage complete student profiles, academic records and essential information from one centralized school management system.', href: '/product#student', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: null, categories: ['Academics'] },
+  { icon: <Users className="w-6 h-6" />, label: 'Staff Management', desc: 'Manage staff records, roles, permissions and access with centralized staff administration tools.', slug: 'staff-hr', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: null, categories: ['Administration'] },
+  { icon: <IndianRupee className="w-6 h-6" />, label: 'Fee Management', desc: 'Simplify fee collection, payment tracking and outstanding dues with a connected school fee management system.', slug: 'fees', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Most Used', categories: ['Finance'] },
+  { icon: <CalendarDays className="w-6 h-6" />, label: 'AI-Powered Timetable & Scheduling', desc: 'Create conflict-free timetables, optimize schedules and manage teacher substitutions with AI-powered automation.', slug: 'timetable', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'AI Powered', categories: ['Academics'] },
+  { icon: <ClipboardCheck className="w-6 h-6" />, label: 'Attendance Management', desc: 'Track student attendance accurately with biometric, RFID and mobile attendance solutions.', slug: 'attendance', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: null, categories: ['Academics'] },
+  { icon: <FileBarChart className="w-6 h-6" />, label: 'Academic & Examination Management', desc: 'Manage assessments, grades, examinations and report cards while gaining a complete view of student performance.', slug: 'exams', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Popular', categories: ['Academics'] },
+  { icon: <MessageCircle className="w-6 h-6" />, label: 'Communication Management', desc: 'Keep parents, teachers and students connected through WhatsApp, SMS, voice broadcasts and school notifications.', href: '/product#communication', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: null, categories: ['Communication'] },
+  { icon: <Package className="w-6 h-6" />, label: 'Academic Inventory Tracking', desc: 'Track academic assets, equipment and inventory in real time with centralized stock management.', href: '/product#inventory', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Add-on', categories: ['Add-ons', 'Analytics'] },
+  { icon: <Wallet className="w-6 h-6" />, label: 'Payroll Management', desc: 'Simplify salary processing, staff payroll and compliance-related workflows through one integrated system.', slug: 'staff-hr', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Add-on', categories: ['Add-ons'] },
+  { icon: <BookOpen className="w-6 h-6" />, label: 'Library Management', desc: 'Manage books, availability, issue and return records with an organized digital library management system.', slug: 'library', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Add-on', categories: ['Add-ons'] },
+  { icon: <Bus className="w-6 h-6" />, label: 'Transport Management', desc: 'Manage school vehicles, routes and transportation operations with GPS-enabled fleet tracking.', slug: 'transport', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Add-on', categories: ['Add-ons'] },
+  { icon: <TrendingUp className="w-6 h-6" />, label: 'Inspace Performance Insights', desc: 'Turn school data into actionable insights with deep analytics across academics, attendance and overall school performance.', href: '/product#performance-insights', color: 'from-[#026dde] to-[#024fb3]', accent: BLUE, tag: 'Add-on', categories: ['Analytics', 'Add-ons'] },
+  { icon: <Bot className="w-6 h-6" />, label: 'AI Secretary', desc: 'Get an intelligent AI assistant built specifically to support everyday school administration and management.', href: '/product#ai-secretary', color: 'from-[#f59e0b] to-[#d97706]', accent: AMBER, tag: 'Add-on', categories: ['Add-ons'] },
 ];
 
 const CATEGORIES: ('All' | Category)[] = ['All', 'Academics', 'Administration', 'Finance', 'Communication', 'Analytics', 'Add-ons'];
@@ -79,9 +79,9 @@ export default function FeatureHighlights() {
   const { content } = useSiteContent();
   const [activeCategory, setActiveCategory] = useState<'All' | Category>('All');
 
-  const badge = getContentValue(content, 'features_badge', 'Everything You Need in One Platform');
-  const headline = getContentValue(content, 'features_headline', '14 Powerful Modules, One Dashboard');
-  const subtitle = getContentValue(content, 'features_subtitle', '8 standard modules plus 6 add-ons — every tool your school needs, seamlessly integrated and ready to use from day one.');
+  const badge = getContentValue(content, 'features_badge', 'Our Modules');
+  const headline = getContentValue(content, 'features_headline', '14 Modules in One School Management System');
+  const subtitle = getContentValue(content, 'features_subtitle', 'From admissions and student records to fees, academics, communication and analytics, ChaloSchools brings every essential school operation together in one powerful school management software platform.');
 
   const visibleFeatures = features
     .map((f, i) => ({ ...f, originalIndex: i }))
@@ -170,7 +170,7 @@ export default function FeatureHighlights() {
                       className="mt-auto pt-4 flex items-center gap-1.5 text-sm font-semibold transition-all duration-300"
                       style={{ color: catColor.accent }}
                     >
-                      Explore Module
+                      Explore
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </div>
                   )}

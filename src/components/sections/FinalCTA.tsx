@@ -118,13 +118,13 @@ export default function FinalCTA() {
 
           <h2 className="text-3xl lg:text-5xl font-bold leading-tight">
 
-            Ready to Transform<br />Your School?
+            Ready to Simplify Your<br />School Management?
 
           </h2>
 
           <p className="text-lg lg:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
 
-            Get in touch with our experts for a demo and know what Chalo can do to your regular school administration activities.
+            See how ChaloSchools can help your school reduce manual work, connect your teams and manage everyday operations from one powerful platform.
 
           </p>
 
@@ -157,7 +157,7 @@ export default function FinalCTA() {
 
                   <Sparkles className="w-4 h-4 mr-2 relative" />
 
-                  <span className="relative">Request a Demo</span>
+                  <span className="relative">Book a Personalized Demo</span>
 
                   <ArrowRight className="w-5 h-5 ml-2 relative group-hover:translate-x-1 transition-transform" />
 
@@ -177,7 +177,7 @@ export default function FinalCTA() {
 
           </div>
 
-          <p className="text-sm text-white/50 pt-2">Free setup &amp; training</p>
+          <p className="text-sm text-white/50 pt-2">Free Setup &amp; Training &nbsp;|&nbsp; Dedicated Support &nbsp;|&nbsp; Secure School Management Platform</p>
 
         </motion.div>
 

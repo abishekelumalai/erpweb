@@ -3,16 +3,19 @@
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import {
-  LayoutDashboard, Building2, Layers,
+  LayoutDashboard, Database, MessageCircle, BarChart3, Cloud,
   Server, ShieldCheck, Network, ClipboardCheck, Lightbulb, Headset,
 } from 'lucide-react';
 import { useSiteContent, getContentValue } from './SiteContentProvider';
 
-const ICONS = [LayoutDashboard, Building2, Layers];
+const ICONS = [LayoutDashboard, Database, MessageCircle, BarChart3, Cloud, Headset];
 const COLORS = [
-  'from-[#026dde] to-[#024fb3]',
-  'from-[#f59e0b] to-[#d97706]',
-  'from-[#026dde] to-[#024fb3]',
+  'from-[#026dde] to-[#00d4ff]',
+  'from-[#f59e0b] to-[#fbbf24]',
+  'from-[#10b981] to-[#34d399]',
+  'from-[#8b5cf6] to-[#a78bfa]',
+  'from-[#0891b2] to-[#22d3ee]',
+  'from-[#e11d48] to-[#f87171]',
 ];
 
 // From the Inspace Technologies "Beyond Software — Managed Services &
@@ -21,59 +24,62 @@ const MANAGED_SERVICES = [
   {
     icon: Server,
     title: 'Managed IT Infrastructure',
-    description: 'Design, deploy & manage servers, storage, smart classrooms, CCTV & compute — school-grade reliability with zero in-house IT overhead and a dedicated virtual IT manager.',
+    description: 'Servers, storage, smart classrooms, CCTV and computing infrastructure with dedicated IT support.',
     gradient: 'from-[#026dde] to-[#00d4ff]',
     shadow: 'shadow-[#026dde]/20',
   },
   {
     icon: ShieldCheck,
     title: 'Cybersecurity Audit',
-    description: 'Penetration testing, vulnerability scans & risk remediation. Your student data stays yours.',
+    description: 'Vulnerability assessments, penetration testing and risk remediation to protect sensitive school data.',
     gradient: 'from-[#e11d48] to-[#f87171]',
     shadow: 'shadow-[#e11d48]/20',
   },
   {
     icon: Network,
     title: 'Network Design & Deployment',
-    description: 'Campus-wide wired & wireless networks, built for 200 to 20,000+ seat schools without compromise.',
+    description: 'Reliable wired and wireless school network infrastructure designed for campuses of every size.',
     gradient: 'from-[#0891b2] to-[#22d3ee]',
     shadow: 'shadow-[#0891b2]/20',
   },
   {
     icon: ClipboardCheck,
     title: 'Compliance Audit & Advisory',
-    description: 'DPDP Act, GoI IT Act 2000, ISO 27001 — audit-ready always, not just before inspections.',
+    description: 'Support for data protection, information security and applicable IT compliance requirements.',
     gradient: 'from-[#10b981] to-[#34d399]',
     shadow: 'shadow-[#10b981]/20',
   },
   {
     icon: Lightbulb,
     title: 'IT Strategy Consulting',
-    description: 'Vendor-neutral roadmap and digital transformation guidance. Strategy first, tools second.',
+    description: 'Vendor-neutral technology planning and digital transformation guidance for modern schools.',
     gradient: 'from-[#f59e0b] to-[#fbbf24]',
     shadow: 'shadow-[#f59e0b]/20',
   },
   {
     icon: Headset,
     title: '24/7 Helpdesk & AMC',
-    description: 'SLA-backed support with a named account manager — on-site and remote, so school never stops for an IT issue.',
+    description: 'SLA-backed remote and on-site support with dedicated account management to keep school operations running.',
     gradient: 'from-[#8b5cf6] to-[#a78bfa]',
     shadow: 'shadow-[#8b5cf6]/20',
   },
 ];
 
 const FALLBACK_BENEFITS = [
-  { title: 'One Platform', description: 'ERP + AI + Managed IT + Cybersecurity + Compliance + 24/7 Support — everything under one roof.' },
-  { title: 'Fortune-Grade IT', description: 'Backed by Inspace Technologies, now built specifically for K-12 schools.' },
-  { title: 'Zero Gaps', description: 'The only school tech partner that owns every layer of your digital stack.' },
+  { title: 'Simplify Daily Operations', description: 'Bring multiple school processes together and reduce repetitive administrative work.' },
+  { title: 'One Source of School Data', description: 'Keep student, academic, financial and administrative information organized in one centralized system.' },
+  { title: 'Improve Communication', description: 'Keep parents, teachers, students and management connected with timely updates.' },
+  { title: 'Make Data-Driven Decisions', description: 'Use reports and analytics to understand school performance and identify areas that need attention.' },
+  { title: 'Access From Anywhere', description: 'Cloud-based access and dedicated mobile apps keep your school connected beyond the campus.' },
+  { title: 'Get Dedicated Support', description: 'From implementation and training to ongoing assistance, our team helps your school adopt the platform with confidence.' },
 ];
 
 export default function WhyChooseUs() {
   const { content } = useSiteContent();
 
-  const badge = getContentValue(content, 'why_choose_badge', 'Why Chalo Is Different');
-  const headline = getContentValue(content, 'why_choose_headline', 'Where Technology & Knowledge Converge');
-  const subtitle = getContentValue(content, 'why_choose_subtitle', 'Elevating school automation — end to end.');
+  const badge = getContentValue(content, 'why_choose_badge', 'Benefits');
+  const headline = getContentValue(content, 'why_choose_headline', 'Why Choose ChaloSchools?');
+  const subtitle = getContentValue(content, 'why_choose_subtitle', '');
 
   const benefits = FALLBACK_BENEFITS.map((b, i) => ({
     title: getContentValue(content, `why_choose_${i + 1}_title`, b.title),
@@ -86,9 +92,9 @@ export default function WhyChooseUs() {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-14">
           <Badge className="mb-4 bg-[#026dde]/10 text-primary border-[#026dde]/20 rounded-full">{badge}</Badge>
           <h2 className="text-3xl lg:text-4xl font-bold mb-4"><span className="wow-heading wow-underline">{headline}</span></h2>
-          <p className="text-lg text-body">{subtitle}</p>
+          {subtitle && <p className="text-lg text-body">{subtitle}</p>}
         </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {benefits.map((b, i) => {
             const Icon = ICONS[i];
             return (
@@ -122,10 +128,10 @@ export default function WhyChooseUs() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <Badge className="mb-4 bg-[#f59e0b]/10 text-[#d97706] border-[#f59e0b]/20 rounded-full">Beyond Software</Badge>
-            <h3 className="text-2xl lg:text-3xl font-bold text-heading mb-2">Managed Services &amp; Infrastructure</h3>
+            <Badge className="mb-4 bg-[#f59e0b]/10 text-[#d97706] border-[#f59e0b]/20 rounded-full">IT Services</Badge>
+            <h3 className="text-2xl lg:text-3xl font-bold text-heading mb-2">Managed IT Services and School Technology Infrastructure</h3>
             <p className="text-body">
-              Powered by Inspace Technologies — India&apos;s only full-stack school technology company. From school ERP to data centre, we own it all.
+              ChaloSchools goes beyond school management software with end-to-end managed IT services for schools — covering infrastructure, cybersecurity, networking, compliance and technical support.
             </p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -149,8 +155,11 @@ export default function WhyChooseUs() {
               </motion.div>
             ))}
           </div>
-          <p className="text-center text-xs text-subtle mt-6">
-            One partner · Zero gaps · Full accountability — ERP, AI Analytics, Managed IT, Cybersecurity, Networking, Compliance, Consulting &amp; 24/7 Support.
+          <p className="text-center text-sm font-semibold text-heading mt-6">
+            One Technology Partner. Zero Gaps.
+          </p>
+          <p className="text-center text-xs text-subtle mt-1">
+            From school ERP and AI analytics to IT infrastructure, cybersecurity, networking and 24/7 support, ChaloSchools provides a complete technology ecosystem for modern schools.
           </p>
         </div>
       </div>

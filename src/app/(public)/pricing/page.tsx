@@ -19,9 +19,9 @@ import {
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadataWithOverrides({
     pageKey: 'pricing',
-    title: 'Pricing',
+    title: 'School Management Software Pricing',
     description:
-      'Simple, transparent pricing for schools of every size — view plans and what\'s included. Pay per student, per year. No hidden costs, no long-term lock-in.',
+      'Explore ChaloSchools school management software pricing with flexible per-student plans, school ERP features, free onboarding, data migration, training and support.',
     path: '/pricing',
   });
 }
@@ -120,13 +120,13 @@ const tiers = [
 
 const includedInEveryPlan = [
 
-  { icon: GraduationCap, label: 'Free onboarding & data migration', gradient: 'from-[#026dde] to-[#00d4ff]', shadow: 'shadow-[#026dde]/20' },
+  { icon: GraduationCap, title: 'Free Onboarding & Data Migration', description: 'Move your existing school data to ChaloSchools with support from our implementation team.', gradient: 'from-[#026dde] to-[#00d4ff]', shadow: 'shadow-[#026dde]/20' },
 
-  { icon: HeadphonesIcon, label: 'Free training for staff', gradient: 'from-[#f59e0b] to-[#fbbf24]', shadow: 'shadow-[#f59e0b]/20' },
+  { icon: HeadphonesIcon, title: 'Free Staff Training', description: 'Help administrators, teachers and staff get started with guided training.', gradient: 'from-[#f59e0b] to-[#fbbf24]', shadow: 'shadow-[#f59e0b]/20' },
 
-  { icon: Smartphone, label: 'Mobile apps for parents, teachers & management', gradient: 'from-[#10b981] to-[#34d399]', shadow: 'shadow-[#10b981]/20' },
+  { icon: Smartphone, title: 'Mobile Apps', description: 'Connect parents, teachers and school management through dedicated mobile applications.', gradient: 'from-[#10b981] to-[#34d399]', shadow: 'shadow-[#10b981]/20' },
 
-  { icon: ShieldCheck, label: 'Data security & cloud backup', gradient: 'from-[#8b5cf6] to-[#a78bfa]', shadow: 'shadow-[#8b5cf6]/20' },
+  { icon: ShieldCheck, title: 'Data Security & Cloud Backup', description: 'Protect important school and student information with secure data management and cloud backup.', gradient: 'from-[#8b5cf6] to-[#a78bfa]', shadow: 'shadow-[#8b5cf6]/20' },
 
 ];
 
@@ -134,9 +134,9 @@ const faqs = [
 
   {
 
-    q: 'Is pricing per student or per school?',
+    q: 'Is ChaloSchools priced per student or per school?',
 
-    a: 'ChaloSchools is priced per student, per year — so you only pay for what you use, and your cost scales naturally with your school.',
+    a: 'ChaloSchools uses per-student, per-year pricing, allowing your school management software cost to scale with your student strength.',
 
   },
 
@@ -144,23 +144,31 @@ const faqs = [
 
     q: 'Are there setup or onboarding charges?',
 
-    a: 'No. Onboarding, data migration, and staff training are included free with every plan.',
+    a: 'No. Onboarding, data migration and staff training are included free with every plan.',
 
   },
 
   {
 
-    q: 'Can we upgrade plans later?',
+    q: 'Can we upgrade our school management software plan later?',
 
-    a: 'Yes. You can move from Basic to Growth to Enterprise at any time as your needs grow — there is no long-term lock-in.',
+    a: "Yes. You can move from Basic to Growth or Enterprise as your school's requirements increase. There is no long-term lock-in.",
 
   },
 
   {
 
-    q: 'Is there a discount for multi-branch schools or trusts?',
+    q: 'Do multi-branch schools and education trusts get custom pricing?',
 
-    a: 'Yes. Multi-branch schools and education trusts get custom pricing — request a quote and our team will tailor a plan for your group.',
+    a: 'Yes. Multi-branch schools, school groups and education trusts can request customized pricing based on their number of branches, students and requirements.',
+
+  },
+
+  {
+
+    q: 'What affects school ERP software pricing?',
+
+    a: 'Your school ERP pricing depends on factors such as student strength, required modules, number of branches and specific school requirements. Our team can recommend the most suitable plan for your institution.',
 
   },
 
@@ -312,13 +320,13 @@ export default function PricingPage() {
 
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-3">
 
-              What&apos;s Included in Every Plan
+              What&apos;s Included With Every School ERP Plan?
 
             </h2>
 
             <p className="text-body text-lg max-w-2xl mx-auto">
 
-              No matter which plan you choose, you get everything you need to go live with confidence.
+              Every ChaloSchools plan includes the essential services your school needs for a smooth transition to digital school management.
 
             </p>
 
@@ -326,9 +334,9 @@ export default function PricingPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            {includedInEveryPlan.map(({ icon: Icon, label, gradient, shadow }) => (
+            {includedInEveryPlan.map(({ icon: Icon, title, description, gradient, shadow }) => (
 
-              <div key={label} className="flex flex-col items-center text-center gap-3 bg-card rounded-xl border border-border p-6">
+              <div key={title} className="flex flex-col items-center text-center gap-3 bg-card rounded-xl border border-border p-6">
 
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg ${shadow} text-white`}>
 
@@ -336,7 +344,9 @@ export default function PricingPage() {
 
                 </div>
 
-                <p className="text-sm font-medium text-body">{label}</p>
+                <h3 className="text-sm font-bold text-heading">{title}</h3>
+
+                <p className="text-xs text-subtle leading-relaxed">{description}</p>
 
               </div>
 
@@ -404,13 +414,19 @@ export default function PricingPage() {
 
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
 
-            Get Pricing Tailored to Your School
+            School ERP Software Built to Grow With Your School
 
           </h2>
 
+          <p className="text-white/70 text-lg mb-4 max-w-2xl mx-auto">
+
+            Whether you are a small school starting your digital transformation, a growing institution expanding its operations, or a multi-campus education group, ChaloSchools provides a scalable school management system that grows with you.
+
+          </p>
+
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
 
-            Tell us about your school and we&apos;ll put together a plan that fits your size, board, and budget.
+            Manage your school&apos;s academic, administrative, financial and communication needs from one connected platform.
 
           </p>
 
@@ -451,6 +467,12 @@ export default function PricingPage() {
             </Button>
 
           </div>
+
+          <p className="text-white/50 text-sm mt-6 max-w-xl mx-auto">
+
+            Tell us about your school, student strength, board, number of branches and requirements. Our team will help you choose the right school ERP software plan for your institution.
+
+          </p>
 
         </div>
 

@@ -1,32 +1,37 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
-import { CalendarCheck, Settings, Rocket } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Search, Settings, GraduationCap, Rocket, ArrowRight } from 'lucide-react';
 import { useSiteContent, getContentValue } from './SiteContentProvider';
 
-const STEP_ICONS = [CalendarCheck, Settings, Rocket];
+const STEP_ICONS = [Search, Settings, GraduationCap, Rocket];
 const STEP_COLORS = [
   'bg-[#026dde] text-white',
   'bg-[#f59e0b] text-white',
+  'bg-[#8b5cf6] text-white',
   'bg-emerald-500 text-white',
 ];
-const NODE_COLORS = ['#026dde', '#f59e0b', '#10b981'];
+const NODE_COLORS = ['#026dde', '#f59e0b', '#8b5cf6', '#10b981'];
 
 const FALLBACK_STEPS = [
-  { title: 'Book a Demo', description: 'Fill out the form and our team will schedule a personalized demo for your school.' },
-  { title: 'Quick Setup', description: 'Our team handles complete data migration and customization for your school.' },
-  { title: 'Go Live', description: 'Start using Chalo Schools with full training and 24/7 support for your team.' },
+  { eyebrow: 'Discover', title: 'Understand Your School', description: "We learn about your school's existing processes, requirements and priorities." },
+  { eyebrow: 'Setup', title: 'Configure Your Platform', description: 'Our team helps with setup, data migration, configuration and customization.' },
+  { eyebrow: 'Train', title: 'Prepare Your Team', description: 'Teachers, administrators and other users receive the training they need.' },
+  { eyebrow: 'Go Live', title: 'Start Managing Your School', description: 'Launch ChaloSchools with continued support from our team.' },
 ];
 
 export default function ProcessSteps() {
   const { content } = useSiteContent();
 
   const badge = getContentValue(content, 'process_badge', 'How It Works');
-  const headline = getContentValue(content, 'process_headline', 'Get Started in 3 Easy Steps');
-  const subtitle = getContentValue(content, 'process_subtitle', 'From first call to fully operational — we make the transition seamless.');
+  const headline = getContentValue(content, 'process_headline', 'Getting Started With ChaloSchools Is Simple');
+  const subtitle = getContentValue(content, 'process_subtitle', "Moving from manual processes or another school software doesn't have to be complicated.");
 
   const steps = FALLBACK_STEPS.map((s, i) => ({
+    eyebrow: s.eyebrow,
     title: getContentValue(content, `process_step_${i + 1}_title`, s.title),
     description: getContentValue(content, `process_step_${i + 1}_desc`, s.description),
   }));
@@ -49,7 +54,7 @@ export default function ProcessSteps() {
             viewport={{ once: true, amount: 0.4 }}
           >
             {/* Glowing connector line — drawn from the beginning on scroll-in (desktop only) */}
-            <div className="hidden md:block absolute top-8 left-0 right-0 px-16 pointer-events-none" aria-hidden="true">
+            <div className="hidden md:block absolute top-8 left-16 right-16 pointer-events-none" aria-hidden="true">
               <svg
                 className="w-full h-3 overflow-visible"
                 viewBox="0 0 100 3"
@@ -118,7 +123,7 @@ export default function ProcessSteps() {
                   key={i}
                   className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
                   style={{
-                    left: `${i * 50}%`,
+                    left: `${(i * 100) / (NODE_COLORS.length - 1)}%`,
                     width: 16,
                     height: 16,
                     backgroundColor: color,
@@ -131,7 +136,7 @@ export default function ProcessSteps() {
                       opacity: 1,
                       transition: {
                         // Light up roughly as the drawing line reaches each node
-                        delay: 0.2 + i * 0.6,
+                        delay: 0.2 + i * 0.4,
                         duration: 0.45,
                         ease: 'backOut',
                       },
@@ -141,7 +146,7 @@ export default function ProcessSteps() {
               ))}
             </div>
 
-            <div className="relative grid md:grid-cols-3 gap-8">
+            <div className="relative grid md:grid-cols-4 gap-8">
               {steps.map((step, i) => {
                 const Icon = STEP_ICONS[i];
                 return (
@@ -153,7 +158,7 @@ export default function ProcessSteps() {
                         opacity: 1,
                         y: 0,
                         // Reveal each step roughly as the line reaches it
-                        transition: { delay: 0.3 + i * 0.5, duration: 0.5, ease: 'easeOut' },
+                        transition: { delay: 0.3 + i * 0.35, duration: 0.5, ease: 'easeOut' },
                       },
                     }}
                     className="text-center relative group"
@@ -161,7 +166,7 @@ export default function ProcessSteps() {
                     <div className={`relative z-10 w-16 h-16 mx-auto rounded-2xl ${STEP_COLORS[i]} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
                       <Icon className="w-7 h-7" />
                     </div>
-                    <div className="text-xs font-bold text-subtle uppercase tracking-wider mb-2">Step {i + 1}</div>
+                    <div className="text-xs font-bold text-subtle uppercase tracking-wider mb-2">{String(i + 1).padStart(2, '0')} — {step.eyebrow}</div>
                     <h3 className="text-lg font-bold text-heading mb-2">{step.title}</h3>
                     <p className="text-sm text-subtle leading-relaxed">{step.description}</p>
                   </motion.div>
@@ -169,6 +174,15 @@ export default function ProcessSteps() {
               })}
             </div>
           </motion.div>
+
+          <div className="text-center mt-10">
+            <Button asChild size="lg" className="rounded-full font-semibold bg-primary hover:bg-primary/90 group">
+              <Link href="/contact#contact-form">
+                Book a Demo
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>
