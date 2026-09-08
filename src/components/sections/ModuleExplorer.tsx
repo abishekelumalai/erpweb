@@ -99,17 +99,16 @@ export default function ModuleExplorer({ moduleImages }: { moduleImages?: Record
           <p className="text-subtle">Discover powerful modules designed to simplify school administration, automate everyday processes and give your school better visibility across academic and operational activities.</p>
         </div>
 
-        {/* Module selector — cone/pyramid layout:
-            Row 1: 2 items
-            Row 2: 3 items
-            Row 3: 4 items
-            Row 4: 5 items
-            Row 5: 2 items (remaining)
-            Each row is centered, creating a widening pyramid effect.
+        {/* Module selector — 3-row pyramid layout (roughly a 3:2:1 split of
+            the 16 modules):
+            Row 1: 6 items
+            Row 2: 5 items
+            Row 3: 5 items (remaining)
+            Each row is centered, creating a widening-then-narrowing pyramid effect.
         */}
         <div className="flex flex-col items-center gap-2.5 mb-10 md:mb-12">
           {(() => {
-            const rows = [2, 3, 4, 5, 2];
+            const rows = [6, 5, 5];
             let idx = 0;
             return rows.map((rowSize, rowIdx) => {
               const rowModules = modules.slice(idx, idx + rowSize);

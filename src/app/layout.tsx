@@ -94,7 +94,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   const activeTheme = await getActiveTheme();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
         <script
           dangerouslySetInnerHTML={{ __html: getThemeInitScript(activeTheme) }}
