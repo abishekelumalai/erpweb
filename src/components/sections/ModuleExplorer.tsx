@@ -33,11 +33,12 @@ const SHADOWS = [
   'shadow-[#e11d48]/20',
 ];
 
-// Staff and Payroll share the staff-hr detail page (HR + payroll workflows
-// live together there) — every other module id has its own /features/[slug] page.
+// Module ids that don't map 1:1 onto their /features/[slug] page.
 const FEATURE_SLUG_OVERRIDES: Record<string, string | null> = {
   staff: 'staff-hr',
-  payroll: 'staff-hr',
+  payroll: 'payroll-management',
+  student: 'student-management',
+  inventory: 'academic-inventory-management',
 };
 
 function getFeatureHref(moduleId: string): string | null {

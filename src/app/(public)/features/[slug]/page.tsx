@@ -6,6 +6,10 @@ import { notFound } from 'next/navigation';
 
 import { features, getFeatureBySlug } from '@/data/site-data';
 
+import { richFeaturePages, getRichFeatureBySlug } from '@/data/feature-pages';
+
+import RichFeaturePageView from '@/components/features/RichFeaturePageView';
+
 import { Button } from '@/components/ui/button';
 
 import { Card, CardContent } from '@/components/ui/card';
@@ -51,13 +55,31 @@ interface PageProps {
 
 export async function generateStaticParams() {
 
-  return features.map((f) => ({ slug: f.slug }));
+  const slugs = new Set([...features.map((f) => f.slug), ...richFeaturePages.map((p) => p.slug)]);
+
+  return Array.from(slugs).map((slug) => ({ slug }));
 
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 
   const { slug } = await params;
+
+  const richFeature = getRichFeatureBySlug(slug);
+
+  if (richFeature) {
+
+    return buildMetadata({
+
+      title: richFeature.metaTitle,
+
+      description: richFeature.metaDescription,
+
+      path: `/features/${slug}`,
+
+    });
+
+  }
 
   const feature = getFeatureBySlug(slug);
 
@@ -78,6 +100,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function FeatureDetailPage({ params }: PageProps) {
 
   const { slug } = await params;
+
+  const richFeature = getRichFeatureBySlug(slug);
+
+  if (richFeature) return <RichFeaturePageView data={richFeature} slug={slug} />;
 
   const feature = getFeatureBySlug(slug);
 
