@@ -115,7 +115,7 @@ export const richFeaturePages: RichFeaturePage[] = [
       {
         id: 'challenges',
         kind: 'problems',
-        badge: 'Sound Familiar?',
+        badge: 'Sound Familiar',
         heading: 'Challenges in Managing School Timetables',
         items: [
           { title: "Creating a School Timetable Shouldn't Take Days", description: 'A school timetable has to bring together teachers, subjects, classes, sections, classrooms, laboratories, and period timings. When these schedules are created manually, even a small change can create conflicts across the entire timetable.' },
@@ -222,7 +222,7 @@ export const richFeaturePages: RichFeaturePage[] = [
       {
         id: 'challenges',
         kind: 'problems',
-        badge: 'Sound Familiar?',
+        badge: 'Sound Familiar',
         heading: 'Where Inventory Typically Breaks Down',
         items: [
           { title: 'The Register That Nobody Updates', description: 'A physical stock register is accurate on the first day and outdated by the third week.' },
@@ -455,7 +455,7 @@ export const richFeaturePages: RichFeaturePage[] = [
       {
         id: 'challenges',
         kind: 'problems',
-        badge: 'Sound Familiar?',
+        badge: 'Sound Familiar',
         heading: "Managing Attendance Shouldn't Be a Daily Struggle",
         subheading: 'Taking attendance is a small part of the school day, but managing the information behind it can become a time-consuming administrative task.',
         items: [
@@ -560,7 +560,7 @@ export const richFeaturePages: RichFeaturePage[] = [
       {
         id: 'challenges',
         kind: 'problems',
-        badge: 'Sound Familiar?',
+        badge: 'Sound Familiar',
         heading: 'School Communication Gets Complicated Fast',
         subheading: 'Holiday notices. Exam reminders. Attendance alerts. Fee reminders. Events. Meetings. Emergency announcements. When these messages are handled through different channels, keeping everyone informed becomes difficult.',
         items: [
@@ -702,7 +702,7 @@ export const richFeaturePages: RichFeaturePage[] = [
       {
         id: 'challenges',
         kind: 'problems',
-        badge: 'Sound Familiar?',
+        badge: 'Sound Familiar',
         heading: "Managing School Fees Shouldn't Be This Complicated",
         subheading: 'From collecting payments to following up on dues, manual fee management creates unnecessary work for school administrators.',
         items: [
@@ -1118,7 +1118,7 @@ export const richFeaturePages: RichFeaturePage[] = [
       {
         id: 'challenges',
         kind: 'problems',
-        badge: 'Sound Familiar?',
+        badge: 'Sound Familiar',
         heading: 'Is Managing School Admissions Becoming a Challenge?',
         subheading: 'Handling admissions manually can quickly become complicated as enquiries and applications increase. Disconnected records, repeated follow-ups and paperwork can make it difficult for your team to stay organized.',
         items: [
